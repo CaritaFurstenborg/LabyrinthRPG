@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LoadNewArea : MonoBehaviour {
 
-    public string levelToLoad;
+    public string levelToLoad; // name of the scene to load
 
 	// Use this for initialization
 	void Start () {
@@ -16,12 +16,12 @@ public class LoadNewArea : MonoBehaviour {
 	void Update () {
 		
 	}
-
+    // if something enters trigger
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.name == "Player")
+        if(other.gameObject.name == "Player") // check if the object colling is the player
         {
-            SceneManager.LoadScene(levelToLoad);
+            SceneManager.LoadScene(levelToLoad); // load the selected scene
         }
     }
 }
