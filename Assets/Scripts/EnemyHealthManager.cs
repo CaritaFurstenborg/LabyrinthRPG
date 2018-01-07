@@ -6,11 +6,16 @@ public class EnemyHealthManager : MonoBehaviour {
 
     public int enemyMaxHealth;
     public int enemyCurrentHealth;
+    public int expToGive;
+
+    private PlayerStats playerStats;
 
     // Use this for initialization
     void Start()
     {
         enemyCurrentHealth = enemyMaxHealth;
+
+        playerStats = FindObjectOfType<PlayerStats>();
     }
 
     // Update is called once per frame
@@ -19,6 +24,7 @@ public class EnemyHealthManager : MonoBehaviour {
         if (enemyCurrentHealth <= 0)
         {
             gameObject.SetActive(false);
+            playerStats.AddExp(expToGive);
         }
     }
 

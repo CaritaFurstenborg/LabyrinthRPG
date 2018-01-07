@@ -7,9 +7,13 @@ public class LoadNewArea : MonoBehaviour {
 
     public string levelToLoad; // name of the scene to load
 
+    public string exitPoint;
+
+    private PlayerController player;
+
 	// Use this for initialization
 	void Start () {
-		
+        player = FindObjectOfType<PlayerController>();
 	}
 	
 	// Update is called once per frame
@@ -22,6 +26,7 @@ public class LoadNewArea : MonoBehaviour {
         if(other.gameObject.name == "Player") // check if the object colling is the player
         {
             SceneManager.LoadScene(levelToLoad); // load the selected scene
+            player.startPoint = exitPoint;
         }
     }
 }

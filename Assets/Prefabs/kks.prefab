@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyMaxHealth: 10
   enemyCurrentHealth: 0
+  expToGive: 20
 --- !u!114 &114603148329348516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -138,6 +139,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 5
+  dmgNumDisplay: {fileID: 1381412746099654, guid: 02377f8007e51ff45a22093381deb0c1,
+    type: 2}
 --- !u!212 &212135659071980262
 SpriteRenderer:
   m_ObjectHideFlags: 1

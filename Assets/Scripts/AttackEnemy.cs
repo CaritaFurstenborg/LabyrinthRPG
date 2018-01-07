@@ -9,9 +9,13 @@ public class AttackEnemy : MonoBehaviour {
     public Transform hitArea;
     public GameObject dmgNumDisplay;
 
+    private int currentDmg;
+
+    private PlayerStats pStats;
+
 	// Use this for initialization
 	void Start () {
-		
+        pStats = FindObjectOfType<PlayerStats>();
 	}
 	
 	// Update is called once per frame
@@ -23,11 +27,13 @@ public class AttackEnemy : MonoBehaviour {
     {
         if (other.gameObject.tag == "Enemy")
         {
-            other.gameObject.GetComponent<EnemyHealthManager>().HurtEnemy(damageToGive);
+            currentDmg = damageToGive + pStats.currentAttackLevel;
+
+            other.gameObject.GetComponent<EnemyHealthManager>().HurtEnemy(currentDmg);
             Instantiate(damageBurst, hitArea.position, hitArea.rotation);
 
             var clone = (GameObject) Instantiate(dmgNumDisplay, hitArea.position, Quaternion.Euler(Vector3.zero));
-            clone.GetComponent<FloatingNumbers>().dmgNumber = damageToGive;
+            clone.GetComponent<FloatingNumbers>().dmgNumber = currentDmg;
         }
     }
 }

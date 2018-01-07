@@ -7,8 +7,10 @@ public class UiManager : MonoBehaviour {
 
     public Slider hpBar;
     public Text hpText;
+    public Text lvlText;
     public PlayerHealthManager playerHealth;
 
+    private PlayerStats ps;
     private static bool uiExists;
 
 	// Use this for initialization
@@ -22,6 +24,8 @@ public class UiManager : MonoBehaviour {
         {
             Destroy(gameObject); // destroy the duplicated player
         }
+
+        ps = GetComponent<PlayerStats>();
     }
 	
 	// Update is called once per frame
@@ -29,5 +33,6 @@ public class UiManager : MonoBehaviour {
         hpBar.maxValue = playerHealth.playerMaxHealth;
         hpBar.value = playerHealth.playerCurrentHealth;
         hpText.text = "HP: " + playerHealth.playerCurrentHealth + "/" + playerHealth.playerMaxHealth;
+        lvlText.text = "Lvl: " + ps.currentLevel;
 	}
 }

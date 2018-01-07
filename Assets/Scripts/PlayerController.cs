@@ -5,8 +5,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     public float moveSpeed; // set player move speed
+    public float diagonalMoveModifyer;
 
     public float attackTime;
+
+    public string startPoint;
 
     private Animator anim; //player animation
     private Rigidbody2D mRigB; //player rigidbody component
@@ -16,6 +19,8 @@ public class PlayerController : MonoBehaviour {
     private Vector2 lastMove; // player last move direction
 
     private static bool playerExists; // check for all instances of players existing
+
+    private float currentMoveSpeed;
 
 	// Use this for initialization
 	void Start () {
@@ -42,7 +47,7 @@ public class PlayerController : MonoBehaviour {
 
 		    if (Input.GetAxisRaw("Horizontal") > 0.5f || Input.GetAxisRaw("Horizontal") < -0.5f) {
                 //transform.Translate(new Vector3(Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime, 0f, 0f));
-                mRigB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, mRigB.velocity.y);
+                mRigB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * currentMoveSpeed, mRigB.velocity.y);
                 isMoving = true; 
                 lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
             }
@@ -50,7 +55,7 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetAxisRaw("Vertical") > 0.5f || Input.GetAxisRaw("Vertical") < -0.5f)
             {
                 //transform.Translate(new Vector3(0f, Input.GetAxisRaw("Vertical") * moveSpeed * Time.deltaTime, 0f));
-                mRigB.velocity = new Vector2(mRigB.velocity.x, Input.GetAxisRaw("Vertical") * moveSpeed);
+                mRigB.velocity = new Vector2(mRigB.velocity.x, Input.GetAxisRaw("Vertical") * currentMoveSpeed);
                 isMoving = true;
                 lastMove = new Vector2(0f, Input.GetAxisRaw("Vertical"));
             }
@@ -71,6 +76,14 @@ public class PlayerController : MonoBehaviour {
                 isAttacking = true;
                 mRigB.velocity = Vector2.zero;
                 anim.SetBool("isAttacking", true);
+            }
+
+            if(Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.5f && Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0.5f)
+            {
+                currentMoveSpeed = moveSpeed * diagonalMoveModifyer;
+            } else
+            {
+                currentMoveSpeed = moveSpeed;
             }
         }
 
