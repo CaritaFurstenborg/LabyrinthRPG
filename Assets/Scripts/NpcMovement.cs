@@ -10,6 +10,8 @@ public class NpcMovement : MonoBehaviour {
 
     public Collider2D walkZone; // Npc Movement Field
 
+    public bool canMove;
+
     private Rigidbody2D myRigBody;
     private bool isMoving;
     private float walkCounter; // how long for npc to move
@@ -20,10 +22,13 @@ public class NpcMovement : MonoBehaviour {
     private Vector2 maxMovePoint; // max contraint for Npc Move Field
     private bool hasMoveField;
 
+    private DialogueManager dm;
+
 
 	// Use this for initialization
 	void Start () {
         myRigBody = GetComponent<Rigidbody2D>();
+        dm = FindObjectOfType<DialogueManager>();
 
         waitCounter = waitTime;
         walkCounter = walkTime;
@@ -35,11 +40,24 @@ public class NpcMovement : MonoBehaviour {
             minMovePoint = walkZone.bounds.min;
             maxMovePoint = walkZone.bounds.max;
             hasMoveField = true;
-        }        
+        }
+
+        canMove = true;        
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+        if(!dm.dActive)
+        {
+            canMove = true;
+        }
+
+        if(!canMove)
+        {
+            myRigBody.velocity = Vector2.zero;
+            return;
+        }
 
 		if(isMoving)
         {

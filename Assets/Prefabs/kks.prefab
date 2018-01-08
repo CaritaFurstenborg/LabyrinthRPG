@@ -127,6 +127,7 @@ MonoBehaviour:
   enemyMaxHealth: 10
   enemyCurrentHealth: 0
   expToGive: 20
+  questEnemyName: kks
 --- !u!114 &114603148329348516
 MonoBehaviour:
   m_ObjectHideFlags: 1
