@@ -8,6 +8,7 @@ public class UiManager : MonoBehaviour {
     public Slider hpBar;
     public Text hpText;
     public Text lvlText;
+    public Text[] questTracker;
     public PlayerHealthManager playerHealth;
 
     private PlayerStats ps;
@@ -33,6 +34,6 @@ public class UiManager : MonoBehaviour {
         hpBar.maxValue = playerHealth.playerMaxHealth;
         hpBar.value = playerHealth.playerCurrentHealth;
         hpText.text = "HP: " + playerHealth.playerCurrentHealth + "/" + playerHealth.playerMaxHealth;
-        lvlText.text = "Lvl: " + ps.currentLevel;
+        lvlText.text = "Lvl: " + ps.currentLevel;        
 	}
 }

@@ -17,15 +17,28 @@ public class QuestTrigger : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update () {        
+      
+		/*if(Input.GetMouseButtonDown(1) && !qm.questHandedIn[questNumber])
+        {
+            if(startQuest && !qm.quests[questNumber].gameObject.activeSelf)
+            {
+                qm.quests[questNumber].gameObject.SetActive(true);
+                qm.quests[questNumber].StartQuest();
+            }
+
+            if(qm.questCompleate[questNumber] && qm.quests[questNumber].gameObject.activeSelf)
+            {
+                qm.quests[questNumber].EndQuest();
+            }
+        }*/
 	}
 
-    void OnTriggerEnter2D(Collider2D other)
+    /*void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.name == "Player")
         {
-            if(!qm.questCompleate[questNumber])
+            if(!qm.questHandedIn[questNumber])
             {
                 if (startQuest && !qm.quests[questNumber].gameObject.activeSelf)
                 {
@@ -33,11 +46,11 @@ public class QuestTrigger : MonoBehaviour {
                     qm.quests[questNumber].StartQuest();
                 }
 
-                if (endQuest && qm.quests[questNumber].gameObject.activeSelf)
+                if (qm.questCompleate[questNumber] && qm.quests[questNumber].gameObject.activeSelf)
                 {
                     qm.quests[questNumber].EndQuest();
                 }
             }            
         }
-    }
+    }*/
 }

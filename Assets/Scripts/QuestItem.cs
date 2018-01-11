@@ -8,7 +8,7 @@ public class QuestItem : MonoBehaviour {
 
     public string itemName;
 
-    private QuestManager qm;
+    /*private QuestManager qm;
 
 	// Use this for initialization
 	void Start () {
@@ -26,9 +26,10 @@ public class QuestItem : MonoBehaviour {
         {
             if(!qm.questCompleate[questNumber] && qm.quests[questNumber].gameObject.activeSelf)
             {
-                qm.itemCollected = itemName;
+                qm.itemCollected = itemName;                
                 gameObject.SetActive(false);
+                qm.questCompleate[questNumber] = true;
             }
         }
-    }
+    }*/
 }

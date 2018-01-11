@@ -11,7 +11,7 @@ public class EnemyHealthManager : MonoBehaviour {
     public string questEnemyName;
 
     private PlayerStats playerStats;
-    private QuestManager qm;
+    //private QuestManager qm;      Old qm
 
     // Use this for initialization
     void Start()
@@ -19,7 +19,7 @@ public class EnemyHealthManager : MonoBehaviour {
         enemyCurrentHealth = enemyMaxHealth;
 
         playerStats = FindObjectOfType<PlayerStats>();
-        qm = FindObjectOfType<QuestManager>();
+        //qm = FindObjectOfType<QuestManager>();    Old qm
     }
 
     // Update is called once per frame
@@ -27,7 +27,7 @@ public class EnemyHealthManager : MonoBehaviour {
     {
         if (enemyCurrentHealth <= 0)
         {
-            qm.enemyKilled = questEnemyName;
+            //qm.enemyKilled = questEnemyName;   Old qm
             Destroy(gameObject);
             playerStats.AddExp(expToGive);
         }

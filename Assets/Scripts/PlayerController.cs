@@ -40,9 +40,9 @@ public class PlayerController : MonoBehaviour {
             Destroy(gameObject); // destroy the duplicated player
         }
 
-        canMove = true;
+        canMove = true; // allow player movement as default
 
-        lastMove = new Vector2(0f, -1f);
+        lastMove = new Vector2(0f, -1f); // check direction of players last move(needed for anim)
 	}
 	
 	// Update is called once per frame
@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour {
                 mRigB.velocity = Vector2.zero;
             }
 
-            if (Input.GetKeyDown(KeyCode.J))
+            if (Input.GetKeyDown(KeyCode.P))
             {
                 attackTimeCounter = attackTime;
                 isAttacking = true;

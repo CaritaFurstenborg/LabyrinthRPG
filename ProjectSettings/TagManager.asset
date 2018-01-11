@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Quest1
+  - kks
+  - accept
+  - compleate
   layers:
   - Default
   - TransparentFX
