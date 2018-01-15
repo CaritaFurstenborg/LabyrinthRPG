@@ -22,13 +22,10 @@ public class NpcMovement : MonoBehaviour {
     private Vector2 maxMovePoint; // max constraint for Npc Move Field
     private bool hasMoveField;
 
-    private DialogueManager dm;
-
 
 	// Use this for initialization
 	void Start () {
         myRigBody = GetComponent<Rigidbody2D>();
-        dm = FindObjectOfType<DialogueManager>();
 
         waitCounter = waitTime;
         walkCounter = walkTime;
@@ -48,7 +45,7 @@ public class NpcMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if(!dm.dActive)
+        if(!QuestUIManager.uiManagerQ.questPanelActive)
         {
             canMove = true;
         }

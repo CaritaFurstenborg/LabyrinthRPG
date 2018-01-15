@@ -65,6 +65,8 @@
      <Compile Include="Assets\Scripts\DialogueManager.cs" />
      <Compile Include="Assets\Scripts\EnemyHealthManager.cs" />
      <Compile Include="Assets\Scripts\FloatingNumbers.cs" />
+     <Compile Include="Assets\Scripts\HintManager.cs" />
+     <Compile Include="Assets\Scripts\Hints.cs" />
      <Compile Include="Assets\Scripts\HurtPlayer.cs" />
      <Compile Include="Assets\Scripts\LoadNewArea.cs" />
      <Compile Include="Assets\Scripts\MonsterSpawner.cs" />

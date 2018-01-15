@@ -10,7 +10,7 @@ public class QuestUIManager : MonoBehaviour
 
     public bool questAvailable = false;
     public bool questRunning = false;
-    private bool questPanelActive = false;
+    public bool questPanelActive = false;
     private bool questLogActive = false;
     //Panels
     public GameObject questPanel;

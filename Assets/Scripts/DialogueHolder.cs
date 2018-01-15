@@ -19,11 +19,18 @@ public class DialogueHolder : MonoBehaviour {
 		
 	}
 
-    void OnTriggerStay2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.name == "Player")
         {
-            if(Input.GetKeyUp(KeyCode.Space))
+            if(!dm.dActive)
+            {
+                dm.dialogueLines = dialogueLines;
+                dm.currentLine = 0;
+                dm.ShowDialogue();
+            }
+
+            /*if(Input.GetKeyUp(KeyCode.Space))
             {
                 //dm.ShowDBox(dialogue);
 
@@ -38,7 +45,7 @@ public class DialogueHolder : MonoBehaviour {
                 {
                     transform.parent.GetComponent<NpcMovement>().canMove = false;
                 }
-            }
+            }*/
         }
     }
 }
