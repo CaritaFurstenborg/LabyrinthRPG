@@ -24,7 +24,7 @@ public class QuestObject : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        SetQuestMarker();
 		if(intTrigger && Input.GetKeyDown(KeyCode.K))
         {
             //quest ui manager            

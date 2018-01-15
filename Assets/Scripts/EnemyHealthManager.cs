@@ -14,8 +14,8 @@ public class EnemyHealthManager : MonoBehaviour {
     public Slider hpBar;
     public Text enemyName;
     
-    public Vector3 enemyPos;
-    public Quaternion enemyRot;
+    //public Vector3 enemyPos;
+    //public Quaternion enemyRot;
 
     private PlayerStats playerStats;
     private MonsterSpawner monSpaw;
@@ -37,8 +37,9 @@ public class EnemyHealthManager : MonoBehaviour {
 
         if (enemyCurrentHealth <= 0)
         {
-            enemyPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            enemyRot = new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w);
+            //enemyPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            //enemyRot = new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w);
+            QuestManager.questManager.AddQuestObjective(questEnemyName, 1);
             Destroy(gameObject);        
             playerStats.AddExp(expToGive);
             monSpaw.exists = false;

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuestUIManager : MonoBehaviour {
+public class QuestUIManager : MonoBehaviour
+{
 
     public static QuestUIManager uiManagerQ;
 
@@ -22,7 +23,7 @@ public class QuestUIManager : MonoBehaviour {
     //buttons
     public GameObject qButton;
     public GameObject qLogButton;
-    private List<GameObject> qButtons = new List<GameObject>();
+    public List<GameObject> qButtons = new List<GameObject>();
     //private List<GameObject> qLogButtons = new List<GameObject>();
 
     public GameObject acceptButton;
@@ -65,7 +66,7 @@ public class QuestUIManager : MonoBehaviour {
     //Awake
     void Awake()
     {
-        if(uiManagerQ == null)
+        if (uiManagerQ == null)
         {
             uiManagerQ = this;
         }
@@ -76,25 +77,26 @@ public class QuestUIManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
 
         HideQuestPanel();
-    }    
-	
-	// Update is called once per frame
-	void Update () {
-		if(Input.GetKeyDown(KeyCode.L))
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
         {
             questLogActive = !questLogActive;
             //show quest log panel
             ShowQuestLogPanel();
 
         }
-	}
+    }
 
     // called from quest giver
     public void CheckQuests(QuestObject questObj)
     {
         currentQuestObject = questObj;
         QuestManager.questManager.RequestQuest(questObj);
-        if((questRunning || questAvailable) && !questPanelActive)
+        if ((questRunning || questAvailable) && !questPanelActive)
         {
             ShowQuestPanel();
         }
@@ -111,8 +113,8 @@ public class QuestUIManager : MonoBehaviour {
         questPanel.SetActive(questPanelActive);
         //fill in data
         FillQuestButtons();
-    }  
-    
+    }
+
     // hide quest panel
     public void HideQuestPanel()
     {
@@ -127,7 +129,7 @@ public class QuestUIManager : MonoBehaviour {
         availableQuests.Clear();
         activeQuests.Clear();
         //clear button list
-        for(int i = 0; i < qButtons.Count; i++)
+        for (int i = 0; i < qButtons.Count; i++)
         {
             Destroy(qButtons[i]);
         }
@@ -140,7 +142,7 @@ public class QuestUIManager : MonoBehaviour {
     public void ShowQuestLog(Quest activeQ)
     {
         qLogTitle.text = activeQ.title;
-        if(activeQ.progress == Quest.questProgress.ACCEPTED)
+        if (activeQ.progress == Quest.questProgress.ACCEPTED)
         {
             qLogDescription.text = activeQ.hint;
             qLogSummary.text = activeQ.questObjective + ": " + activeQ.questObjectiveCount + "/" + activeQ.questObjectiveRequirement;
@@ -155,9 +157,9 @@ public class QuestUIManager : MonoBehaviour {
     public void ShowQuestLogPanel()
     {
         questLogPanel.SetActive(questLogActive);
-        if(questLogActive && !questPanelActive)
+        if (questLogActive && !questPanelActive)
         {
-            foreach(Quest current in QuestManager.questManager.currentQuests)
+            foreach (Quest current in QuestManager.questManager.currentQuests)
             {
                 GameObject questButton = Instantiate(qLogButton);
                 QLogButton qlButton = questButton.GetComponent<QLogButton>();
@@ -168,7 +170,7 @@ public class QuestUIManager : MonoBehaviour {
                 qButtons.Add(questButton);
             }
         }
-        else if(!questLogActive && !questPanelActive)
+        else if (!questLogActive && !questPanelActive)
         {
             HideQuestLogPanel();
         }
@@ -182,7 +184,7 @@ public class QuestUIManager : MonoBehaviour {
         qLogSummary.text = "";
 
         //clear button list
-        for(int i= 0; i < qButtons.Count; i++)
+        for (int i = 0; i < qButtons.Count; i++)
         {
             Destroy(qButtons[i]);
         }
@@ -193,7 +195,7 @@ public class QuestUIManager : MonoBehaviour {
     //fill buttons for quest panel
     void FillQuestButtons()
     {
-        foreach(Quest availableQ in availableQuests)
+        foreach (Quest availableQ in availableQuests)
         {
             GameObject questButton = Instantiate(qButton);
             QuestButton qBScript = questButton.GetComponent<QuestButton>();
@@ -207,26 +209,33 @@ public class QuestUIManager : MonoBehaviour {
 
         foreach (Quest activeQ in activeQuests)
         {
-            GameObject questButton = Instantiate(qButton);
-            QuestButton qBScript = questButton.GetComponent<QuestButton>();
+            for(int i = 0; i < currentQuestObject.receivableQuestID.Count; i++)
+            {
+                if(activeQ.id == currentQuestObject.receivableQuestID[i])
+                {
+                    GameObject questButton = Instantiate(qButton);
+                    QuestButton qBScript = questButton.GetComponent<QuestButton>();
 
-            qBScript.questID = activeQ.id;
-            qBScript.questTitle.text = activeQ.title;
+                    qBScript.questID = activeQ.id;
+                    qBScript.questTitle.text = activeQ.title;
 
-            questButton.transform.SetParent(qButtonSpacer2, false);
-            qButtons.Add(questButton);
+                    questButton.transform.SetParent(qButtonSpacer2, false);
+                    qButtons.Add(questButton);
+                }
+            }
+            
         }
     }
 
     //show quest on button press in questpanel
     public void ShowSelectedQuest(int questID)
     {
-        for(int i = 0; i < availableQuests.Count; i++)
+        for (int i = 0; i < availableQuests.Count; i++)
         {
-            if(availableQuests[i].id == questID)
+            if (availableQuests[i].id == questID)
             {
                 qTitle.text = availableQuests[i].title;
-                if(availableQuests[i].progress == Quest.questProgress.AVAILABLE)
+                if (availableQuests[i].progress == Quest.questProgress.AVAILABLE)
                 {
                     qDescription.text = availableQuests[i].questDescription;
                     qSummary.text = availableQuests[i].questObjective + ": " + availableQuests[i].questObjectiveCount + "/" + availableQuests[i].questObjectiveRequirement;
@@ -236,17 +245,17 @@ public class QuestUIManager : MonoBehaviour {
             }
         }
 
-        for(int i = 0; i < activeQuests.Count; i++)
+        for (int i = 0; i < activeQuests.Count; i++)
         {
-            if(activeQuests[i].id == questID)
+            if (activeQuests[i].id == questID)
             {
                 qTitle.text = activeQuests[i].title;
-                if(activeQuests[i].progress == Quest.questProgress.ACCEPTED)
+                if (activeQuests[i].progress == Quest.questProgress.ACCEPTED)
                 {
                     qDescription.text = activeQuests[i].hint;
                     qSummary.text = activeQuests[i].questObjective + ": " + activeQuests[i].questObjectiveCount + "/" + activeQuests[i].questObjectiveRequirement;
                 }
-                else if(activeQuests[i].progress == Quest.questProgress.COMPLETED)
+                else if (activeQuests[i].progress == Quest.questProgress.COMPLETED)
                 {
                     qDescription.text = activeQuests[i].turnInDescription;
                     qSummary.text = activeQuests[i].questObjective + ": " + activeQuests[i].questObjectiveCount + "/" + activeQuests[i].questObjectiveRequirement;
