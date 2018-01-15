@@ -61,8 +61,6 @@
      <Compile Include="Assets\Scripts\Controllers\NpcMovement.cs" />
      <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
      <Compile Include="Assets\Scripts\DestroyOverTime.cs" />
-     <Compile Include="Assets\Scripts\DialogueHolder.cs" />
-     <Compile Include="Assets\Scripts\DialogueManager.cs" />
      <Compile Include="Assets\Scripts\EnemyHealthManager.cs" />
      <Compile Include="Assets\Scripts\FloatingNumbers.cs" />
      <Compile Include="Assets\Scripts\HintManager.cs" />

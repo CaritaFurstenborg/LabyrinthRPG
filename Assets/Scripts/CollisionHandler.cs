@@ -22,10 +22,13 @@ public class CollisionHandler : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (Input.GetKeyDown(KeyCode.I) && other.gameObject.name == "Player")
+        if (other.gameObject.name == "Player")
         {
-            QuestManager.questManager.AddQuestObjective(questItemName, 1);
-            gameObject.SetActive(false);
+            if(Input.GetKeyDown(KeyCode.I))
+            {
+                QuestManager.questManager.AddQuestObjective(questItemName, 1);
+                gameObject.SetActive(false);
+            }            
         }
     }
 }
