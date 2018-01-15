@@ -273,6 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 578ef4dbd5306454abcdfca0e388ada5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveZone: {fileID: 0}
   moveSpeed: 2
   playerRespawnTimer: 2
   timeBetweenMove: 2
@@ -340,6 +341,7 @@ MonoBehaviour:
   enemyMaxHealth: 10
   enemyCurrentHealth: 0
   expToGive: 20
+  questEnemyName: 
   hpBar: {fileID: 114124366592129834}
   enemyName: {fileID: 0}
   enemyPos: {x: 0, y: 0, z: 0}

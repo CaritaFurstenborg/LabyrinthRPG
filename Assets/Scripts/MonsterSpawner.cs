@@ -7,33 +7,31 @@ public class MonsterSpawner : MonoBehaviour {
     public GameObject monster;
     public int spawnTimer;
     public bool exists;
-
-    private EnemyHealthManager ehM;
-    private kksController kksC;
+    
+    
 
 	// Use this for initialization
 	void Start () {
-        ehM = FindObjectOfType<EnemyHealthManager>();
-        kksC = FindObjectOfType<kksController>();
-        monster = Instantiate(monster, transform.position, transform.rotation);
-        monster.transform.parent = gameObject.transform;
+        Instantiate(monster, transform.position, transform.rotation);
         exists = true;
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        //gameObject.transform.position = ehM.enemyPos;
-        //gameObject.transform.rotation = ehM.enemyRot;
-        //StartCoroutine(MonsterRespawner());
+        if(!exists)
+        {
+            StartCoroutine(WaitSpawn());              
+        }
 	}
 
-    IEnumerator MonsterRespawner()
-    {        
-        if (!exists)
+    IEnumerator WaitSpawn()
+    {
+        yield return new WaitForSeconds(spawnTimer);
+
+        while(!exists)
         {
-            yield return new WaitForSeconds(spawnTimer);
-            monster = Instantiate(monster, ehM.enemyPos, ehM.enemyRot);
+            Instantiate(monster, transform.position, transform.rotation);
             exists = true;
-        }  
+        }        
     }
 }

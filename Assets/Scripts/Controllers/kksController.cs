@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class kksController : MonoBehaviour {
     // Monster walk zone bounds
-    /*public BoxCollider2D moveZone;
+    public Collider2D moveZone; // IS NOT WORKING YET! (movement controllers has nothing)
 
     private Vector2 minMovePoint;
-    private Vector2 maxMovePoint;*/
+    private Vector2 maxMovePoint;
 
     public float moveSpeed; // Enemy movement speed
 
@@ -32,13 +32,14 @@ public class kksController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        mRigBody = GetComponent<Rigidbody2D>();        
+        mRigBody = GetComponent<Rigidbody2D>();
+        moveZone = GameObject.Find("MoveZones").transform.Find("kksZone").gameObject.GetComponent<Collider2D>();        
 
         timeBetweenMoveCount = Random.Range(timeBetweenMove * 0.75f, timeBetweenMove * 1.25f);
         timeToMoveCount = Random.Range(timeToMove * 0.75f, timeToMove * 1.25f);
 
-        /*minMovePoint = moveZone.bounds.min;
-        maxMovePoint = moveZone.bounds.max;*/
+        minMovePoint = moveZone.bounds.min;
+        maxMovePoint = moveZone.bounds.max;
 	}
 	
 	// Update is called once per frame
