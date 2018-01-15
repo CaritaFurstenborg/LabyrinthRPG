@@ -9,6 +9,7 @@ TagManager:
   - kks
   - accept
   - compleate
+  - NPC
   layers:
   - Default
   - TransparentFX

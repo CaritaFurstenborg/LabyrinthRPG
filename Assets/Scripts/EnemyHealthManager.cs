@@ -1,35 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealthManager : MonoBehaviour {
 
+    public string enemyNameSet;
     public int enemyMaxHealth;
     public int enemyCurrentHealth;
     public int expToGive;
 
     public string questEnemyName;
+    public Slider hpBar;
+    public Text enemyName;
+    
+    public Vector3 enemyPos;
+    public Quaternion enemyRot;
 
     private PlayerStats playerStats;
-    //private QuestManager qm;      Old qm
+    private MonsterSpawner monSpaw;
 
     // Use this for initialization
     void Start()
     {
-        enemyCurrentHealth = enemyMaxHealth;
-
         playerStats = FindObjectOfType<PlayerStats>();
-        //qm = FindObjectOfType<QuestManager>();    Old qm
+        monSpaw = FindObjectOfType<MonsterSpawner>();
+        
+        enemyCurrentHealth = enemyMaxHealth;       
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {        
+        hpBar.maxValue = enemyMaxHealth;
+        hpBar.value = enemyCurrentHealth;
+
         if (enemyCurrentHealth <= 0)
         {
-            //qm.enemyKilled = questEnemyName;   Old qm
-            Destroy(gameObject);
+            enemyPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            enemyRot = new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w);
+            Destroy(gameObject);        
             playerStats.AddExp(expToGive);
+            monSpaw.exists = false;
         }
     }
 
@@ -46,5 +58,5 @@ public class EnemyHealthManager : MonoBehaviour {
     public void SetMaxHealth()
     {
         enemyCurrentHealth = enemyMaxHealth;
-    }
+    }    
 }

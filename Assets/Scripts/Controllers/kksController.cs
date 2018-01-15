@@ -4,35 +4,41 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class kksController : MonoBehaviour {
+    // Monster walk zone bounds
+    /*public BoxCollider2D moveZone;
+
+    private Vector2 minMovePoint;
+    private Vector2 maxMovePoint;*/
 
     public float moveSpeed; // Enemy movement speed
 
     public float playerRespawnTimer; // Respawn timer for player (when dead)
-
+    //Timers
     public float timeBetweenMove; // Enemy randomized movement wait timer
     public float timeToMove; // Enemy randomized movement time timer
-
+    //Timer counters
     private float timeBetweenMoveCount; // counter for enemy movemnet wait timer
     private float timeToMoveCount; // counter for enemy movement time 
 
     private Rigidbody2D mRigBody; // Enemy rigid body component
     private bool isMoving; // check if enemy moving
     private Vector3 moveDirection; // enemy move direction (randomized)
-    private bool pRespawning; // check if player is respawning after defeat
 
+    //Player related vars
+    private bool pRespawning; // check if player is respawning after defeat
     private GameObject player; // player gameobject
 
 
 
 	// Use this for initialization
 	void Start () {
-        mRigBody = GetComponent<Rigidbody2D>();
-
-        //timeBetweenMoveCount = timeBetweenMove;
-        //timeToMoveCount = timeToMove;
+        mRigBody = GetComponent<Rigidbody2D>();        
 
         timeBetweenMoveCount = Random.Range(timeBetweenMove * 0.75f, timeBetweenMove * 1.25f);
         timeToMoveCount = Random.Range(timeToMove * 0.75f, timeToMove * 1.25f);
+
+        /*minMovePoint = moveZone.bounds.min;
+        maxMovePoint = moveZone.bounds.max;*/
 	}
 	
 	// Update is called once per frame

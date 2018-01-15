@@ -18,8 +18,8 @@ public class NpcMovement : MonoBehaviour {
     private float waitCounter; // how long for npc to wait untill moving again
     private int walkDirection; 
 
-    private Vector2 minMovePoint; // min contraint for Npc Move Field
-    private Vector2 maxMovePoint; // max contraint for Npc Move Field
+    private Vector2 minMovePoint; // min constraint for Npc Move Field
+    private Vector2 maxMovePoint; // max constraint for Npc Move Field
     private bool hasMoveField;
 
     private DialogueManager dm;

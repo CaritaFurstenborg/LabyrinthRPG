@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class CollisionHandler : MonoBehaviour {
 
-    public GameObject questItemName;
-
-    public QuestObject qo;
+    public string questItemName;
+    
 
 	// Use this for initialization
 	void Start () {
-		
+        questItemName = gameObject.name;
 	}
 	
 	// Update is called once per frame
@@ -20,9 +19,11 @@ public class CollisionHandler : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if(other.gameObject.name == "Player")
         {
-            QuestManager.questManager.AddQuestObjective(questItemName.name, 1);
+            QuestManager.questManager.AddQuestObjective(questItemName, 1);
+            gameObject.SetActive(false);
+
         }               
     }
 }

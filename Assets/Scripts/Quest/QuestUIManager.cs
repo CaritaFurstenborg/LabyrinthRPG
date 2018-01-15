@@ -25,9 +25,9 @@ public class QuestUIManager : MonoBehaviour {
     private List<GameObject> qButtons = new List<GameObject>();
     //private List<GameObject> qLogButtons = new List<GameObject>();
 
-    private GameObject acceptButton;
-    private GameObject dumpButton;
-    private GameObject completeButton;
+    public GameObject acceptButton;
+    public GameObject abandonButton;
+    public GameObject completeButton;
     //spacer
     public Transform qButtonSpacer1; // spacer for q buttons
     public Transform qButtonSpacer2; // running q button
@@ -40,6 +40,27 @@ public class QuestUIManager : MonoBehaviour {
     public Text qLogTitle;
     public Text qLogDescription;
     public Text qLogSummary;
+    // grabbed from quest button script
+    public QuestButton acceptButtonScript;
+    public QuestButton abandonButtonScript;
+    public QuestButton completeButtonScript;
+
+    void Start()
+    {
+        acceptButton = GameObject.Find("CanvasUiManager").transform.Find("QuestPanel").transform.Find("QuestDescription").transform.Find("ButtonsSpacer").transform.Find("QPAcceptButton").gameObject;
+        acceptButtonScript = acceptButton.GetComponent<QuestButton>();
+
+        abandonButton = GameObject.Find("CanvasUiManager").transform.Find("QuestLogPanel").transform.Find("QuestDescription").transform.Find("ButtonsSpacer").transform.Find("AbandonButton").gameObject;
+        abandonButtonScript = abandonButton.GetComponent<QuestButton>();
+
+        completeButton = GameObject.Find("CanvasUiManager").transform.Find("QuestPanel").transform.Find("QuestDescription").transform.Find("ButtonsSpacer").transform.Find("QPCompleteButton").gameObject;
+        completeButtonScript = completeButton.GetComponent<QuestButton>();
+
+        acceptButton.SetActive(false);
+        abandonButton.SetActive(false);
+        completeButton.SetActive(false);
+    }
+    // grabbed from quest button script END...
 
     //Awake
     void Awake()

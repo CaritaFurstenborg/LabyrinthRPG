@@ -9,24 +9,29 @@ public class QuestButton : MonoBehaviour {
     public Text questTitle;
 
     //buttons
-    private GameObject acceptQuestB;
-    //private GameObject dumpQuestB;
-    private GameObject completeQuestB;
+    /*private GameObject acceptQuestB;
+    private GameObject abandonQuestB;
+    private GameObject completeQuestB;*/
 
-    private QuestButton acceptButtonScript;
-    //private QuestButton dumpButtonScript;
+    /*private QuestButton acceptButtonScript;
+    private QuestButton abandonButtonScript;
     private QuestButton completeButtonScript;
 
     void Start()
     {
         acceptQuestB = GameObject.Find("QuestPanel").transform.Find("QuestDescription").transform.Find("ButtonsSpacer").transform.Find("QPAcceptButton").gameObject;
         acceptButtonScript = acceptQuestB.GetComponent<QuestButton>();
+
+        abandonQuestB = GameObject.Find("QuestPanel").transform.Find("QuestDescription").transform.Find("ButtonsSpacer").transform.Find("AbandonButton").gameObject;
+        abandonButtonScript = abandonQuestB.GetComponent<QuestButton>();
+
         completeQuestB = GameObject.Find("QuestPanel").transform.Find("QuestDescription").transform.Find("ButtonsSpacer").transform.Find("QPCompleteButton").gameObject;
         completeButtonScript = completeQuestB.GetComponent<QuestButton>();       
         
         acceptQuestB.SetActive(false);
+        abandonQuestB.SetActive(false);
         completeQuestB.SetActive(false);
-    }
+    }*/
 
     //show info by selecting a quest from the available quests
     public void ShowAllInfo()
@@ -35,22 +40,22 @@ public class QuestButton : MonoBehaviour {
         //accept button
         if(QuestManager.questManager.RequestAvailableQuest(questID))
         {
-            acceptQuestB.SetActive(true);
-            acceptButtonScript.questID = questID;
+            QuestUIManager.uiManagerQ.acceptButton.SetActive(true);
+            QuestUIManager.uiManagerQ.acceptButtonScript.questID = questID;
         }
         else
         {
-            acceptQuestB.SetActive(false);
+            QuestUIManager.uiManagerQ.acceptButton.SetActive(false);
         }
         //complete button
         if (QuestManager.questManager.RequestCompletedQuest(questID))
         {
-            completeQuestB.SetActive(true);
-            completeButtonScript.questID = questID;
+            QuestUIManager.uiManagerQ.completeButton.SetActive(true);
+            QuestUIManager.uiManagerQ.completeButtonScript.questID = questID;
         }
         else
         {
-            completeQuestB.SetActive(false);
+            QuestUIManager.uiManagerQ.completeButton.SetActive(false);
         }
     }   
     
@@ -96,5 +101,8 @@ public class QuestButton : MonoBehaviour {
     public void ClosePanel()
     {
         QuestUIManager.uiManagerQ.HideQuestPanel();
+        QuestUIManager.uiManagerQ.acceptButton.SetActive(false);
+        QuestUIManager.uiManagerQ.abandonButton.SetActive(false);
+        QuestUIManager.uiManagerQ.completeButton.SetActive(false);
     }
 }
