@@ -41,7 +41,7 @@ public class QuestObject : MonoBehaviour {
             {
                 npcMove.canMove = false;
             }
-        }        
+        }      
     }
 
     void OnTriggerEnter2D(Collider2D other)

@@ -1551,6 +1551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questItemName: 
+  questItemId: 1
 --- !u!1 &493991481
 GameObject:
   m_ObjectHideFlags: 0

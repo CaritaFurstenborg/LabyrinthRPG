@@ -12,10 +12,10 @@ public class Hints : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         hMan = GameObject.Find("CanvasUiManager").transform.Find("HintManager").GetComponent<HintManager>();
-        if(hMan == null)
+        /*if(hMan == null)
         {
             Debug.Log("Can not find HINTMANAGER!");
-        }
+        }*/
     }
 	
 	// Update is called once per frame
