@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AggroRange.cs" />
      <Compile Include="Assets\Scripts\AttackEnemy.cs" />
      <Compile Include="Assets\Scripts\Bounds.cs" />
      <Compile Include="Assets\Scripts\Character.cs" />

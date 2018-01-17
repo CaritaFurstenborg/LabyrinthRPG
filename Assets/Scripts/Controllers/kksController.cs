@@ -10,6 +10,8 @@ public class kksController : MonoBehaviour {
     private Vector2 minMovePoint;
     private Vector2 maxMovePoint;
 
+    public Transform target;
+
     public float moveSpeed; // Enemy movement speed
 
     public float playerRespawnTimer; // Respawn timer for player (when dead)
@@ -44,7 +46,10 @@ public class kksController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (isMoving)
+
+        FollowTarget();        
+
+        if (isMoving)
         {
             timeToMoveCount -= Time.deltaTime; // countdown for movement
             mRigBody.velocity = moveDirection; // set movement
@@ -68,7 +73,7 @@ public class kksController : MonoBehaviour {
 
                 moveDirection = new Vector3(Random.Range(-1f, 1f) * moveSpeed, Random.Range(-1f, 1f) * moveSpeed, 0f); //set random movement direction
             }
-        }
+        }        
 
         if(pRespawning)
         {
@@ -81,14 +86,11 @@ public class kksController : MonoBehaviour {
         }
 	}
 
-    void OnCollisionEnter2D(Collision2D other)
+    public void FollowTarget()
     {
-        /*if(other.gameObject.name == "Player") // check if colliding with player
+        if(target != null)
         {
-            other.gameObject.SetActive(false); //deactivate player
-            pRespawning = true;
-            player = other.gameObject;
-        }*/
-
+            transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+        }
     }
 }

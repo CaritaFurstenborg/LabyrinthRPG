@@ -26,7 +26,8 @@ public class EnemyHealthManager : MonoBehaviour {
         playerStats = FindObjectOfType<PlayerStats>();
         monSpaw = FindObjectOfType<MonsterSpawner>();
         
-        enemyCurrentHealth = enemyMaxHealth;       
+        enemyCurrentHealth = enemyMaxHealth;
+        enemyName.text = enemyNameSet;      
     }
 
     // Update is called once per frame

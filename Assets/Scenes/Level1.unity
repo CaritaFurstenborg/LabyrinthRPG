@@ -659,7 +659,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 132.47105, y: -15.9855995}
+  m_AnchoredPosition: {x: 132.4707, y: -15.9855995}
   m_SizeDelta: {x: 258.9421, y: 31.971199}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &303692189
@@ -969,7 +969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1d45f08474a0e4e90446ad9d5b9e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 1400480736894340, guid: fd756bd818ffd9e46af3eb1526558a96, type: 2}
+  monster: {fileID: 1106140449055972, guid: fd756bd818ffd9e46af3eb1526558a96, type: 2}
   spawnTimer: 120
   exists: 0
 --- !u!61 &329632636
@@ -1038,7 +1038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1d45f08474a0e4e90446ad9d5b9e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 1400480736894340, guid: fd756bd818ffd9e46af3eb1526558a96, type: 2}
+  monster: {fileID: 1106140449055972, guid: fd756bd818ffd9e46af3eb1526558a96, type: 2}
   spawnTimer: 120
   exists: 0
 --- !u!61 &374843626
@@ -1611,7 +1611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1d45f08474a0e4e90446ad9d5b9e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 1400480736894340, guid: fd756bd818ffd9e46af3eb1526558a96, type: 2}
+  monster: {fileID: 1106140449055972, guid: fd756bd818ffd9e46af3eb1526558a96, type: 2}
   spawnTimer: 120
   exists: 0
 --- !u!61 &535000527
@@ -2099,7 +2099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1d45f08474a0e4e90446ad9d5b9e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 1400480736894340, guid: fd756bd818ffd9e46af3eb1526558a96, type: 2}
+  monster: {fileID: 1106140449055972, guid: fd756bd818ffd9e46af3eb1526558a96, type: 2}
   spawnTimer: 120
   exists: 0
 --- !u!1 &664482987
@@ -2288,7 +2288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: 0
   currentExp: 0
-  toLevelUp: 00000000140000003200000064000000fa000000f4010000e8030000d6060000c4090000ac0d0000
+  toLevelUp: 00000000320000004b00000064000000fa000000f4010000e8030000d6060000c4090000ac0d0000
   hpLevels: 100000001000000014000000190000001f000000250000002a000000320000003b00000046000000
   attackLevels: 01000000010000000200000003000000040000000500000006000000070000000800000009000000
   defenseLevels: 01000000010000000200000003000000040000000500000006000000070000000800000009000000
@@ -3011,7 +3011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1d45f08474a0e4e90446ad9d5b9e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 1400480736894340, guid: fd756bd818ffd9e46af3eb1526558a96, type: 2}
+  monster: {fileID: 1106140449055972, guid: fd756bd818ffd9e46af3eb1526558a96, type: 2}
   spawnTimer: 120
   exists: 0
 --- !u!61 &949887248
@@ -3388,7 +3388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1d45f08474a0e4e90446ad9d5b9e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 1400480736894340, guid: fd756bd818ffd9e46af3eb1526558a96, type: 2}
+  monster: {fileID: 1106140449055972, guid: fd756bd818ffd9e46af3eb1526558a96, type: 2}
   spawnTimer: 120
   exists: 0
 --- !u!61 &1164548767
@@ -4685,7 +4685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c65c77e5e3f053f42b897365a0364b84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: BossRoom1
+  levelToLoad: BossRoom2
   exitPoint: Boss2RoomIn
 --- !u!61 &1487429962
 BoxCollider2D:
@@ -5576,7 +5576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1d45f08474a0e4e90446ad9d5b9e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 1400480736894340, guid: fd756bd818ffd9e46af3eb1526558a96, type: 2}
+  monster: {fileID: 1106140449055972, guid: fd756bd818ffd9e46af3eb1526558a96, type: 2}
   spawnTimer: 120
   exists: 0
 --- !u!61 &1853918746
@@ -5699,7 +5699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1d45f08474a0e4e90446ad9d5b9e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 1400480736894340, guid: fd756bd818ffd9e46af3eb1526558a96, type: 2}
+  monster: {fileID: 1106140449055972, guid: fd756bd818ffd9e46af3eb1526558a96, type: 2}
   spawnTimer: 120
   exists: 0
 --- !u!61 &1925353223
@@ -5768,7 +5768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1d45f08474a0e4e90446ad9d5b9e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 1400480736894340, guid: fd756bd818ffd9e46af3eb1526558a96, type: 2}
+  monster: {fileID: 1106140449055972, guid: fd756bd818ffd9e46af3eb1526558a96, type: 2}
   spawnTimer: 120
   exists: 0
 --- !u!61 &1978802303
@@ -5837,7 +5837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1d45f08474a0e4e90446ad9d5b9e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 1400480736894340, guid: fd756bd818ffd9e46af3eb1526558a96, type: 2}
+  monster: {fileID: 1106140449055972, guid: fd756bd818ffd9e46af3eb1526558a96, type: 2}
   spawnTimer: 120
   exists: 0
 --- !u!61 &1979308137
