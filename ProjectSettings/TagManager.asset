@@ -5,11 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Quest1
-  - kks
+  - NPC
   - accept
   - compleate
-  - NPC
   layers:
   - Default
   - TransparentFX
@@ -19,8 +17,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - BlockLayer
+  - Clickable
   - 
   - 
   - 
@@ -55,7 +53,4 @@ TagManager:
     locked: 0
   - name: WorldObjects
     uniqueID: 4145065781
-    locked: 0
-  - name: UI
-    uniqueID: 491256753
     locked: 0

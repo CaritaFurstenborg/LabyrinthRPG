@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class kksController : MonoBehaviour {
+public class kksController : Character {
     // Monster walk zone bounds
     public Collider2D moveZone; // IS NOT WORKING YET! (movement controllers has nothing)
 
@@ -23,7 +23,6 @@ public class kksController : MonoBehaviour {
     private float timeToMoveCount; // counter for enemy movement time 
 
     private Rigidbody2D mRigBody; // Enemy rigid body component
-    private bool isMoving; // check if enemy moving
     private Vector3 moveDirection; // enemy move direction (randomized)
 
     //Player related vars
@@ -33,7 +32,7 @@ public class kksController : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
+	protected override void Start () {
         mRigBody = GetComponent<Rigidbody2D>();
         moveZone = GameObject.Find("MoveZones").transform.Find("kksZone").gameObject.GetComponent<Collider2D>();        
 
@@ -42,10 +41,11 @@ public class kksController : MonoBehaviour {
 
         minMovePoint = moveZone.bounds.min;
         maxMovePoint = moveZone.bounds.max;
+        base.Start();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected override void Update () {
 
         FollowTarget();        
 
@@ -56,7 +56,6 @@ public class kksController : MonoBehaviour {
 
             if(timeToMoveCount < 0f) // movement timer expired
             {
-                isMoving = false; 
                 timeBetweenMoveCount = Random.Range(timeBetweenMove * 0.75f, timeBetweenMove * 1.25f); // set a random wait time for next movement
             }
 
@@ -68,7 +67,6 @@ public class kksController : MonoBehaviour {
 
             if(timeBetweenMoveCount < 0) // wait time expired
             {
-                isMoving = true;
                 timeToMoveCount = Random.Range(timeToMove * 0.75f, timeToMove * 1.25f); //set random movement time
 
                 moveDirection = new Vector3(Random.Range(-1f, 1f) * moveSpeed, Random.Range(-1f, 1f) * moveSpeed, 0f); //set random movement direction
@@ -93,4 +91,6 @@ public class kksController : MonoBehaviour {
             transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
         }
     }
+
+   
 }

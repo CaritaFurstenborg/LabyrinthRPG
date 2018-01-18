@@ -53,6 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\AggroRange.cs" />
      <Compile Include="Assets\Scripts\AttackEnemy.cs" />
+     <Compile Include="Assets\Scripts\BlockLOS.cs" />
      <Compile Include="Assets\Scripts\Bounds.cs" />
      <Compile Include="Assets\Scripts\Character.cs" />
      <Compile Include="Assets\Scripts\CollisionHandler.cs" />
@@ -64,11 +65,14 @@
      <Compile Include="Assets\Scripts\DestroyOverTime.cs" />
      <Compile Include="Assets\Scripts\EnemyHealthManager.cs" />
      <Compile Include="Assets\Scripts\FloatingNumbers.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\HintManager.cs" />
      <Compile Include="Assets\Scripts\Hints.cs" />
      <Compile Include="Assets\Scripts\HurtPlayer.cs" />
      <Compile Include="Assets\Scripts\LoadNewArea.cs" />
      <Compile Include="Assets\Scripts\MonsterSpawner.cs" />
+     <Compile Include="Assets\Scripts\NPC.cs" />
+     <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerHealthManager.cs" />
      <Compile Include="Assets\Scripts\PlayerStartPoint.cs" />
      <Compile Include="Assets\Scripts\PlayerStats.cs" />
@@ -78,6 +82,8 @@
      <Compile Include="Assets\Scripts\Quest\QuestManager.cs" />
      <Compile Include="Assets\Scripts\Quest\QuestObject.cs" />
      <Compile Include="Assets\Scripts\Quest\QuestUIManager.cs" />
+     <Compile Include="Assets\Scripts\Spell.cs" />
+     <Compile Include="Assets\Scripts\Stats.cs" />
      <Compile Include="Assets\Scripts\UiManager.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\CircleObject.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\GameObjectExtensions.cs" />

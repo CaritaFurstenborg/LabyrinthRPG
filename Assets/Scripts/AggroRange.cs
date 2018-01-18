@@ -5,6 +5,7 @@ using UnityEngine;
 public class AggroRange : MonoBehaviour {
 
     private kksController parent;
+
 	// Use this for initialization
 	void Start () {
         parent = GetComponentInParent<kksController>();
@@ -28,6 +29,15 @@ public class AggroRange : MonoBehaviour {
             {
                 Debug.Log("NO Target found!");
             }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.tag == "Player")
+        {
+            parent.target = null;
+            Debug.Log("Target lost.");
         }
     }
 }
