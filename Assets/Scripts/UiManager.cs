@@ -5,35 +5,36 @@ using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour {
 
-    public Slider hpBar;
-    public Text hpText;
-    public Text lvlText;
-    
-    public PlayerHealthManager playerHealth;
+    [SerializeField]
+    private Button[] actionButtons;
 
-    private PlayerStats ps;
-    private static bool uiExists;    
+    private KeyCode action1, action2, action3;
 
 	// Use this for initialization
 	void Start () {
-        if (!uiExists) // if no player exist
-        {
-            uiExists = true;
-            DontDestroyOnLoad(transform.gameObject); // don't destroy player
-        }
-        else // if player already exists in scene
-        {
-            Destroy(gameObject); // destroy the duplicated player
-        }
-
-        ps = GetComponent<PlayerStats>();
+        action1 = KeyCode.Alpha1;
+        action2 = KeyCode.Alpha2;
+        action3 = KeyCode.Alpha3;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        hpBar.maxValue = playerHealth.playerMaxHealth;
-        hpBar.value = playerHealth.playerCurrentHealth;
-        hpText.text = "HP: " + playerHealth.playerCurrentHealth + "/" + playerHealth.playerMaxHealth;
-        lvlText.text = "Lvl: " + ps.currentLevel;               
-	}
+		if(Input.GetKeyDown(action1))
+        {
+            ActionButtonOnClick(0);
+        }
+        if (Input.GetKeyDown(action2))
+        {
+            ActionButtonOnClick(1);
+        }
+        if (Input.GetKeyDown(action3))
+        {
+            ActionButtonOnClick(2);
+        }
+    }
+
+    private void ActionButtonOnClick(int btnIndex)
+    {
+        actionButtons[btnIndex].onClick.Invoke();
+    }
 }

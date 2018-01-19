@@ -82,9 +82,10 @@
      <Compile Include="Assets\Scripts\Quest\QuestManager.cs" />
      <Compile Include="Assets\Scripts\Quest\QuestObject.cs" />
      <Compile Include="Assets\Scripts\Quest\QuestUIManager.cs" />
-     <Compile Include="Assets\Scripts\Spell.cs" />
+     <Compile Include="Assets\Scripts\SpellScript.cs" />
      <Compile Include="Assets\Scripts\Stats.cs" />
      <Compile Include="Assets\Scripts\UiManager.cs" />
+     <Compile Include="Assets\SpellBehaviour.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\CircleObject.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\GameObjectExtensions.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\GPUInstancing.cs" />

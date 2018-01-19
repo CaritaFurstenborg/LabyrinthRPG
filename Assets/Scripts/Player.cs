@@ -16,8 +16,8 @@ public class Player : Character {
     private BlockLOS[] blocks;      // blocks that disables shooting if not facing the target
 
     [SerializeField]
-    private Transform[] exitPoints; // Exitpoints for ranged attacks! Implementation 11/48
-    private int exitIndex;
+    private Transform[] exitPoints; 
+    private int exitIndex = 2;
 
     public Transform MyTarget { get; set; }
 
@@ -48,12 +48,12 @@ public class Player : Character {
     {
         direction = Vector2.zero;
 
-        if (Input.GetKey(KeyCode.Alpha1)) // TESTING & DEBUGGING
+        if (Input.GetKey(KeyCode.Alpha8)) // TESTING & DEBUGGING
         {
             health.MyCurrentValue -= 1;
             resource.MyCurrentValue -= 1;
         }
-        if (Input.GetKey(KeyCode.Alpha2))
+        if (Input.GetKey(KeyCode.Alpha7))
         {
             health.MyCurrentValue += 5;
             resource.MyCurrentValue += 5;
@@ -79,33 +79,31 @@ public class Player : Character {
             exitIndex = 1;
             direction += Vector2.right;
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            BlockLOS();
-
-            if (MyTarget != null && !isAttacking && InLineOfSight())
-            {
-                attackRoutine = StartCoroutine(Attack());
-            }            
-        }
     }
 
-    private IEnumerator Attack()
+    private IEnumerator Attack(int spellIndex)
     {
         isAttacking = true;
 
         animator.SetBool("isAttacking", isAttacking);
+        
+        SpellScript s = Instantiate(spellPrefabs[spellIndex], exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();
 
-        CastSpell();
+        s.MyTarget = MyTarget; //spells target = players target
 
         yield return new WaitForSeconds(0.2f); //Attacktime
 
         StopAttack();
     }
 
-    public void CastSpell()
+    public void CastSpell(int spellIndex)
     {
-        Instantiate(spellPrefabs[0], transform.position, Quaternion.identity);
+        BlockLOS();
+
+        if (MyTarget != null && !isAttacking && InLineOfSight())
+        {
+            attackRoutine = StartCoroutine(Attack(spellIndex));
+        }        
     }
 
     private bool InLineOfSight()
