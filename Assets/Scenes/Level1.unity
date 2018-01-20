@@ -305,6 +305,50 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 39911185}
+--- !u!1 &58657367
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 58657368}
+  - component: {fileID: 58657369}
+  m_Layer: 9
+  m_Name: MeleRange
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &58657368
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 58657367}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 154140371}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &58657369
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 58657367}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.7
 --- !u!1 &64672281
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,6 +649,11 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 148770555}
+--- !u!4 &154140371 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4585557975670858, guid: fd756bd818ffd9e46af3eb1526558a96,
+    type: 2}
+  m_PrefabInternal: {fileID: 594498847}
 --- !u!1 &187730782
 GameObject:
   m_ObjectHideFlags: 0
@@ -2753,6 +2802,7 @@ GameObject:
   - component: {fileID: 680202248}
   - component: {fileID: 680202250}
   - component: {fileID: 680202249}
+  - component: {fileID: 680202251}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -2814,6 +2864,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 680202247}
+--- !u!225 &680202251
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 680202247}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &689948688
 GameObject:
   m_ObjectHideFlags: 0
@@ -5520,7 +5581,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 39.899994, y: -40}
+  m_AnchoredPosition: {x: 39.90039, y: -40}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1559371666
@@ -6080,7 +6141,7 @@ Prefab:
     - target: {fileID: 114358115667027848, guid: a9e2af4f4e3b92049bfd195b01e6cc99,
         type: 2}
       propertyPath: spells.Array.data[1].castTime
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 114358115667027848, guid: a9e2af4f4e3b92049bfd195b01e6cc99,
         type: 2}
@@ -6100,6 +6161,31 @@ Prefab:
       value: 
       objectReference: {fileID: 1167168045168744, guid: 8573a1f26ce9d494f9106598d0a05e12,
         type: 2}
+    - target: {fileID: 114358115667027848, guid: a9e2af4f4e3b92049bfd195b01e6cc99,
+        type: 2}
+      propertyPath: castTimeText
+      value: 
+      objectReference: {fileID: 2003378080}
+    - target: {fileID: 114358115667027848, guid: a9e2af4f4e3b92049bfd195b01e6cc99,
+        type: 2}
+      propertyPath: canGroup
+      value: 
+      objectReference: {fileID: 680202251}
+    - target: {fileID: 114358115667027848, guid: a9e2af4f4e3b92049bfd195b01e6cc99,
+        type: 2}
+      propertyPath: spells.Array.data[0].isMele
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114358115667027848, guid: a9e2af4f4e3b92049bfd195b01e6cc99,
+        type: 2}
+      propertyPath: spells.Array.data[1].isMele
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114358115667027848, guid: a9e2af4f4e3b92049bfd195b01e6cc99,
+        type: 2}
+      propertyPath: spells.Array.data[0].castTime
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9e2af4f4e3b92049bfd195b01e6cc99, type: 2}
   m_IsPrefabParent: 0

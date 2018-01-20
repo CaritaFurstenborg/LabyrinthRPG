@@ -7,6 +7,9 @@ using UnityEngine;
 public class Spell {
 
     [SerializeField]
+    private bool isMele;
+
+    [SerializeField]
     private string name;
 
     [SerializeField]
@@ -102,6 +105,14 @@ public class Spell {
         get
         {
             return coolDown;
+        }
+    }
+
+    public bool IsMele
+    {
+        get
+        {
+            return isMele;
         }
     }
 }

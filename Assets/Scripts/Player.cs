@@ -90,13 +90,24 @@ public class Player : Character {
 
         animator.SetBool("isAttacking", isAttacking);
 
-        yield return new WaitForSeconds(newSpell.MyCastTime); //Attacktime
+        if(!newSpell.IsMele)
+        {
+            yield return new WaitForSeconds(newSpell.MyCastTime); //Attacktime
 
-        SpellScript s = Instantiate(newSpell.MySpellPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();
+            SpellScript s = Instantiate(newSpell.MySpellPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();
+            s.IsMele = false;
 
-        s.MyTarget = MyTarget; //spells target = players target
+            s.MyTarget = MyTarget; //spells target = players target
+        }
+        else
+        {
+            yield return new WaitForSeconds(newSpell.MyCastTime);
 
-        
+            SpellScript s = Instantiate(newSpell.MySpellPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();
+            s.IsMele = true;
+
+            s.MyTarget = MyTarget; //spells target = players target
+        } 
 
         StopAttack();
     }
@@ -105,7 +116,7 @@ public class Player : Character {
     {
         BlockLOS();
 
-        if (MyTarget != null && !isAttacking && InLineOfSight())
+        if (MyTarget != null && !isAttacking && !isMoving && InLineOfSight())
         {
             attackRoutine = StartCoroutine(Attack(spellIndex));
         }        
@@ -133,5 +144,12 @@ public class Player : Character {
         }
 
         blocks[exitIndex].Activate();
+    }
+
+    public override void StopAttack()
+    {
+        spellBook.StopCasting();
+
+        base.StopAttack();
     }
 }

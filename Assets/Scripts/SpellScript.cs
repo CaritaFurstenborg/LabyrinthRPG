@@ -10,12 +10,17 @@ public class SpellScript : MonoBehaviour
     [SerializeField]
     private float speed;
 
+    private SpellBook spellBook;
+
     public Transform MyTarget { get; set; } //Property
+
+    public bool IsMele { get; set; } //check for mele
 
     // Use this for initialization
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
+        spellBook = GetComponentInParent<SpellBook>();
     }
 
     // Update is called once per frame
@@ -28,13 +33,7 @@ public class SpellScript : MonoBehaviour
     {
         if (MyTarget != null)
         {
-            Vector2 direction = MyTarget.position - transform.position;
-
-            myRigidBody.velocity = direction.normalized * speed;
-
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            ChooseType();
         }
     }
 
@@ -45,6 +44,30 @@ public class SpellScript : MonoBehaviour
             GetComponent<Animator>().SetTrigger("onHit");
             myRigidBody.velocity = Vector2.zero;
             MyTarget = null;
+        }
+    }
+
+    private void ChooseType()
+    {
+        if(!IsMele)
+        {
+            Vector2 direction = MyTarget.position - transform.position;
+
+            myRigidBody.velocity = direction.normalized * speed;
+
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+        else
+        {
+            Vector2 direction = MyTarget.position - transform.position;
+
+            myRigidBody.velocity = direction.normalized * 0;
+
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
 }

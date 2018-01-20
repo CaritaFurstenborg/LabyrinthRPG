@@ -16,6 +16,8 @@ public abstract class Character : MonoBehaviour {
 
     protected bool isAttacking = false;
 
+    public bool IsMele { get; set; }
+
     protected Coroutine attackRoutine;
 
     public bool isMoving
@@ -60,9 +62,13 @@ public abstract class Character : MonoBehaviour {
             animator.SetFloat("LastMoveY", direction.y);
             animator.SetBool("isMoving", true);
         }
-        else if(isAttacking)
+        else if(isAttacking && IsMele)
         {
             ActivateLayer("AttackLayer");
+        }
+        else if(isAttacking && !IsMele)
+        {
+            ActivateLayer("RAttakLayer");
         }
         else
         {
@@ -81,13 +87,14 @@ public abstract class Character : MonoBehaviour {
         animator.SetLayerWeight(animator.GetLayerIndex(layerName), 1);
     }
 
-    public void StopAttack()
+    public virtual void StopAttack()
     {
-        if(attackRoutine != null)
+        isAttacking = false;
+        animator.SetBool("isAttacking", isAttacking);
+
+        if (attackRoutine != null)
         {
-            StopCoroutine(attackRoutine);
-            isAttacking = false;
-            animator.SetBool("isAttacking", isAttacking);
+            StopCoroutine(attackRoutine);            
         }        
     }
 }

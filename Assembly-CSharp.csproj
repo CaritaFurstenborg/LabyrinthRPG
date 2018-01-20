@@ -69,6 +69,7 @@
      <Compile Include="Assets\Scripts\Hints.cs" />
      <Compile Include="Assets\Scripts\HurtPlayer.cs" />
      <Compile Include="Assets\Scripts\LoadNewArea.cs" />
+     <Compile Include="Assets\Scripts\MeleRange.cs" />
      <Compile Include="Assets\Scripts\MonsterSpawner.cs" />
      <Compile Include="Assets\Scripts\NPC.cs" />
      <Compile Include="Assets\Scripts\OldScripts\AttackEnemy.cs" />
