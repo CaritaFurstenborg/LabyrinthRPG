@@ -68,7 +68,7 @@ public abstract class Character : MonoBehaviour {
         }
         else if(isAttacking && !IsMele)
         {
-            ActivateLayer("RAttakLayer");
+            ActivateLayer("RAttackLayer");
         }
         else
         {

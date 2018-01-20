@@ -23,9 +23,7 @@ public class Player : Character {
     private float initialHealth = 50;
     private float initialResource = 0;
     private float maxResource = 100;
-
-    private float gcd = 1.5f; // NOT IMPLEMENTED
-
+    
 
     // Use this for initialization
     protected override void Start () {
@@ -85,26 +83,26 @@ public class Player : Character {
     private IEnumerator Attack(int spellIndex)
     {
         Spell newSpell = spellBook.CastSpell(spellIndex);
-
+        
         isAttacking = true;
 
         animator.SetBool("isAttacking", isAttacking);
 
-        if(!newSpell.IsMele)
-        {
-            yield return new WaitForSeconds(newSpell.MyCastTime); //Attacktime
+        yield return new WaitForSeconds(newSpell.MyCastTime); //Attacktime
 
+        if (MyTarget != null && InLineOfSight() && !newSpell.IsMele)
+        {
             SpellScript s = Instantiate(newSpell.MySpellPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();
             s.IsMele = false;
+            IsMele = false;
 
             s.MyTarget = MyTarget; //spells target = players target
         }
-        else
+        else if(MyTarget != null && InLineOfSight() && newSpell.IsMele)
         {
-            yield return new WaitForSeconds(newSpell.MyCastTime);
-
             SpellScript s = Instantiate(newSpell.MySpellPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();
             s.IsMele = true;
+            IsMele = true;
 
             s.MyTarget = MyTarget; //spells target = players target
         } 

@@ -10,8 +10,6 @@ public class SpellScript : MonoBehaviour
     [SerializeField]
     private float speed;
 
-    private SpellBook spellBook;
-
     public Transform MyTarget { get; set; } //Property
 
     public bool IsMele { get; set; } //check for mele
@@ -20,7 +18,6 @@ public class SpellScript : MonoBehaviour
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
-        spellBook = GetComponentInParent<SpellBook>();
     }
 
     // Update is called once per frame
