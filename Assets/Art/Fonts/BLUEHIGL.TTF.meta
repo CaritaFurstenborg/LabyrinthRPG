@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 05727cb580129e142ad06793438319ec
+timeCreated: 1516367820
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Blue Highway Linocut
+  fontNames:
+  - Blue Highway Linocut
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

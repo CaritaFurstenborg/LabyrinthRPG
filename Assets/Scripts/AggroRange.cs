@@ -20,15 +20,7 @@ public class AggroRange : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
-            parent.target = other.gameObject.transform;
-            if(parent.target != null)
-            {
-                Debug.Log("Target detected");
-            }
-            else
-            {
-                Debug.Log("NO Target found!");
-            }
+            parent.target = other.gameObject.transform;            
         }
     }
 
@@ -37,7 +29,6 @@ public class AggroRange : MonoBehaviour {
         if(other.tag == "Player")
         {
             parent.target = null;
-            Debug.Log("Target lost.");
         }
     }
 }

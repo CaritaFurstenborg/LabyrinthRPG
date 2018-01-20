@@ -8,16 +8,15 @@ public class Player : Character {
     private Stats health; 
     [SerializeField]
     private Stats resource;
-
-    [SerializeField]
-    private GameObject[] spellPrefabs;
-
+    
     [SerializeField]
     private BlockLOS[] blocks;      // blocks that disables shooting if not facing the target
 
     [SerializeField]
     private Transform[] exitPoints; 
     private int exitIndex = 2;
+
+    private SpellBook spellBook;
 
     public Transform MyTarget { get; set; }
 
@@ -33,6 +32,8 @@ public class Player : Character {
 
         health.Initialize(initialHealth, initialHealth);
         resource.Initialize(initialResource, maxResource);
+
+        spellBook = GetComponent<SpellBook>();
 
         base.Start();
 	}
@@ -83,15 +84,19 @@ public class Player : Character {
 
     private IEnumerator Attack(int spellIndex)
     {
+        Spell newSpell = spellBook.CastSpell(spellIndex);
+
         isAttacking = true;
 
         animator.SetBool("isAttacking", isAttacking);
-        
-        SpellScript s = Instantiate(spellPrefabs[spellIndex], exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();
+
+        yield return new WaitForSeconds(newSpell.MyCastTime); //Attacktime
+
+        SpellScript s = Instantiate(newSpell.MySpellPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();
 
         s.MyTarget = MyTarget; //spells target = players target
 
-        yield return new WaitForSeconds(0.2f); //Attacktime
+        
 
         StopAttack();
     }

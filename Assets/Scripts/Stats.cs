@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Stats : MonoBehaviour {
 
-    private Slider content;
+    private Image content;
 
     [SerializeField]
     private Text statValue;
@@ -48,16 +48,16 @@ public class Stats : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        content = GetComponent<Slider>();
+        content = GetComponent<Image>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        /*if(currentFill != content.value)
+        /*if(currentFill != content.fillAmount)
         {
-            content.value = Mathf.Lerp(content.value, currentFill, Time.deltaTime * lerpSpeed);
+            content.fillAmount = Mathf.Lerp(content.fillAmount, currentFill, Time.deltaTime * lerpSpeed);
         }*/
-        content.value = currentValue;
+        content.fillAmount = currentFill;
 	}
 
     public void Initialize(float currentValue, float maxValue)
