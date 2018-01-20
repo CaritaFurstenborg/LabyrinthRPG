@@ -6082,6 +6082,24 @@ Prefab:
       propertyPath: spells.Array.data[1].castTime
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114358115667027848, guid: a9e2af4f4e3b92049bfd195b01e6cc99,
+        type: 2}
+      propertyPath: spells.Array.data[1].spellPrefab
+      value: 
+      objectReference: {fileID: 1353928911023032, guid: e5bf33baec2e38b4b88937259b5ef601,
+        type: 2}
+    - target: {fileID: 114358115667027848, guid: a9e2af4f4e3b92049bfd195b01e6cc99,
+        type: 2}
+      propertyPath: spells.Array.data[0].spellPrefab
+      value: 
+      objectReference: {fileID: 1581646615270544, guid: 0af5a845e33522e46bdcf8a22f728271,
+        type: 2}
+    - target: {fileID: 114358115667027848, guid: a9e2af4f4e3b92049bfd195b01e6cc99,
+        type: 2}
+      propertyPath: spells.Array.data[2].spellPrefab
+      value: 
+      objectReference: {fileID: 1167168045168744, guid: 8573a1f26ce9d494f9106598d0a05e12,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9e2af4f4e3b92049bfd195b01e6cc99, type: 2}
   m_IsPrefabParent: 0
