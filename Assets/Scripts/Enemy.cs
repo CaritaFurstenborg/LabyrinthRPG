@@ -54,7 +54,12 @@ public class Enemy : NPC {
     {
         if(target != null)
         {
+            direction = (target.transform.position - transform.position).normalized;
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        }
+        else
+        {
+            direction = Vector2.zero;
         }
     }
 }
