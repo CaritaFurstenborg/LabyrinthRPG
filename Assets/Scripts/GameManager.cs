@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private Player player;
 
+    private NPC currentTarget;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -26,14 +28,23 @@ public class GameManager : MonoBehaviour {
 
             if(hit.collider != null)
             {
-                if(hit.collider.tag == "Enemy")
+                if (currentTarget != null)
                 {
-                    player.MyTarget = hit.transform.GetChild(0);
-                }                
+                    currentTarget.DeSelect();
+                }
+
+                currentTarget = hit.collider.GetComponent<NPC>();
+
+                player.MyTarget = currentTarget.Select();
             }
             else
             {
-                player.MyTarget = null; //Detarget
+                if(currentTarget != null)
+                {
+                    currentTarget.DeSelect();
+                    currentTarget = null;
+                    player.MyTarget = null;
+                }
             }
         }        
     }

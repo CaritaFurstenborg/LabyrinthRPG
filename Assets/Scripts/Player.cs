@@ -82,7 +82,20 @@ public class Player : Character {
 
     private IEnumerator Attack(int spellIndex)
     {
+        Transform currentTarget = MyTarget;
         Spell newSpell = spellBook.CastSpell(spellIndex);
+        SpellScript scComp = newSpell.MySpellPrefab.GetComponent<SpellScript>();
+
+        if(!newSpell.IsMele)
+        {
+            IsMele = false;
+            scComp.IsMele = false;
+        }
+        else
+        {
+            IsMele = true;
+            scComp.IsMele = true;
+        }
         
         isAttacking = true;
 
@@ -90,22 +103,21 @@ public class Player : Character {
 
         yield return new WaitForSeconds(newSpell.MyCastTime); //Attacktime
 
-        if (MyTarget != null && InLineOfSight() && !newSpell.IsMele)
+        if (currentTarget != null && InLineOfSight() && !newSpell.IsMele) // Mele spell prefabs not working (remove last check)
         {
             SpellScript s = Instantiate(newSpell.MySpellPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();
-            s.IsMele = false;
-            IsMele = false;
+            
 
-            s.MyTarget = MyTarget; //spells target = players target
+            s.MyTarget = currentTarget; //spells target = players target
         }
-        else if(MyTarget != null && InLineOfSight() && newSpell.IsMele)
+        /*else if(MyTarget != null && InLineOfSight() && newSpell.IsMele)
         {
             SpellScript s = Instantiate(newSpell.MySpellPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();
             s.IsMele = true;
             IsMele = true;
 
             s.MyTarget = MyTarget; //spells target = players target
-        } 
+        } */
 
         StopAttack();
     }

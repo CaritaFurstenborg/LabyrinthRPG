@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC : MonoBehaviour {
+public class NPC : Character {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public virtual void DeSelect()
+    {
+
+    }
+
+    public virtual Transform Select()
+    {
+        return hitBox;
+    }
 }
