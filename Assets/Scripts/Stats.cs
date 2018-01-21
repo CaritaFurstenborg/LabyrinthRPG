@@ -42,7 +42,11 @@ public class Stats : MonoBehaviour {
             }
 
             currentFill = currentValue / MyMaxValue;
-            statValue.text = currentValue + "/" + MyMaxValue;    
+
+            if(statValue != null)
+            {
+                statValue.text = currentValue + "/" + MyMaxValue;
+            }             
         }
     } // Property for current value
 
@@ -53,11 +57,13 @@ public class Stats : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        /*if(currentFill != content.fillAmount)
+
+        if (currentFill != content.fillAmount)
         {
             content.fillAmount = Mathf.Lerp(content.fillAmount, currentFill, Time.deltaTime * lerpSpeed);
-        }*/
-        content.fillAmount = currentFill;
+        }
+
+        //content.fillAmount = currentFill; 
 	}
 
     public void Initialize(float currentValue, float maxValue)

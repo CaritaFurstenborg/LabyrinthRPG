@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Character {
-
-    [SerializeField]
-    private Stats health; 
+    
     [SerializeField]
     private Stats resource;
     
@@ -20,16 +18,13 @@ public class Player : Character {
 
     public Transform MyTarget { get; set; }
 
-    private float initialHealth = 50;
+    
     private float initialResource = 0;
     private float maxResource = 100;
     
 
     // Use this for initialization
-    protected override void Start () {
-
-        health.Initialize(initialHealth, initialHealth);
-        resource.Initialize(initialResource, maxResource);
+    protected override void Start () {        
 
         spellBook = GetComponent<SpellBook>();
 
@@ -84,17 +79,14 @@ public class Player : Character {
     {
         Transform currentTarget = MyTarget;
         Spell newSpell = spellBook.CastSpell(spellIndex);
-        SpellScript scComp = newSpell.MySpellPrefab.GetComponent<SpellScript>();
 
         if(!newSpell.IsMele)
         {
-            IsMele = false;
-            scComp.IsMele = false;
+            IsMele = false; //this is Character class IsMele bool
         }
-        else
+        else if(newSpell.IsMele)
         {
-            IsMele = true;
-            scComp.IsMele = true;
+            IsMele = true; //this is Character class IsMele bool
         }
         
         isAttacking = true;
@@ -107,19 +99,16 @@ public class Player : Character {
         {
             SpellScript s = Instantiate(newSpell.MySpellPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();
             
-
-            s.MyTarget = currentTarget; //spells target = players target
+            s.Initialize(currentTarget, newSpell.MyDamage, IsMele); //spells target = players target with set damage and type of spell
         }
-        /*else if(MyTarget != null && InLineOfSight() && newSpell.IsMele)
+        else if (currentTarget != null && InLineOfSight() && newSpell.IsMele)
         {
             SpellScript s = Instantiate(newSpell.MySpellPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();
-            s.IsMele = true;
-            IsMele = true;
 
-            s.MyTarget = MyTarget; //spells target = players target
-        } */
+            s.Initialize(currentTarget, newSpell.MyDamage, IsMele); //spells target = players target with set damage and type of spell
+        }
 
-        StopAttack();
+            StopAttack();
     }
 
     public void CastSpell(int spellIndex)
@@ -134,14 +123,18 @@ public class Player : Character {
 
     private bool InLineOfSight()
     {
-        Vector3 targetDirection = (MyTarget.transform.position - transform.position).normalized;
-
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, targetDirection, Vector2.Distance(transform.position, MyTarget.transform.position), 256);
-
-        if(hit.collider == null) // if raycast does not hit then los is clear
+        if(MyTarget != null)
         {
-            return true;
-        }
+            //Calculation for target's direction
+            Vector3 targetDirection = (MyTarget.transform.position - transform.position).normalized;
+            // Raycast in the direction of target
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, targetDirection, Vector2.Distance(transform.position, MyTarget.transform.position), 256);
+
+            if (hit.collider == null) // if raycast does not hit then los is clear
+            {
+                return true;
+            }
+        }        
 
         return false; // if raycast hit somthing then los is blocked
     }

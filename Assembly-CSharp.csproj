@@ -51,6 +51,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Behaviours\DeathBehaviour.cs" />
+     <Compile Include="Assets\Behaviours\SpellBehaviour.cs" />
      <Compile Include="Assets\Scripts\AggroRange.cs" />
      <Compile Include="Assets\Scripts\BlockLOS.cs" />
      <Compile Include="Assets\Scripts\Bounds.cs" />
@@ -66,9 +68,6 @@
      <Compile Include="Assets\Scripts\EnemyHealthManager.cs" />
      <Compile Include="Assets\Scripts\FloatingNumbers.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
-     <Compile Include="Assets\Scripts\HintManager.cs" />
-     <Compile Include="Assets\Scripts\Hints.cs" />
-     <Compile Include="Assets\Scripts\HurtPlayer.cs" />
      <Compile Include="Assets\Scripts\LoadNewArea.cs" />
      <Compile Include="Assets\Scripts\MeleRange.cs" />
      <Compile Include="Assets\Scripts\MonsterSpawner.cs" />
@@ -89,7 +88,6 @@
      <Compile Include="Assets\Scripts\SpellScript.cs" />
      <Compile Include="Assets\Scripts\Stats.cs" />
      <Compile Include="Assets\Scripts\UiManager.cs" />
-     <Compile Include="Assets\SpellBehaviour.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\CircleObject.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\GameObjectExtensions.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\GPUInstancing.cs" />

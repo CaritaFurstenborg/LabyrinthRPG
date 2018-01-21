@@ -25,6 +25,12 @@ public abstract class Character : MonoBehaviour {
     [SerializeField]
     protected Transform hitBox;
 
+    [SerializeField]
+    protected Stats health;
+
+    [SerializeField]
+    private float initialHealth;
+
     public bool isMoving
     {
         get
@@ -37,7 +43,10 @@ public abstract class Character : MonoBehaviour {
     protected virtual void Start () {
         myRigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-	}
+
+        health.Initialize(initialHealth, initialHealth);
+        //resource.Initialize(initialResource, maxResource);     //   FIX THIS LATER!!!
+    }
 	
 	// Update is called once per frame
     // protected virtual allows to override the function in inheriting classes
@@ -102,4 +111,14 @@ public abstract class Character : MonoBehaviour {
             StopCoroutine(attackRoutine);            
         }        
     }
+
+    public virtual void TakeDamage(float dama)
+    {
+        health.MyCurrentValue -= dama;
+
+        if(health.MyCurrentValue <= 0)
+        {
+            animator.SetTrigger("Die");
+        }
+    } 
 }

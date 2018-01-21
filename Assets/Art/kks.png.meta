@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0bae70dee3a34c8408639c67a11d4957
-timeCreated: 1515419744
+timeCreated: 1516522991
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -160,8 +160,8 @@ TextureImporter:
       name: kks_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
+        x: 96
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -174,7 +174,7 @@ TextureImporter:
       name: kks_4
       rect:
         serializedVersion: 2
-        x: 32
+        x: 0
         y: 64
         width: 32
         height: 32
@@ -188,7 +188,7 @@ TextureImporter:
       name: kks_5
       rect:
         serializedVersion: 2
-        x: 64
+        x: 32
         y: 64
         width: 32
         height: 32
@@ -202,8 +202,8 @@ TextureImporter:
       name: kks_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 64
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -216,7 +216,7 @@ TextureImporter:
       name: kks_7
       rect:
         serializedVersion: 2
-        x: 32
+        x: 0
         y: 32
         width: 32
         height: 32
@@ -230,7 +230,7 @@ TextureImporter:
       name: kks_8
       rect:
         serializedVersion: 2
-        x: 64
+        x: 32
         y: 32
         width: 32
         height: 32
@@ -244,6 +244,20 @@ TextureImporter:
       name: kks_9
       rect:
         serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kks_10
+      rect:
+        serializedVersion: 2
         x: 0
         y: 0
         width: 32
@@ -255,7 +269,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: kks_10
+      name: kks_11
       rect:
         serializedVersion: 2
         x: 32
@@ -269,7 +283,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: kks_11
+      name: kks_12
       rect:
         serializedVersion: 2
         x: 64
