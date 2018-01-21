@@ -20,4 +20,11 @@ public class Enemy : NPC {
 
         base.DeSelect();
     }
+
+    public override void TakeDamage(float dama)
+    {
+        base.TakeDamage(dama);
+
+        OnHealthChanged(health.MyCurrentValue);
+    }
 }

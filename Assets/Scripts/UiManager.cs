@@ -5,13 +5,36 @@ using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour {
 
+    private static UiManager instance;
+
+    public static UiManager MyInstance
+    {
+        get
+        {
+            if(instance == null)
+            {
+                instance = FindObjectOfType<UiManager>();
+            }
+
+            return instance;
+        }
+    }
+
     [SerializeField]
     private Button[] actionButtons;
 
     private KeyCode action1, action2, action3;
 
+    [SerializeField]
+    private GameObject targetFrame;
+
+    private Stats healthStat;
+
 	// Use this for initialization
 	void Start () {
+        healthStat = targetFrame.GetComponentInChildren<Stats>();
+
+        //Keybinds
         action1 = KeyCode.Alpha1;
         action2 = KeyCode.Alpha2;
         action3 = KeyCode.Alpha3;
@@ -36,5 +59,22 @@ public class UiManager : MonoBehaviour {
     private void ActionButtonOnClick(int btnIndex)
     {
         actionButtons[btnIndex].onClick.Invoke();
+    }
+
+    public void ShowTargetFrame(NPC target)
+    {
+        targetFrame.SetActive(true);
+        healthStat.Initialize(target.MyHealth.MyCurrentValue, target.MyHealth.MyMaxValue);
+        target.healthChanged += new HealthChanged(UpdateTargetFrame);
+    }
+
+    public void HideTargetFrame()
+    {
+        targetFrame.SetActive(false);
+    }
+
+    public void UpdateTargetFrame(float health)
+    {
+        healthStat.MyCurrentValue = health;
     }
 }

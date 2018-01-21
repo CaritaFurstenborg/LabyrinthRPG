@@ -36,14 +36,18 @@ public class GameManager : MonoBehaviour {
                 currentTarget = hit.collider.GetComponent<NPC>();
 
                 player.MyTarget = currentTarget.Select();
+
+                UiManager.MyInstance.ShowTargetFrame(currentTarget);
             }
-            else
+            else // Deselect target
             {
-                if(currentTarget != null)
+                UiManager.MyInstance.HideTargetFrame();
+
+                if (currentTarget != null)
                 {
                     currentTarget.DeSelect();
                     currentTarget = null;
-                    player.MyTarget = null;
+                    player.MyTarget = null;                    
                 }
             }
         }        
