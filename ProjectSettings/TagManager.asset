@@ -9,6 +9,8 @@ TagManager:
   - accept
   - compleate
   - HitBox
+  - Obstacle
+  - Loot
   layers:
   - Default
   - TransparentFX

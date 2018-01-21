@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class AggroRange : MonoBehaviour {
 
-    private kksController parent;
+    private Enemy parent;
 
 	// Use this for initialization
 	void Start () {
-        parent = GetComponentInParent<kksController>();
+        parent = GetComponentInParent<Enemy>();
 	}
 	
 	// Update is called once per frame
@@ -20,7 +20,7 @@ public class AggroRange : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
-            parent.target = other.gameObject.transform;            
+            parent.Target = other.gameObject.transform;            
         }
     }
 
@@ -28,7 +28,7 @@ public class AggroRange : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
-            parent.target = null;
+            parent.Target = null;
         }
     }
 }
