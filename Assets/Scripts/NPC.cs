@@ -4,13 +4,29 @@ using UnityEngine;
 
 public delegate void HealthChanged(float health);
 
+public delegate void CharacterRemoved();
+
 public class NPC : Character {
 
     public event HealthChanged healthChanged;
 
+    public event CharacterRemoved characterRemoved;
+
+    [SerializeField]
+    private Sprite avatar;
+
+    public Sprite MyAvatar
+    {
+        get
+        {
+            return avatar;
+        }
+    }
+
 	public virtual void DeSelect()
     {
-        
+        healthChanged -= new HealthChanged(UiManager.MyInstance.UpdateTargetFrame);
+        characterRemoved -= new CharacterRemoved(UiManager.MyInstance.HideTargetFrame);
     }
 
     public virtual Transform Select()
@@ -24,5 +40,15 @@ public class NPC : Character {
         {
             healthChanged(health);
         }
+    }
+
+    public void OnCharacterRemoved()
+    {
+        if(characterRemoved != null)
+        {
+            characterRemoved();
+        }
+
+        Destroy(gameObject);
     }
 }

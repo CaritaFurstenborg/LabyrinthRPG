@@ -30,6 +30,9 @@ public class UiManager : MonoBehaviour {
 
     private Stats healthStat;
 
+    [SerializeField]
+    private Image avatarImage;
+
 	// Use this for initialization
 	void Start () {
         healthStat = targetFrame.GetComponentInChildren<Stats>();
@@ -65,7 +68,12 @@ public class UiManager : MonoBehaviour {
     {
         targetFrame.SetActive(true);
         healthStat.Initialize(target.MyHealth.MyCurrentValue, target.MyHealth.MyMaxValue);
+
+        avatarImage.sprite = target.MyAvatar;
+
         target.healthChanged += new HealthChanged(UpdateTargetFrame);
+
+        target.characterRemoved += new CharacterRemoved(HideTargetFrame);
     }
 
     public void HideTargetFrame()
