@@ -73,6 +73,10 @@ public class Player : Character {
             exitIndex = 1;
             MyDirection += Vector2.right;
         }
+        if(isMoving)
+        {
+            StopAttack();
+        }
     }
 
     private IEnumerator Attack(int spellIndex)
@@ -149,10 +153,16 @@ public class Player : Character {
         blocks[exitIndex].Activate();
     }
 
-    public override void StopAttack()
+    public void StopAttack()
     {
         spellBook.StopCasting();
 
-        base.StopAttack();
+        isAttacking = false;
+        animator.SetBool("isAttacking", isAttacking);
+
+        if (attackRoutine != null)
+        {
+            StopCoroutine(attackRoutine);
+        }
     }
 }

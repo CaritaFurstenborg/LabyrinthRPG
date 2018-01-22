@@ -131,18 +131,7 @@ public abstract class Character : MonoBehaviour {
 
         animator.SetLayerWeight(animator.GetLayerIndex(layerName), 1);
     }
-
-    public virtual void StopAttack()
-    {
-        isAttacking = false;
-        animator.SetBool("isAttacking", isAttacking);
-
-        if (attackRoutine != null)
-        {
-            StopCoroutine(attackRoutine);            
-        }        
-    }
-
+    
     public virtual void TakeDamage(float dama)
     {
         health.MyCurrentValue -= dama;

@@ -24,8 +24,12 @@ public class Enemy : NPC {
         }
     }
 
+    public float MyAttackRange { get; set; }
+
     protected void Awake()
     {
+        MyAttackRange = 1;
+
         ChangeState(new IdleState());
     }
 
