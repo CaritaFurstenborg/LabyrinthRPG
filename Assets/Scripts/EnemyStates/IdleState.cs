@@ -10,6 +10,8 @@ class IdleState : IState
     public void Enter(Enemy parent)
     {
         this.parent = parent;
+        
+        this.parent.Reset();
     }
 
     public void Exit()
@@ -19,7 +21,7 @@ class IdleState : IState
 
     public void Update()
     {
-        if (parent.Target != null)
+        if (parent.MyTarget != null)
         {
             parent.ChangeState(new FollowState());
         }

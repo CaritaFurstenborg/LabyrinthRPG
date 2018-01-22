@@ -8,6 +8,10 @@ public class AttackState : IState
 
     private Enemy parent;
 
+    private float attackCooldown = 3;
+
+    private float extraRange = 0.1f;
+
     public void Enter(Enemy parent)
     {
         this.parent = parent;
@@ -20,11 +24,18 @@ public class AttackState : IState
 
     public void Update()
     {
-        if(parent.Target != null)
+        if(parent.MyAttackTime >= attackCooldown && !parent.IsAttacking)
         {
-            float distance = Vector2.Distance(parent.Target.position, parent.transform.position);
+            parent.MyAttackTime = 0;
 
-            if(distance >= parent.MyAttackRange)
+            parent.StartCoroutine(Attack());
+        }
+
+        if(parent.MyTarget != null)
+        {
+            float distance = Vector2.Distance(parent.MyTarget.position, parent.transform.position);
+
+            if(distance >= parent.MyAttackRange + extraRange && !parent.IsAttacking)
             {
                 parent.ChangeState(new FollowState());
             }
@@ -34,4 +45,17 @@ public class AttackState : IState
             parent.ChangeState(new IdleState());
         }
     }
+
+    public IEnumerator Attack()
+    {
+        parent.IsAttacking = true;
+
+        parent.MyAnimator.SetTrigger("attack");
+        parent.IsMele = true;
+
+        yield return new WaitForSeconds(3);
+
+        parent.IsAttacking = false;
+    }
 }
+//parent.MyAnimator.GetCurrentAnimatorStateInfo(2).length

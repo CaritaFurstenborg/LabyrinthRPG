@@ -10,13 +10,11 @@ public abstract class Character : MonoBehaviour {
     [SerializeField]
     private float speed;
 
-    protected Animator animator;
+    public Animator MyAnimator { get; set; }
 
     private Vector2 direction; // inheriting objects can access
 
     private Rigidbody2D myRigidBody;
-
-    protected bool isAttacking = false;
 
     public bool IsMele { get; set; }
 
@@ -24,6 +22,8 @@ public abstract class Character : MonoBehaviour {
 
     [SerializeField]
     protected Transform hitBox;
+
+    public Transform MyTarget { get; set; }
 
     [SerializeField]
     protected Stats health;
@@ -70,12 +70,35 @@ public abstract class Character : MonoBehaviour {
         }
     }
 
+    public bool IsAttacking { get; set; }
+
+    public bool IsAlive
+    {
+        get
+        {
+            return MyHealth.MyCurrentValue > 0;
+        }
+    }
+
+    public float InitialHealth
+    {
+        get
+        {
+            return initialHealth;
+        }
+
+        set
+        {
+            initialHealth = value;
+        }
+    }
+
     // Use this for initialization
     protected virtual void Start () {
         myRigidBody = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        MyAnimator = GetComponent<Animator>();
 
-        health.Initialize(initialHealth, initialHealth);
+        health.Initialize(InitialHealth, InitialHealth);
         //resource.Initialize(initialResource, maxResource);     //   FIX THIS LATER!!!
     }
 	
@@ -92,53 +115,65 @@ public abstract class Character : MonoBehaviour {
 
     public void Move()
     {
-        myRigidBody.velocity = MyDirection.normalized * MySpeed;             
+        if(IsAlive)
+        {
+            myRigidBody.velocity = MyDirection.normalized * MySpeed;
+        }                   
     } 
 
     public void HandleLayers()
     {
-        if (isMoving)
+        if(IsAlive)
         {
-            ActivateLayer("WalkLayer");
+            if (isMoving)
+            {
+                ActivateLayer("WalkLayer");
 
-            animator.SetFloat("MoveX", MyDirection.x);
-            animator.SetFloat("MoveY", MyDirection.y);
-            animator.SetFloat("LastMoveX", MyDirection.x);
-            animator.SetFloat("LastMoveY", MyDirection.y);
-            animator.SetBool("isMoving", true);
-        }
-        else if(isAttacking && IsMele)
-        {
-            ActivateLayer("AttackLayer");
-        }
-        else if(isAttacking && !IsMele)
-        {
-            ActivateLayer("RAttackLayer");
+                MyAnimator.SetFloat("MoveX", MyDirection.x);
+                MyAnimator.SetFloat("MoveY", MyDirection.y);
+                MyAnimator.SetFloat("LastMoveX", MyDirection.x);
+                MyAnimator.SetFloat("LastMoveY", MyDirection.y);
+                MyAnimator.SetBool("isMoving", true);
+            }
+            else if (IsAttacking && IsMele)
+            {
+                ActivateLayer("AttackLayer");
+            }
+            else if (IsAttacking && !IsMele)
+            {
+                ActivateLayer("RAttackLayer");
+            }
+            else
+            {
+                ActivateLayer("IdleLayer");
+                MyAnimator.SetBool("isMoving", false);
+            }
         }
         else
         {
-            ActivateLayer("IdleLayer");
-            animator.SetBool("isMoving", false);
+            ActivateLayer("DeathLayer");
         }
     }
 
     public void ActivateLayer(string layerName)
     {
-        for(int i = 0; i < animator.layerCount; i++)
+        for(int i = 0; i < MyAnimator.layerCount; i++)
         {
-            animator.SetLayerWeight(i, 0);
+            MyAnimator.SetLayerWeight(i, 0);
         }
 
-        animator.SetLayerWeight(animator.GetLayerIndex(layerName), 1);
+        MyAnimator.SetLayerWeight(MyAnimator.GetLayerIndex(layerName), 1);
     }
     
-    public virtual void TakeDamage(float dama)
+    public virtual void TakeDamage(float dama, Transform source)
     {
         health.MyCurrentValue -= dama;
 
         if(health.MyCurrentValue <= 0)
         {
-            animator.SetTrigger("Die");
+            MyDirection = Vector2.zero;
+            myRigidBody.velocity = MyDirection;
+            MyAnimator.SetTrigger("Die");
         }
     } 
 }

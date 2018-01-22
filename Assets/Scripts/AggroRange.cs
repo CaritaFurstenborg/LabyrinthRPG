@@ -20,15 +20,7 @@ public class AggroRange : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
-            parent.Target = other.gameObject.transform;            
+            parent.SetTarget(other.transform);        
         }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if(other.tag == "Player")
-        {
-            parent.Target = null;
-        }
-    }
+    }    
 }

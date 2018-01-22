@@ -15,9 +15,6 @@ public class Player : Character {
     private int exitIndex = 2;
 
     private SpellBook spellBook;
-
-    public Transform MyTarget { get; set; }
-
     
     private float initialResource = 0;
     private float maxResource = 100;
@@ -93,9 +90,9 @@ public class Player : Character {
             IsMele = true; //this is Character class IsMele bool
         }
         
-        isAttacking = true;
+        IsAttacking = true;
 
-        animator.SetBool("isAttacking", isAttacking);
+        MyAnimator.SetBool("isAttacking", IsAttacking);
 
         yield return new WaitForSeconds(newSpell.MyCastTime); //Attacktime
 
@@ -103,13 +100,13 @@ public class Player : Character {
         {
             SpellScript s = Instantiate(newSpell.MySpellPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();
             
-            s.Initialize(currentTarget, newSpell.MyDamage, IsMele); //spells target = players target with set damage and type of spell
+            s.Initialize(currentTarget, newSpell.MyDamage, IsMele, transform); //spells target = players target with set damage and type of spell
         }
         else if (currentTarget != null && InLineOfSight() && newSpell.IsMele)
         {
             SpellScript s = Instantiate(newSpell.MySpellPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();
 
-            s.Initialize(currentTarget, newSpell.MyDamage, IsMele); //spells target = players target with set damage and type of spell
+            s.Initialize(currentTarget, newSpell.MyDamage, IsMele, transform); //spells target = players target with set damage and type of spell
         }
 
             StopAttack();
@@ -119,7 +116,7 @@ public class Player : Character {
     {
         BlockLOS();
 
-        if (MyTarget != null && !isAttacking && !isMoving && InLineOfSight())
+        if (MyTarget != null && MyTarget.GetComponentInParent<Enemy>().IsAlive && !IsAttacking && !isMoving && InLineOfSight())
         {
             attackRoutine = StartCoroutine(Attack(spellIndex));
         }        
@@ -157,8 +154,8 @@ public class Player : Character {
     {
         spellBook.StopCasting();
 
-        isAttacking = false;
-        animator.SetBool("isAttacking", isAttacking);
+        IsAttacking = false;
+        MyAnimator.SetBool("isAttacking", IsAttacking);
 
         if (attackRoutine != null)
         {

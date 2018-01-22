@@ -9,25 +9,27 @@ public class Enemy : NPC {
 
     private IState currentState;
 
-    private Transform target;
+    public float MyAttackRange { get; set; }
 
-    public Transform Target
+    public float MyAttackTime { get; set; }
+
+    [SerializeField]
+    private float InitialAggroRange;
+
+    public float MyAggroRange { get; set; }
+
+    public bool InRange
     {
         get
         {
-            return target;
-        }
-
-        set
-        {
-            target = value;
+            return Vector2.Distance(transform.position, MyTarget.transform.position) < MyAggroRange;
         }
     }
-
-    public float MyAttackRange { get; set; }
-
+    
     protected void Awake()
     {
+        MyAggroRange = InitialAggroRange;
+
         MyAttackRange = 1;
 
         ChangeState(new IdleState());
@@ -35,7 +37,15 @@ public class Enemy : NPC {
 
     protected override void Update()
     {
-        currentState.Update();
+        if(IsAlive)
+        {
+            if (!IsAttacking)
+            {
+                MyAttackTime += Time.deltaTime;
+            }
+
+            currentState.Update();            
+        }
 
         base.Update();
     }
@@ -54,9 +64,11 @@ public class Enemy : NPC {
         base.DeSelect();
     }
 
-    public override void TakeDamage(float dama)
+    public override void TakeDamage(float dama, Transform source)
     {
-        base.TakeDamage(dama);
+        SetTarget(source);
+
+        base.TakeDamage(dama, source);
 
         OnHealthChanged(health.MyCurrentValue);
     }    
@@ -71,5 +83,24 @@ public class Enemy : NPC {
         currentState = newState;
 
         currentState.Enter(this);
+    }
+
+    public void SetTarget(Transform target)
+    {
+        if(MyTarget == null)
+        {
+            float distance = Vector2.Distance(transform.position, target.position);
+            MyAggroRange = InitialAggroRange;
+            MyAggroRange += distance;
+            MyTarget = target;
+        }
+    }
+
+    public void Reset()
+    {
+        MyTarget = null;
+        this.MyAggroRange = InitialAggroRange;
+        this.MyHealth.MyCurrentValue = this.InitialHealth;
+        OnHealthChanged(health.MyCurrentValue);
     }
 }

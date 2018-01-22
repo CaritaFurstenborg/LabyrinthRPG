@@ -12,6 +12,8 @@ public class SpellScript : MonoBehaviour
 
     public Transform MyTarget { get; private set; } //Property
 
+    private Transform source;
+
     public bool IsMele { get; private set; } //check for mele
 
     private int damage;
@@ -22,11 +24,12 @@ public class SpellScript : MonoBehaviour
         myRigidBody = GetComponent<Rigidbody2D>();
     }
 
-    public void Initialize(Transform target, int damage, bool isMele)
+    public void Initialize(Transform target, int damage, bool isMele, Transform source)
     {
         this.MyTarget = target;
         this.damage = damage;
         this.IsMele = isMele; // setting IsMele based on Character class 
+        this.source = source;
     }
 
     // Update is called once per frame
@@ -47,8 +50,10 @@ public class SpellScript : MonoBehaviour
     {
         if (other.tag == "HitBox" && other.transform == MyTarget)
         {
+            Character c = other.GetComponentInParent<Character>();
             speed = 0;
-            other.GetComponentInParent<Enemy>().TakeDamage(damage);
+
+            c.TakeDamage(damage, source);
             GetComponent<Animator>().SetTrigger("onHit");
             myRigidBody.velocity = Vector2.zero;
             MyTarget = null;
