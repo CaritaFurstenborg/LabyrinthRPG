@@ -8,11 +8,11 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour {
 
     [SerializeField]
-    protected float speed;
+    private float speed;
 
     protected Animator animator;
 
-    protected Vector2 direction; // inheriting objects can access
+    private Vector2 direction; // inheriting objects can access
 
     private Rigidbody2D myRigidBody;
 
@@ -40,9 +40,35 @@ public abstract class Character : MonoBehaviour {
     {
         get
         {
-            return (direction.x != 0 || direction.y != 0);            
+            return (MyDirection.x != 0 || MyDirection.y != 0);            
         }
     } // Property bool for checking if character is moving
+
+    public Vector2 MyDirection
+    {
+        get
+        {
+            return direction;
+        }
+
+        set
+        {
+            direction = value;
+        }
+    }
+
+    public float MySpeed
+    {
+        get
+        {
+            return speed;
+        }
+
+        set
+        {
+            speed = value;
+        }
+    }
 
     // Use this for initialization
     protected virtual void Start () {
@@ -66,7 +92,7 @@ public abstract class Character : MonoBehaviour {
 
     public void Move()
     {
-        myRigidBody.velocity = direction.normalized * speed;             
+        myRigidBody.velocity = MyDirection.normalized * MySpeed;             
     } 
 
     public void HandleLayers()
@@ -75,10 +101,10 @@ public abstract class Character : MonoBehaviour {
         {
             ActivateLayer("WalkLayer");
 
-            animator.SetFloat("MoveX", direction.x);
-            animator.SetFloat("MoveY", direction.y);
-            animator.SetFloat("LastMoveX", direction.x);
-            animator.SetFloat("LastMoveY", direction.y);
+            animator.SetFloat("MoveX", MyDirection.x);
+            animator.SetFloat("MoveY", MyDirection.y);
+            animator.SetFloat("LastMoveX", MyDirection.x);
+            animator.SetFloat("LastMoveY", MyDirection.y);
             animator.SetBool("isMoving", true);
         }
         else if(isAttacking && IsMele)

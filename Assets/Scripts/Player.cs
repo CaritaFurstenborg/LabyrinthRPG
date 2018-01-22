@@ -40,7 +40,7 @@ public class Player : Character {
 
     private void GetInput()
     {
-        direction = Vector2.zero;
+        MyDirection = Vector2.zero;
 
         if (Input.GetKey(KeyCode.Alpha8)) // TESTING & DEBUGGING
         {
@@ -56,22 +56,22 @@ public class Player : Character {
         if (Input.GetKey(KeyCode.W))
         {
             exitIndex = 0;
-            direction += Vector2.up;
+            MyDirection += Vector2.up;
         }
         if (Input.GetKey(KeyCode.A))
         {
             exitIndex = 3;
-            direction += Vector2.left;
+            MyDirection += Vector2.left;
         }
         if (Input.GetKey(KeyCode.S))
         {
             exitIndex = 2;
-            direction += Vector2.down;
+            MyDirection += Vector2.down;
         }
         if (Input.GetKey(KeyCode.D))
         {
             exitIndex = 1;
-            direction += Vector2.right;
+            MyDirection += Vector2.right;
         }
     }
 

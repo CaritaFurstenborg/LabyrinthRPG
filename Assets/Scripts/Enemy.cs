@@ -7,6 +7,8 @@ public class Enemy : NPC {
     [SerializeField]
     private CanvasGroup healthgroup;
 
+    private IState currentState;
+
     private Transform target;
 
     public Transform Target
@@ -22,9 +24,14 @@ public class Enemy : NPC {
         }
     }
 
+    protected void Awake()
+    {
+        ChangeState(new IdleState());
+    }
+
     protected override void Update()
     {
-        FollowTarget();
+        currentState.Update();
 
         base.Update();
     }
@@ -48,18 +55,17 @@ public class Enemy : NPC {
         base.TakeDamage(dama);
 
         OnHealthChanged(health.MyCurrentValue);
-    }
+    }    
 
-    private void FollowTarget()
+    public void ChangeState(IState newState)
     {
-        if(target != null)
+        if(currentState != null)
         {
-            direction = (target.transform.position - transform.position).normalized;
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            currentState.Exit();
         }
-        else
-        {
-            direction = Vector2.zero;
-        }
+
+        currentState = newState;
+
+        currentState.Enter(this);
     }
 }

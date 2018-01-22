@@ -17,13 +17,13 @@ public class QuestObject : MonoBehaviour {
 
     private bool intTrigger = false;
 
-    private NpcMovement npcMove;
+    private NPC npcMove;
 
     // Use this for initialization
     void Start () {
-        if(gameObject.GetComponent<NpcMovement>() != null) // check if questgiver is NPC
+        if(gameObject.GetComponent<NPC>() != null) // check if questgiver is NPC
         {
-            npcMove = gameObject.GetComponent<NpcMovement>();
+            npcMove = gameObject.GetComponent<NPC>();
         }        
         SetQuestMarker();
 	}
@@ -37,10 +37,7 @@ public class QuestObject : MonoBehaviour {
             QuestUIManager.uiManagerQ.CheckQuests(this);
 
             //set NPC to stay put while quest panel is open
-            if (npcMove != null)
-            {
-                npcMove.canMove = false;
-            }
+
         }      
     }
 

@@ -2834,6 +2834,7 @@ MonoBehaviour:
   currentHp: 0
   currentAttackLevel: 0
   currentDefLevel: 0
+  pHealth: {fileID: 0}
 --- !u!114 &692491887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3670,7 +3671,8 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114849458471017954, guid: 7437654b29cb7ad4695d9ff6bb601c2c, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 7437654b29cb7ad4695d9ff6bb601c2c, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &938042001
@@ -3882,7 +3884,6 @@ GameObject:
   - component: {fileID: 1051600375}
   - component: {fileID: 1051600374}
   - component: {fileID: 1051600373}
-  - component: {fileID: 1051600372}
   - component: {fileID: 1051600377}
   m_Layer: 9
   m_Name: Elsa
@@ -3891,22 +3892,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1051600372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1051600371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76604b17ebd130e48b32aca8680576fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 1
-  walkTime: 1
-  waitTime: 5
-  walkZone: {fileID: 1465194003}
-  canMove: 0
 --- !u!50 &1051600373
 Rigidbody2D:
   serializedVersion: 4
@@ -6625,7 +6610,6 @@ GameObject:
   - component: {fileID: 1777443531}
   - component: {fileID: 1777443530}
   - component: {fileID: 1777443529}
-  - component: {fileID: 1777443528}
   - component: {fileID: 1777443533}
   m_Layer: 0
   m_Name: Oscar
@@ -6634,22 +6618,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1777443528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1777443527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76604b17ebd130e48b32aca8680576fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 1
-  walkTime: 1
-  waitTime: 5
-  walkZone: {fileID: 887816541}
-  canMove: 0
 --- !u!50 &1777443529
 Rigidbody2D:
   serializedVersion: 4
