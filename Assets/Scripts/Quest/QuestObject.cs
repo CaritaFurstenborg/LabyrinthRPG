@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuestObject : MonoBehaviour {
+public class QuestObject : NPC {
+
+    [SerializeField]
+    private CanvasGroup healthgroup;
 
     public List<int> availableQuestID = new List<int>();
     public List<int> receivableQuestID = new List<int>();
@@ -15,37 +18,36 @@ public class QuestObject : MonoBehaviour {
     public Sprite questReceivableSprite;
     public Sprite questActiveSprite;
 
-    private bool intTrigger = false;
-
-    private NPC npcMove;
+    private bool inTrigger = false;
 
     // Use this for initialization
-    void Start () {
-        if(gameObject.GetComponent<NPC>() != null) // check if questgiver is NPC
-        {
-            npcMove = gameObject.GetComponent<NPC>();
-        }        
+    protected override void Start () {      
         SetQuestMarker();
+
+        base.Start();
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    protected override void Update () {
+
         SetQuestMarker();
-		if(intTrigger && Input.GetKeyDown(KeyCode.K))
+
+        base.Update();
+		/*if(intTrigger && Input.GetKeyDown(KeyCode.K))
         {
             //quest ui manager            
             QuestUIManager.uiManagerQ.CheckQuests(this);
 
             //set NPC to stay put while quest panel is open
 
-        }      
+        }  */    
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.name == "Player")
         {
-            intTrigger = true;
+            inTrigger = true;
         }
     }
 
@@ -53,7 +55,7 @@ public class QuestObject : MonoBehaviour {
     {
         if (other.gameObject.name == "Player")
         {
-            intTrigger = false;
+            inTrigger = false;
         }
     }
 
@@ -77,6 +79,18 @@ public class QuestObject : MonoBehaviour {
         else
         {
             questMarker.SetActive(false);
+        }
+    }
+
+    public void TalkToNpC()
+    {
+        if(inTrigger)
+        {
+            QuestUIManager.uiManagerQ.CheckQuests(this);
+        }
+        else
+        {
+            Debug.Log("Target out of range");
         }
     }
 }

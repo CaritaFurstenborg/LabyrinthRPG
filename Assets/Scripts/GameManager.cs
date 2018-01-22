@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private Player player;
 
-    private NPC currentTarget;
+    private NPC currentTarget;      // any targettable NPC or enemy
+
+    private QuestObject talkTarget;
 
 	// Use this for initialization
 	void Start () {
@@ -50,6 +52,22 @@ public class GameManager : MonoBehaviour {
                     player.MyTarget = null;                    
                 }
             }
-        }        
+        }
+        else if (Input.GetMouseButtonDown(1))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, 512);
+
+            if (hit.collider != null && hit.collider.GetComponent<QuestObject>() != null)
+            {
+                if (currentTarget != null)
+                {
+                    currentTarget.DeSelect();
+                }
+
+                talkTarget = hit.collider.GetComponent<QuestObject>();
+
+                talkTarget.TalkToNpC();
+            }
+        }
     }
 }

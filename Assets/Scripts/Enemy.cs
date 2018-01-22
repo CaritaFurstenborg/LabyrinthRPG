@@ -6,19 +6,19 @@ public class Enemy : NPC {
 
     [SerializeField]
     private CanvasGroup healthgroup;
-
+    // Enemy State swapping
     private IState currentState;
 
     [SerializeField]
-    private float InitialAggroRange;
+    private float InitialAggroRange; // The initial aggro range of enemy
 
-    public float MyAggroRange { get; set; }
+    public float MyAggroRange { get; set; }     // Aggro range to be calculated and set
 
-    public float MyAttackRange { get; set; }
+    public float MyAttackRange { get; set; }        // Range from whitch the enemy can start attacking
 
-    public float MyAttackTime { get; set; }
+    public float MyAttackTime { get; set; }         //
 
-    public Vector3 MyStartPosition { get; set; }
+    public Vector3 MyStartPosition { get; set; }        // Start position that the enemy will return to if evades
 
     public bool InRange
     {
@@ -26,22 +26,22 @@ public class Enemy : NPC {
         {
             return Vector2.Distance(transform.position, MyTarget.transform.position) < MyAggroRange;
         }
-    }
+    }       // Check for being in range of target
     
     protected void Awake()
     {
-        MyStartPosition = transform.position;
+        MyStartPosition = transform.position;       // Set start position (enemy will return if evades)
 
-        MyAggroRange = InitialAggroRange;
+        MyAggroRange = InitialAggroRange;           // My aggro range will be calculated based on character attack distance
 
-        MyAttackRange = 1;
+        MyAttackRange = 1;                          // The range from player that the enemy will start attacking
 
-        ChangeState(new IdleState());
+        ChangeState(new IdleState());               // On start sets to  idle
     }
 
     protected override void Update()
     {
-        if(IsAlive)
+        if(IsAlive)                                 
         {
             if (!IsAttacking)
             {

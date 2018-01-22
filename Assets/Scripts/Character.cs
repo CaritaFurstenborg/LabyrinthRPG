@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Class for any characters to use
+// Any new character to be created will automatically have rigidBody2D and Animator
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
 public abstract class Character : MonoBehaviour {
 
     [SerializeField]
-    private float speed;
+    private float speed;        // Character movespeed
 
-    public Animator MyAnimator { get; set; }
+    public Animator MyAnimator { get; set; }        //Character animator
 
-    private Vector2 direction; // inheriting objects can access
+    private Vector2 direction;              // Character direction
 
-    private Rigidbody2D myRigidBody;
+    private Rigidbody2D myRigidBody;        // Rigidbody for animator
 
-    public bool IsMele { get; set; }
+    public bool IsMele { get; set; }        // Defines if attack shound be mele (needed for animator)
 
-    protected Coroutine attackRoutine;
+    protected Coroutine attackRoutine;      // 
 
     [SerializeField]
     protected Transform hitBox;
@@ -107,12 +107,12 @@ public abstract class Character : MonoBehaviour {
 	protected virtual void Update () {
         HandleLayers();       
 	}
-
+    // Using fixed update because moving a rigid body
     private void FixedUpdate()
     {
         Move();
     }
-
+    // handles character move
     public void Move()
     {
         if(IsAlive)
@@ -120,7 +120,7 @@ public abstract class Character : MonoBehaviour {
             myRigidBody.velocity = MyDirection.normalized * MySpeed;
         }                   
     } 
-
+    // Handles switching to correct animation layer based on bools
     public void HandleLayers()
     {
         if(IsAlive)
@@ -154,8 +154,8 @@ public abstract class Character : MonoBehaviour {
             ActivateLayer("DeathLayer");
         }
     }
-
-    public void ActivateLayer(string layerName)
+    // Activates animation layer by name
+    public void ActivateLayer(string layerName)     
     {
         for(int i = 0; i < MyAnimator.layerCount; i++)
         {
@@ -164,7 +164,7 @@ public abstract class Character : MonoBehaviour {
 
         MyAnimator.SetLayerWeight(MyAnimator.GetLayerIndex(layerName), 1);
     }
-    
+    // Take damage method for controlling health loss and death and setting animator trigger to die
     public virtual void TakeDamage(float dama, Transform source)
     {
         health.MyCurrentValue -= dama;
