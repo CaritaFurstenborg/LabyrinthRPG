@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour {
 
-    private static UiManager instance;
+    private static UiManager instance;      // Sets UiManager to singleton
 
     public static UiManager MyInstance
     {
@@ -18,29 +18,34 @@ public class UiManager : MonoBehaviour {
 
             return instance;
         }
-    }
+    }       // Property for accessing UiManager instance
 
     [SerializeField]
-    private Button[] actionButtons;
+    private Button[] actionButtons;         //action buttons array
 
-    private KeyCode action1, action2, action3;
-
-    [SerializeField]
-    private GameObject targetFrame;
-
-    private Stats healthStat;
+    private KeyCode action1, action2, action3;      // action buttons for keybinds
 
     [SerializeField]
-    private Image avatarImage;
+    private GameObject targetFrame;         // reference to the unit frame of target
 
-	// Use this for initialization
-	void Start () {
+    private Stats healthStat;               // reference to the health stat of target unityframe
+
+    [SerializeField]
+    private Image avatarImage;              // reference to the image of target unitframe
+
+    [SerializeField]
+    private GameObject mainMenu;           //Reference to main menu
+
+    // Use this for initialization
+    void Start () {
+        mainMenu.SetActive(false);
         healthStat = targetFrame.GetComponentInChildren<Stats>();
 
         //Keybinds
         action1 = KeyCode.Alpha1;
         action2 = KeyCode.Alpha2;
         action3 = KeyCode.Alpha3;
+        
     }
 	
 	// Update is called once per frame
@@ -57,8 +62,12 @@ public class UiManager : MonoBehaviour {
         {
             ActionButtonOnClick(2);
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ToggleMenu();
+        }
     }
-
+    //Method for invoking the on click on button press
     private void ActionButtonOnClick(int btnIndex)
     {
         actionButtons[btnIndex].onClick.Invoke();
@@ -84,5 +93,21 @@ public class UiManager : MonoBehaviour {
     public void UpdateTargetFrame(float health)
     {
         healthStat.MyCurrentValue = health;
+    }
+
+    public void ToggleMenu()
+    {
+        if(!mainMenu.activeSelf)        // if menu not active activate
+        {
+            mainMenu.SetActive(true);
+            Debug.Log("Menu active");
+        }
+        else
+        {
+            mainMenu.SetActive(false);      //else deactivate
+            Debug.Log("Menu Deactive");
+        }
+
+        Time.timeScale = Time.timeScale > 0 ? 0 : 1; // Pause functio
     }
 }

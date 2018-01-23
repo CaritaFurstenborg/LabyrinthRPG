@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
 
     private NPC currentTarget;      // any targettable NPC or enemy
 
-    private QuestObject talkTarget;
+    private QuestObject talkTarget; // for questGiver
 
 	// Use this for initialization
 	void Start () {

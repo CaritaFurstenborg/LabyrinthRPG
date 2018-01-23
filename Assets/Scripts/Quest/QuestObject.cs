@@ -56,6 +56,7 @@ public class QuestObject : NPC {
         if (other.gameObject.name == "Player")
         {
             inTrigger = false;
+            QuestUIManager.uiManagerQ.HideQuestPanel();
         }
     }
 
