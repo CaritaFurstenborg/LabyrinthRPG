@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Character {
-    
+
+    private PlayerInfo playerI;
+
+    private static bool playerExists;   //Check if player exists in area
+
     [SerializeField]
     private Stats resource;
     
@@ -18,10 +22,35 @@ public class Player : Character {
     
     private float initialResource = 0;
     private float maxResource = 100;
+
+    [SerializeField]
+    private SpriteRenderer weaponType;
+
+    [SerializeField]
+    private Sprite[] weapon;
     
 
     // Use this for initialization
-    protected override void Start () {        
+    protected override void Start () {
+        playerI = FindObjectOfType<PlayerInfo>();
+        if(playerI.MyPlayerClass == "mage")
+        {
+            weaponType.sprite = weapon[3];
+        } 
+        else
+        {
+            weaponType.sprite = weapon[0];
+        }
+        // Check for transfering between zones so no duplicate players
+        if (!playerExists)
+        {
+            playerExists = true;
+            DontDestroyOnLoad(transform.gameObject);
+        } 
+        else
+        {
+            Destroy(gameObject);
+        }
 
         spellBook = GetComponent<SpellBook>();
 

@@ -1,12 +1,13 @@
 fileFormatVersion: 2
 guid: 9c5f8bff2d3585340ad9919a0282405c
-timeCreated: 1515176325
+timeCreated: 1517042543
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: weapons_0
     21300002: weapons_1
     21300004: weapons_2
+    21300006: weapons_3
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -110,7 +111,7 @@ TextureImporter:
         width: 4
         height: 17
       alignment: 9
-      pivot: {x: 0.49999997, y: 0.099328995}
+      pivot: {x: 0.5000002, y: 0.09131544}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -124,7 +125,7 @@ TextureImporter:
         width: 6
         height: 17
       alignment: 9
-      pivot: {x: 0.66664, y: 0.11403252}
+      pivot: {x: 0.65893286, y: 0.09932888}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -138,7 +139,21 @@ TextureImporter:
         width: 4
         height: 13
       alignment: 9
-      pivot: {x: 0.5, y: 0.08660478}
+      pivot: {x: 0.5000005, y: 0.09131549}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: weapons_3
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1
+        width: 4
+        height: 31
+      alignment: 9
+      pivot: {x: 0.51702833, y: 0.44726655}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

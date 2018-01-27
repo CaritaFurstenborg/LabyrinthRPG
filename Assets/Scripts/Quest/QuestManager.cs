@@ -22,7 +22,7 @@ public class QuestManager : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     public void RequestQuest(QuestObject questNPC)
