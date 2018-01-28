@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
 
+    private static CameraFollow cam;
+
     private Transform target;
 
     [SerializeField]
@@ -13,6 +15,16 @@ public class CameraFollow : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        if(cam == null)
+        {
+            cam = GetComponent<CameraFollow>();
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         target = GameObject.FindGameObjectWithTag("Player").transform;
 
         Vector3 minTile = boundBox.bounds.min;

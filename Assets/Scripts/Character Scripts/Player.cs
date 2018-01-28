@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Character {
-
+    [SerializeField]
     private PlayerInfo playerI;
 
     private static bool playerExists;   //Check if player exists in area
@@ -102,6 +102,14 @@ public class Player : Character {
         if(isMoving)
         {
             StopAttack();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            Debug.Log(playerI.MyPlayerClass);
+            Debug.Log(playerI.MyPlayerLevel);
+            Debug.Log(playerI.MyStamina);
+            Debug.Log(playerI.MyStrength);
+            Debug.Log(playerI.MyIntelligence);
         }
     }
 

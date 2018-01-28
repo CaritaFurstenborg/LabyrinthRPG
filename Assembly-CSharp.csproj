@@ -85,7 +85,10 @@
      <Compile Include="Assets\Scripts\Quest\QuestManager.cs" />
      <Compile Include="Assets\Scripts\Quest\QuestObject.cs" />
      <Compile Include="Assets\Scripts\Quest\QuestUIManager.cs" />
+     <Compile Include="Assets\Scripts\StartScreen\PlayerCreation.cs" />
+     <Compile Include="Assets\Scripts\StartScreen\PlayerData.cs" />
      <Compile Include="Assets\Scripts\StartScreen\PlayerInfo.cs" />
+     <Compile Include="Assets\Scripts\StartScreen\SaveLoadManager.cs" />
      <Compile Include="Assets\Scripts\Stats.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\CircleObject.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\GameObjectExtensions.cs" />
