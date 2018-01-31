@@ -7,11 +7,18 @@ public class Bounds : MonoBehaviour {
     private BoxCollider2D bounds;
     private CameraFollow theCamera;
 
-	// Use this for initialization
-	void Start () {
-        bounds = GetComponent<BoxCollider2D>();
-        theCamera = FindObjectOfType<CameraFollow>();
 
-        //theCamera.SetBounds(bounds);
-	}
+    void Update()
+    {
+        if(bounds == null)
+        {
+            bounds = GetComponent<BoxCollider2D>();
+        }
+
+        if(theCamera == null)
+        {
+            theCamera = FindObjectOfType<CameraFollow>();
+            //theCamera.SetBounds(bounds);
+        }
+    }
 }

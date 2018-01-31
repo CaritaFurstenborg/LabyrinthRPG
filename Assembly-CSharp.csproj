@@ -85,6 +85,8 @@
      <Compile Include="Assets\Scripts\Quest\QuestManager.cs" />
      <Compile Include="Assets\Scripts\Quest\QuestObject.cs" />
      <Compile Include="Assets\Scripts\Quest\QuestUIManager.cs" />
+     <Compile Include="Assets\Scripts\StartScreen\LevelManagerScript.cs" />
+     <Compile Include="Assets\Scripts\StartScreen\LoadLevelTrigger.cs" />
      <Compile Include="Assets\Scripts\StartScreen\PlayerCreation.cs" />
      <Compile Include="Assets\Scripts\StartScreen\PlayerData.cs" />
      <Compile Include="Assets\Scripts\StartScreen\PlayerInfo.cs" />

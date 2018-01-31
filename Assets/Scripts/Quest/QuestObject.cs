@@ -21,9 +21,7 @@ public class QuestObject : NPC {
     private bool inTrigger = false;
 
     // Use this for initialization
-    protected override void Start () {      
-        SetQuestMarker();
-
+    protected override void Start () { 
         base.Start();
 	}
 

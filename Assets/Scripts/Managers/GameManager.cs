@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour {
-
-    [SerializeField]
+        
     private Player player;
 
     private NPC currentTarget;      // any targettable NPC or enemy
@@ -14,16 +13,24 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        player = FindObjectOfType<Player>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if(player == null)
+        {
+            player = FindObjectOfType<Player>();
+        }
         ClickTarget();
 	}
 
     private void ClickTarget()
     {
+        if(EventSystem.current == null)
+        {
+            Debug.Log("No eventsystem in scene");
+        } 
         if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, 512);

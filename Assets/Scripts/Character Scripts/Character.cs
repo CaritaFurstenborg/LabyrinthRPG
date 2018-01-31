@@ -159,6 +159,10 @@ public abstract class Character : MonoBehaviour {
     {
         for(int i = 0; i < MyAnimator.layerCount; i++)
         {
+            if(MyAnimator == null)
+            {
+                Debug.Log("Animator not found");
+            }
             MyAnimator.SetLayerWeight(i, 0);
         }
 

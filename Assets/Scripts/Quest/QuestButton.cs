@@ -9,29 +9,42 @@ public class QuestButton : MonoBehaviour {
     public Text questTitle;
 
     //buttons
-    /*private GameObject acceptQuestB;
+    private GameObject acceptQuestB;
     private GameObject abandonQuestB;
-    private GameObject completeQuestB;*/
+    private GameObject completeQuestB;
 
-    /*private QuestButton acceptButtonScript;
+    private QuestButton acceptButtonScript;
     private QuestButton abandonButtonScript;
     private QuestButton completeButtonScript;
 
-    void Start()
+    void Update()
     {
-        acceptQuestB = GameObject.Find("QuestPanel").transform.Find("QuestDescription").transform.Find("ButtonsSpacer").transform.Find("QPAcceptButton").gameObject;
-        acceptButtonScript = acceptQuestB.GetComponent<QuestButton>();
+        if(acceptQuestB == null)
+        {
+            acceptQuestB = GameObject.Find("CanvasUiManager").transform.Find("QuestPanel").transform.Find("QuestDescription").transform.Find("ButtonsSpacer").transform.Find("QPAcceptButton").gameObject;
+            acceptButtonScript = acceptQuestB.GetComponent<QuestButton>();
+            acceptQuestB.SetActive(false);
+        }
+        if(abandonQuestB == null)
+        {
+            abandonQuestB = GameObject.Find("CanvasUiManager").transform.Find("QuestLogPanel").transform.Find("QuestDescription").transform.Find("ButtonsSpacer").transform.Find("AbandonButton").gameObject;
+            abandonButtonScript = abandonQuestB.GetComponent<QuestButton>();
+            abandonQuestB.SetActive(false);
+        }
 
-        abandonQuestB = GameObject.Find("QuestPanel").transform.Find("QuestDescription").transform.Find("ButtonsSpacer").transform.Find("AbandonButton").gameObject;
-        abandonButtonScript = abandonQuestB.GetComponent<QuestButton>();
+        if(completeQuestB == null)
+        {
+            completeQuestB = GameObject.Find("CanvasUiManager").transform.Find("QuestPanel").transform.Find("QuestDescription").transform.Find("ButtonsSpacer").transform.Find("QPCompleteButton").gameObject;
+            completeButtonScript = completeQuestB.GetComponent<QuestButton>();
+            completeQuestB.SetActive(false);
+        }
 
-        completeQuestB = GameObject.Find("QuestPanel").transform.Find("QuestDescription").transform.Find("ButtonsSpacer").transform.Find("QPCompleteButton").gameObject;
-        completeButtonScript = completeQuestB.GetComponent<QuestButton>();       
+        if(QuestManager.questManager == null)
+        {
+            Debug.Log("QuestUiManager missing!");
+        }
         
-        acceptQuestB.SetActive(false);
-        abandonQuestB.SetActive(false);
-        completeQuestB.SetActive(false);
-    }*/
+    }
 
     //show info by selecting a quest from the available quests
     public void ShowAllInfo()
@@ -63,6 +76,8 @@ public class QuestButton : MonoBehaviour {
     {
         QuestManager.questManager.AcceptQuest(questID);        
         QuestUIManager.uiManagerQ.HideQuestPanel(); //shut questpanel on accepting
+
+        Debug.Log("Quest Accepted");
 
         //update all other npcs
         QuestObject[] currentQuestNPCs = FindObjectsOfType(typeof(QuestObject)) as QuestObject[];

@@ -48,18 +48,7 @@ public class QuestUIManager : MonoBehaviour
 
     void Start()
     {
-        acceptButton = GameObject.Find("CanvasUiManager").transform.Find("QuestPanel").transform.Find("QuestDescription").transform.Find("ButtonsSpacer").transform.Find("QPAcceptButton").gameObject;
-        acceptButtonScript = acceptButton.GetComponent<QuestButton>();
-
-        abandonButton = GameObject.Find("CanvasUiManager").transform.Find("QuestLogPanel").transform.Find("QuestDescription").transform.Find("ButtonsSpacer").transform.Find("AbandonButton").gameObject;
-        abandonButtonScript = abandonButton.GetComponent<QuestButton>();
-
-        completeButton = GameObject.Find("CanvasUiManager").transform.Find("QuestPanel").transform.Find("QuestDescription").transform.Find("ButtonsSpacer").transform.Find("QPCompleteButton").gameObject;
-        completeButtonScript = completeButton.GetComponent<QuestButton>();
-
-        acceptButton.SetActive(false);
-        abandonButton.SetActive(false);
-        completeButton.SetActive(false);
+        
     }
     // grabbed from quest button script END...
 
@@ -74,7 +63,7 @@ public class QuestUIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         HideQuestPanel();
     }
@@ -82,6 +71,28 @@ public class QuestUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(acceptButton == null)
+        {
+            acceptButton = GameObject.Find("CanvasUiManager").transform.Find("QuestPanel").transform.Find("QuestDescription").transform.Find("ButtonsSpacer").transform.Find("QPAcceptButton").gameObject;
+            acceptButtonScript = acceptButton.GetComponent<QuestButton>();
+            acceptButton.SetActive(false);
+        }
+
+        if(abandonButton == null)
+        {
+            abandonButton = GameObject.Find("CanvasUiManager").transform.Find("QuestLogPanel").transform.Find("QuestDescription").transform.Find("ButtonsSpacer").transform.Find("AbandonButton").gameObject;
+            abandonButtonScript = abandonButton.GetComponent<QuestButton>();
+            abandonButton.SetActive(false);
+        }
+
+        if(completeButton == null)
+        {
+            completeButton = GameObject.Find("CanvasUiManager").transform.Find("QuestPanel").transform.Find("QuestDescription").transform.Find("ButtonsSpacer").transform.Find("QPCompleteButton").gameObject;
+            completeButtonScript = completeButton.GetComponent<QuestButton>();
+            completeButton.SetActive(false);
+        }
+
+
         if (Input.GetKeyDown(KeyCode.L))
         {
             questLogActive = !questLogActive;

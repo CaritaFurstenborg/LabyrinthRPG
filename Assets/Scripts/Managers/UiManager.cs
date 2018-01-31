@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour {
@@ -110,4 +111,12 @@ public class UiManager : MonoBehaviour {
 
         Time.timeScale = Time.timeScale > 0 ? 0 : 1; // Pause functio
     }
+
+    public void ExitCurrentGame()
+    {
+        PlayerInfo.playerInfo.Save();
+        SceneManager.UnloadSceneAsync("Level1");
+        SceneManager.LoadScene("StartScreen");
+    }
+
 }

@@ -47,7 +47,7 @@ public class Enemy : NPC {
             {
                 MyAttackTime += Time.deltaTime;
             }
-
+            
             currentState.Update();            
         }
 

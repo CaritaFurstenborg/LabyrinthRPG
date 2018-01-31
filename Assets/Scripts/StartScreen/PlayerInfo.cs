@@ -5,34 +5,104 @@ using UnityEngine.SceneManagement;
 
 public class PlayerInfo : MonoBehaviour {
     //Static = only one instance
-    private static PlayerInfo playerInfo;
+    public static PlayerInfo playerInfo;
     // Player definitions
-    
+    [SerializeField]
     private string playerName;
+
     [SerializeField]
-    public string MyPlayerName { get; set; }
-    
     private string playerClass;
+
     [SerializeField]
-    public string MyPlayerClass { get; set; }
-    
     private int playerLevel;
-    [SerializeField]
-    public int MyPlayerLevel { get; set; }
 
     //player stats
-    
+    [SerializeField]
     private int stamina;
+
     [SerializeField]
-    public int MyStamina { get; set; }
-    
     private int intelligence;
+
     [SerializeField]
-    public int MyIntelligence { get; set; }
-    
     private int strength;
-    [SerializeField]
-    public int MyStrength { get; set; }
+
+    public string MyPlayerName
+    {
+        get
+        {
+            return playerName;
+        }
+
+        set
+        {
+            playerName = value;
+        }
+    }
+
+    public string MyPlayerClass
+    {
+        get
+        {
+            return playerClass;
+        }
+
+        set
+        {
+            playerClass = value;
+        }
+    }
+
+    public int MyPlayerLevel
+    {
+        get
+        {
+            return playerLevel;
+        }
+
+        set
+        {
+            playerLevel = value;
+        }
+    }
+
+    public int MyStamina
+    {
+        get
+        {
+            return stamina;
+        }
+
+        set
+        {
+            stamina = value;
+        }
+    }
+
+    public int MyIntelligence
+    {
+        get
+        {
+            return intelligence;
+        }
+
+        set
+        {
+            intelligence = value;
+        }
+    }
+
+    public int MyStrength
+    {
+        get
+        {
+            return strength;
+        }
+
+        set
+        {
+            strength = value;
+        }
+    }
 
     void Awake()
     {
@@ -83,7 +153,8 @@ public class PlayerInfo : MonoBehaviour {
         MyPlayerName = loadedDefs[0];
         MyPlayerClass = loadedDefs[1];
 
-        SceneManager.LoadScene("Level1");
+        LevelManagerScript.levelManager.LoadLevel("Level1");
+        LevelManagerScript.levelManager.UnloadLevel("StartScreen");
     }
     
 }

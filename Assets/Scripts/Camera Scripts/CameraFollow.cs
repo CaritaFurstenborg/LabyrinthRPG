@@ -18,7 +18,7 @@ public class CameraFollow : MonoBehaviour {
         if(cam == null)
         {
             cam = GetComponent<CameraFollow>();
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
         else
         {
@@ -26,6 +26,7 @@ public class CameraFollow : MonoBehaviour {
         }
 
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        boundBox = FindObjectOfType<Bounds>().GetComponent<BoxCollider2D>();
 
         Vector3 minTile = boundBox.bounds.min;
         Vector3 maxTile = boundBox.bounds.max;

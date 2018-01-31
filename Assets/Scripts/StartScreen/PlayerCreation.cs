@@ -41,7 +41,8 @@ public class PlayerCreation : MonoBehaviour {
 
     public void EnterNewGame()
     {
-        SceneManager.LoadScene("Level1");
+        LevelManagerScript.levelManager.LoadLevel("Level1");
+        LevelManagerScript.levelManager.UnloadLevel("StartScreen");
     }
 
     public void ExitGame()
