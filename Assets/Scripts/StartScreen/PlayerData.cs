@@ -8,8 +8,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 [Serializable]
 public class PlayerData {
 
-    public int[] stats;
-    public string[] defs;
+    public int[] stats;     //Players stats ie. int, str, etc
+    public string[] defs;       //Player name, class, current zone etc.
 
     public PlayerData(PlayerInfo player)
     {
@@ -19,8 +19,9 @@ public class PlayerData {
         stats[2] = player.MyStrength;
         stats[3] = player.MyIntelligence;
 
-        defs = new string[2];
+        defs = new string[3];
         defs[0] = player.MyPlayerName;
         defs[1] = player.MyPlayerClass;
+        defs[2] = player.MyCurrentZone;
     }
 }

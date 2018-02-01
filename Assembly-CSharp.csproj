@@ -73,6 +73,7 @@
      <Compile Include="Assets\Scripts\EnemyStates\IdleState.cs" />
      <Compile Include="Assets\Scripts\EnemyStates\IState.cs" />
      <Compile Include="Assets\Scripts\FloatingNumbers.cs" />
+     <Compile Include="Assets\Scripts\LoadLevelTrigger.cs" />
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
      <Compile Include="Assets\Scripts\Managers\ManagerScript.cs" />
      <Compile Include="Assets\Scripts\Managers\UiManager.cs" />
@@ -85,8 +86,9 @@
      <Compile Include="Assets\Scripts\Quest\QuestManager.cs" />
      <Compile Include="Assets\Scripts\Quest\QuestObject.cs" />
      <Compile Include="Assets\Scripts\Quest\QuestUIManager.cs" />
+     <Compile Include="Assets\Scripts\StartScreen\AccountData.cs" />
+     <Compile Include="Assets\Scripts\StartScreen\AccountInfo.cs" />
      <Compile Include="Assets\Scripts\StartScreen\LevelManagerScript.cs" />
-     <Compile Include="Assets\Scripts\StartScreen\LoadLevelTrigger.cs" />
      <Compile Include="Assets\Scripts\StartScreen\PlayerCreation.cs" />
      <Compile Include="Assets\Scripts\StartScreen\PlayerData.cs" />
      <Compile Include="Assets\Scripts\StartScreen\PlayerInfo.cs" />

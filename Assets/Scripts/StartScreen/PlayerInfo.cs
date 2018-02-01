@@ -4,14 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerInfo : MonoBehaviour {
-    //Static = only one instance
-    public static PlayerInfo playerInfo;
+    
+    public static PlayerInfo playerInfo;        //The one and only
+
     // Player definitions
     [SerializeField]
     private string playerName;
 
     [SerializeField]
     private string playerClass;
+
+    private string currentZone;
 
     [SerializeField]
     private int playerLevel;
@@ -104,29 +107,42 @@ public class PlayerInfo : MonoBehaviour {
         }
     }
 
+    public string MyCurrentZone
+    {
+        get
+        {
+            return currentZone;
+        }
+
+        set
+        {
+            currentZone = value;
+        }
+    }
+
     void Awake()
     {
-        if(playerInfo == null)
+        if (playerInfo == null)
         {
             playerInfo = this;
-            DontDestroyOnLoad(this);
-        }
-        else
-        {
-            Destroy(gameObject);
         }
     }
 
     // Use this for initialization
     void Start () {
-		
+		if(MyCurrentZone == null)
+        {
+            MyCurrentZone = "Level1";
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.Alpha5))
         {
+            Debug.Log(MyPlayerName);
             Debug.Log(MyPlayerClass);
+            Debug.Log(MyCurrentZone);
             Debug.Log(MyPlayerLevel);
             Debug.Log(MyStamina);
             Debug.Log(MyStrength);
@@ -138,23 +154,7 @@ public class PlayerInfo : MonoBehaviour {
     {
         SaveLoadManager.SavePlayer(this);
     }
-
-    public void Load()
-    {
-        int[] loadedStats = SaveLoadManager.LoadPlayerStats();
-
-        MyPlayerLevel = loadedStats[0];
-        MyStamina = loadedStats[1];
-        MyStrength = loadedStats[2];
-        MyIntelligence = loadedStats[3];
-
-        string[] loadedDefs = SaveLoadManager.LoadPlayerDefs();
-
-        MyPlayerName = loadedDefs[0];
-        MyPlayerClass = loadedDefs[1];
-
-        LevelManagerScript.levelManager.LoadLevel("Level1");
-        LevelManagerScript.levelManager.UnloadLevel("StartScreen");
-    }
+    
+    // Removed load player   
     
 }

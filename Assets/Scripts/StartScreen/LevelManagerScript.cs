@@ -11,7 +11,7 @@ public class LevelManagerScript : MonoBehaviour {
     [SerializeField]
     private Slider loadingBar;
 
-    bool sceneLoaded = false;
+    //bool sceneLoaded = false;
     
     private void Awake()
     {
@@ -39,10 +39,14 @@ public class LevelManagerScript : MonoBehaviour {
         {
             StartCoroutine(Load(sceneName));
 
-            if (sceneName != "StartScreen")
+            if (sceneName == "StartScreen")
             {
-                StartCoroutine(Load("PlayerScene")); 
-            }      
+                StartCoroutine(Unload("PlayerScene"));                
+            }
+            else
+            {
+                StartCoroutine(Load("PlayerScene"));
+            }     
         }
     }
 
@@ -56,7 +60,7 @@ public class LevelManagerScript : MonoBehaviour {
 
     IEnumerator Unload(string scene)        //Coroutine on pakollinen koska jostakin syystä Unloadia ei voi ajaa ilman sitä
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(.50f);
 
         SceneManager.UnloadSceneAsync(scene);
     }
