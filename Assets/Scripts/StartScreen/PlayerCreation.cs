@@ -13,10 +13,6 @@ public class PlayerCreation : MonoBehaviour {
     [SerializeField]
     private InputField charName;        // Input for creating a new character
 
-    private string playerName;          // existing character for loading
-
-    private string selectedPlayer;      // currently selected saved playercharacter
-
     //private List<string> playerCharacters;
 
     void Awake()
@@ -53,7 +49,7 @@ public class PlayerCreation : MonoBehaviour {
         playerInfo.MyStrength = 14;
     }
 
-    public void EnterNewGame()
+    public void CreateNewCharacter()
     {
         playerInfo.MyPlayerName = charName.text.ToString();
         if(charName.text == "")
@@ -72,19 +68,5 @@ public class PlayerCreation : MonoBehaviour {
             return;
         }
         accountInfo.playerCharList.Add(charName.text);
-        //LevelManagerScript.levelManager.LoadLevel("Level1");
-        //LevelManagerScript.levelManager.UnloadLevel("StartScreen");
-    }
-
-    public void ExitGame()
-    {
-        Application.Quit();
-    }
-
-    
-
-    public void SelectCharacter()
-    {
-
     }
 }

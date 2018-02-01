@@ -95,6 +95,7 @@
      <Compile Include="Assets\Scripts\StartScreen\PlayerInfo.cs" />
      <Compile Include="Assets\Scripts\StartScreen\PlayerSelection.cs" />
      <Compile Include="Assets\Scripts\StartScreen\SaveLoadManager.cs" />
+     <Compile Include="Assets\Scripts\StartScreen\StartStateSelector.cs" />
      <Compile Include="Assets\Scripts\Stats.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\CircleObject.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\GameObjectExtensions.cs" />

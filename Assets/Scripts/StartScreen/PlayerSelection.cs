@@ -1,17 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerSelection : MonoBehaviour {
-
-    //public static PlayerSelection ps;
-
-    private CharacterButtonScript cbS;
-
-    private AccountInfo accountInfo;
-
-    private PlayerInfo playerInfo;
-
+    
     [SerializeField]
     private GameObject toonButton;
 
@@ -21,13 +14,15 @@ public class PlayerSelection : MonoBehaviour {
     [SerializeField]
     private List<GameObject> AllButtons;
 
-    public string selectedPlayerName;      //button press selects 
-
+    [SerializeField]
+    private Text selectionName;
+    [SerializeField]
+    private Text selectionClass;
+    [SerializeField]
+    private Text selectionLevel;
 
     void Awake()
     {
-        playerInfo = FindObjectOfType<PlayerInfo>();
-        accountInfo = FindObjectOfType<AccountInfo>();
 
     }
     // Use this for initialization
@@ -37,7 +32,15 @@ public class PlayerSelection : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(PlayerInfo.playerInfo.MyPlayerName != null)
+        {
+            selectionName.text = PlayerInfo.playerInfo.MyPlayerName;
+            selectionClass.text = PlayerInfo.playerInfo.MyPlayerClass;
+            if(PlayerInfo.playerInfo.MyPlayerLevel > 0)
+            {
+                selectionLevel.text = "Level: " + PlayerInfo.playerInfo.MyPlayerLevel.ToString();
+            }            
+        }
 	}
 
     public void SetSelectablePlayers()
@@ -60,6 +63,4 @@ public class PlayerSelection : MonoBehaviour {
         LevelManagerScript.levelManager.LoadLevel(PlayerInfo.playerInfo.MyCurrentZone);
         LevelManagerScript.levelManager.UnloadLevel("StartScreen");
     }
-
-
 }
