@@ -24,7 +24,7 @@ public class AccountInfo : MonoBehaviour {
             for (int i = 0; i < 6; i++)
             {
                 if (playerChars[i] != null)
-                {
+                { 
                     playerCharList.Add(playerChars[i]);
                     Debug.Log(playerCharList[i]);
                 }

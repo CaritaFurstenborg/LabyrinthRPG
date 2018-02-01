@@ -5,6 +5,8 @@ using System.IO;
 
 public class StartStateSelector : MonoBehaviour {
 
+    private PlayerCreation playerCreation;
+
     private AccountInfo accountInfo;
 
     private PlayerInfo playerInfo;
@@ -34,12 +36,14 @@ public class StartStateSelector : MonoBehaviour {
         {
             ShowCreationPanel();
         }
+
+        playerCreation = FindObjectOfType<PlayerCreation>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+    }
 
     public void ShowSelectionPanel()
     {
@@ -55,7 +59,6 @@ public class StartStateSelector : MonoBehaviour {
         charSelectPanel.SetActive(false);
         exitCharCreationBtn.SetActive(true);
         enterCharCreationBtn.SetActive(false);
-
     }
 
     public void ExitGame()

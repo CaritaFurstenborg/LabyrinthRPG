@@ -6,20 +6,13 @@ using UnityEngine.UI;
 using System.IO;
 
 public class PlayerCreation : MonoBehaviour {
-
-    private AccountInfo accountInfo;
-
-    private PlayerInfo playerInfo;
+    
     [SerializeField]
     private InputField charName;        // Input for creating a new character
-
-    //private List<string> playerCharacters;
+    
 
     void Awake()
     {
-        playerInfo = FindObjectOfType<PlayerInfo>();
-        accountInfo = FindObjectOfType<AccountInfo>();
-        
     }
 	// Use this for initialization
 	void Start () {
@@ -33,40 +26,42 @@ public class PlayerCreation : MonoBehaviour {
 
     public void SelectMage()
     {
-        playerInfo.MyPlayerClass = "mage";
-        playerInfo.MyPlayerLevel = 1;
-        playerInfo.MyStamina = 15;
-        playerInfo.MyIntelligence = 14;
-        playerInfo.MyStrength = 9;
+        PlayerInfo.playerInfo.MyPlayerClass = "mage";
+        PlayerInfo.playerInfo.MyPlayerLevel = 1;
+        PlayerInfo.playerInfo.MyStamina = 15;
+        PlayerInfo.playerInfo.MyIntelligence = 14;
+        PlayerInfo.playerInfo.MyStrength = 9;
     }
 
     public void SelectWarrior()
     {
-        playerInfo.MyPlayerClass = "warrior";
-        playerInfo.MyPlayerLevel = 1;
-        playerInfo.MyStamina = 15;
-        playerInfo.MyIntelligence = 9;
-        playerInfo.MyStrength = 14;
+        PlayerInfo.playerInfo.MyPlayerClass = "warrior";
+        PlayerInfo.playerInfo.MyPlayerLevel = 1;
+        PlayerInfo.playerInfo.MyStamina = 15;
+        PlayerInfo.playerInfo.MyIntelligence = 9;
+        PlayerInfo.playerInfo.MyStrength = 14;
     }
 
     public void CreateNewCharacter()
     {
-        playerInfo.MyPlayerName = charName.text.ToString();
+        PlayerInfo.playerInfo.MyPlayerName = charName.text.ToString();
         if(charName.text == "")
         {
             Debug.Log("Can not create a player without a name");
             return;
         }
-        else if(accountInfo.playerCharList.Count > 0 && accountInfo.playerCharList.Contains(charName.text))
+        else if(AccountInfo.accountInfo.playerCharList.Count > 0 && AccountInfo.accountInfo.playerCharList.Contains(charName.text))
         {
             Debug.Log("Character name already exists");
             return;
         }
-        else if(accountInfo.playerCharList.Count == 6)
+        else if(AccountInfo.accountInfo.playerCharList.Count == 6)
         {
             Debug.Log("Already at maximum characters");
             return;
         }
-        accountInfo.playerCharList.Add(charName.text);
+        AccountInfo.accountInfo.playerCharList.Add(charName.text);
+        AccountInfo.accountInfo.Save();
+        PlayerInfo.playerInfo.Save();
     }
 }

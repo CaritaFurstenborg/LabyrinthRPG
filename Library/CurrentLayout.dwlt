@@ -107,10 +107,10 @@ MonoBehaviour:
     y: 30
     width: 1731
     height: 1051
-  m_MinSize: {x: 713, y: 492}
+  m_MinSize: {x: 613, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 23524
+  controlID: 8561
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -131,10 +131,10 @@ MonoBehaviour:
     y: 0
     width: 1145
     height: 1051
-  m_MinSize: {x: 202, y: 342}
+  m_MinSize: {x: 102, y: 242}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 23338
+  controlID: 8562
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -153,16 +153,16 @@ MonoBehaviour:
     y: 0
     width: 1145
     height: 510
-  m_MinSize: {x: 202, y: 221}
+  m_MinSize: {x: 102, y: 121}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 14}
+  m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 14}
   - {fileID: 15}
   - {fileID: 16}
   - {fileID: 17}
-  m_Selected: 0
-  m_LastSelected: 3
+  m_Selected: 3
+  m_LastSelected: 0
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 23525
+  controlID: 8430
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -396,9 +396,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 376.7146, y: 304.38934, z: 0}
+    m_Target: {x: 414.0647, y: 188.17644, z: 0}
     speed: 2
-    m_Value: {x: 376.7146, y: 304.38934, z: 0}
+    m_Value: {x: 414.0647, y: 188.17644, z: 0}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -425,9 +425,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 484.69748
+    m_Target: 938.62213
     speed: 2
-    m_Value: 484.69748
+    m_Value: 938.62213
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -622,9 +622,9 @@ MonoBehaviour:
     height: 462
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 642a0000
-    m_LastClickedID: 10852
-    m_ExpandedIDs: 2230edff2c99eeffd414f8ff18fcffff1afcffff00000000342a0000502a0000
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: 18fcffff1afcffff00000000442a0000802a0000062b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -685,19 +685,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Art/UI
+    - Assets/Prefabs/StartScene
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Art/UI
+  - Assets/Prefabs/StartScene
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Carita\Documents\DevGameProjects\LabyrinthRPG
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 9e290000
-    m_LastClickedID: 10654
-    m_ExpandedIDs: 00000000ba260000762700001e280000a828000000ca9a3bffffff7f
+    m_SelectedIDs: 96270000
+    m_LastClickedID: 10134
+    m_ExpandedIDs: 00000000bc260000782700001e280000ac28000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -725,7 +725,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ba260000762700001e280000a828000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000bc260000782700001e280000ac28000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -753,7 +753,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: 9e260000ea2600006a2b000082b4000090260000766f0000fa67f2ff46280000f0560000e8270000da2800005a28000082310000002900005a290000642700000c270000742900004227000044280000662700002427000000000000
+    m_ExpandedInstanceIDs: 9e260000ea2600006a2b000082b4000090260000766f0000fa67f2ff46280000f0560000e8270000da2800005a28000082310000642700000c27000074290000422700004428000066270000242700000000000026270000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

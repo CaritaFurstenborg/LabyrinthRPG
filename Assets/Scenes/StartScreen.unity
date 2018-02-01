@@ -553,7 +553,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1240981851}
         m_MethodName: SelectMage
         m_Mode: 1
         m_Arguments:
@@ -981,10 +981,10 @@ RectTransform:
   m_Father: {fileID: 139897602}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.051242236, y: 0.036000002}
-  m_AnchorMax: {x: 0.1938199, y: 0.09446523}
-  m_AnchoredPosition: {x: 0.35302734, y: -0.13717651}
-  m_SizeDelta: {x: -0.9061432, y: 0.27435303}
+  m_AnchorMin: {x: 0.027484471, y: 0.036000002}
+  m_AnchorMax: {x: 0.16900001, y: 0.09446523}
+  m_AnchoredPosition: {x: 0, y: 0.13717651}
+  m_SizeDelta: {x: 0.09385681, y: 0.27435303}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &316942105
 MonoBehaviour:
@@ -1194,8 +1194,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: EnterNewGame
+      - m_Target: {fileID: 1240981851}
+        m_MethodName: CreateNewCharacter
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1205,19 +1205,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1806579056}
-        m_MethodName: Save
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1096426085}
-        m_MethodName: Save
+      - m_Target: {fileID: 402233236}
+        m_MethodName: EnterGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1763,7 +1752,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1240981851}
         m_MethodName: SelectWarrior
         m_Mode: 1
         m_Arguments:
@@ -2132,12 +2121,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1007518025}
---- !u!114 &1096426085 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114483768061549880, guid: d5441b8952d129843b5517901f67fff4,
-    type: 2}
-  m_PrefabInternal: {fileID: 330428228}
-  m_Script: {fileID: 11500000, guid: 1a9c26c326bec654ebafe1fc074aeb06, type: 3}
 --- !u!1 &1114566449
 GameObject:
   m_ObjectHideFlags: 0
@@ -3322,12 +3305,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1724186808}
---- !u!114 &1806579056 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114820239359695938, guid: d5441b8952d129843b5517901f67fff4,
-    type: 2}
-  m_PrefabInternal: {fileID: 330428228}
-  m_Script: {fileID: 11500000, guid: 5467f96ed81db984ea56d09a3f0d826a, type: 3}
 --- !u!1 &1817280778
 GameObject:
   m_ObjectHideFlags: 0
@@ -3609,10 +3586,10 @@ RectTransform:
   m_Father: {fileID: 139897602}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.051242236, y: 0.036000002}
-  m_AnchorMax: {x: 0.1938199, y: 0.09446523}
-  m_AnchoredPosition: {x: 0.35302734, y: -0.13717651}
-  m_SizeDelta: {x: -0.9061432, y: 0.27435303}
+  m_AnchorMin: {x: 0.027484471, y: 0.036000002}
+  m_AnchorMax: {x: 0.16900001, y: 0.09446523}
+  m_AnchoredPosition: {x: -0.125, y: -0.13717651}
+  m_SizeDelta: {x: 0.09385681, y: 0.27435303}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1919044540
 MonoBehaviour:
