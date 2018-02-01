@@ -88,10 +88,12 @@
      <Compile Include="Assets\Scripts\Quest\QuestUIManager.cs" />
      <Compile Include="Assets\Scripts\StartScreen\AccountData.cs" />
      <Compile Include="Assets\Scripts\StartScreen\AccountInfo.cs" />
+     <Compile Include="Assets\Scripts\StartScreen\CharacterButtonScript.cs" />
      <Compile Include="Assets\Scripts\StartScreen\LevelManagerScript.cs" />
      <Compile Include="Assets\Scripts\StartScreen\PlayerCreation.cs" />
      <Compile Include="Assets\Scripts\StartScreen\PlayerData.cs" />
      <Compile Include="Assets\Scripts\StartScreen\PlayerInfo.cs" />
+     <Compile Include="Assets\Scripts\StartScreen\PlayerSelection.cs" />
      <Compile Include="Assets\Scripts\StartScreen\SaveLoadManager.cs" />
      <Compile Include="Assets\Scripts\Stats.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\CircleObject.cs" />

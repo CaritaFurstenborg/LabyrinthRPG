@@ -7,9 +7,9 @@ using System.IO;
 
 public class PlayerCreation : MonoBehaviour {
 
-    AccountInfo accountInfo;
+    private AccountInfo accountInfo;
 
-    PlayerInfo playerInfo;
+    private PlayerInfo playerInfo;
     [SerializeField]
     private InputField charName;        // Input for creating a new character
 
@@ -72,8 +72,8 @@ public class PlayerCreation : MonoBehaviour {
             return;
         }
         accountInfo.playerCharList.Add(charName.text);
-        LevelManagerScript.levelManager.LoadLevel("Level1");
-        LevelManagerScript.levelManager.UnloadLevel("StartScreen");
+        //LevelManagerScript.levelManager.LoadLevel("Level1");
+        //LevelManagerScript.levelManager.UnloadLevel("StartScreen");
     }
 
     public void ExitGame()
@@ -81,22 +81,10 @@ public class PlayerCreation : MonoBehaviour {
         Application.Quit();
     }
 
-    public void LoadGame(string playername)
+    
+
+    public void SelectCharacter()
     {
-        int[] loadedStats = SaveLoadManager.LoadPlayerStats("player");      // Set to desired player to load
 
-        PlayerInfo.playerInfo.MyPlayerLevel = loadedStats[0];
-        PlayerInfo.playerInfo.MyStamina = loadedStats[1];
-        PlayerInfo.playerInfo.MyStrength = loadedStats[2];
-        PlayerInfo.playerInfo.MyIntelligence = loadedStats[3];
-
-        string[] loadedDefs = SaveLoadManager.LoadPlayerDefs("player");     // Set to desired player to load
-
-        PlayerInfo.playerInfo.MyPlayerName = loadedDefs[0];
-        PlayerInfo.playerInfo.MyPlayerClass = loadedDefs[1];
-        PlayerInfo.playerInfo.MyCurrentZone = loadedDefs[2];
-
-        LevelManagerScript.levelManager.LoadLevel(PlayerInfo.playerInfo.MyCurrentZone);
-        LevelManagerScript.levelManager.UnloadLevel("StartScreen");
     }
 }
