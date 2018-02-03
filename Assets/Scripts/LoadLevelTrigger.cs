@@ -13,8 +13,6 @@ public class LoadLevelTrigger : MonoBehaviour {
     [SerializeField]
     private string unloadName;
 
-    private bool isLoaded = false;
-
     void Awake()
     {
         levelTrigger = this;
@@ -38,14 +36,16 @@ public class LoadLevelTrigger : MonoBehaviour {
 
     public void ExitToStartScreen()
     {
-        string currentLevel = SceneManager.GetActiveScene().name;
-        Debug.Log(currentLevel);
-        LevelManagerScript.levelManager.LoadLevel(loadName);
-        isLoaded = true;
-        if(isLoaded)
+        GameObject playerScreen = FindObjectOfType<MainGameObjectsManager>().gameObject;
+        PlayerInfo.playerInfo.Save();
+
+        Time.timeScale = 1;
+
+        LevelManagerScript.levelManager.LoadLevel("StartScreen");
+        if(playerScreen != null)
         {
-            LevelManagerScript.levelManager.UnloadLevel(unloadName);
-            isLoaded = false;
+            MainGameObjectsManager.instance.DestroyMainGameObjects();
         }        
+        LevelManagerScript.levelManager.UnloadLevel(PlayerInfo.playerInfo.MyCurrentZone);
     }
 }

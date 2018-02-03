@@ -23,7 +23,7 @@ public class PlayerSelection : MonoBehaviour {
 
     void Awake()
     {
-
+        
     }
     // Use this for initialization
     void Start () {
@@ -59,8 +59,9 @@ public class PlayerSelection : MonoBehaviour {
     }
 
     public void EnterGame()
-    {
+    {      
         LevelManagerScript.levelManager.LoadLevel(PlayerInfo.playerInfo.MyCurrentZone);
-        LevelManagerScript.levelManager.UnloadLevel("StartScreen");
+        LevelManagerScript.levelManager.UnloadLevel("StartScreen");        
+        AccountInfo.accountInfo.InstantiatePlayer();
     }
 }

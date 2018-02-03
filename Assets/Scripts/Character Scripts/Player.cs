@@ -47,7 +47,7 @@ public class Player : Character {
         //{
         //    playerExists = true;
         //    DontDestroyOnLoad(transform.gameObject);
-        //} 
+        //}
         //else
         //{
         //    Destroy(gameObject);

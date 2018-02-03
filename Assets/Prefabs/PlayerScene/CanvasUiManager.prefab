@@ -3466,8 +3466,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 340766371d8c592488f8a3b12904c7b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadName: StartScreen
-  unloadName: Level1
+  loadName: 
+  unloadName: 
 --- !u!114 &114638851058941560
 MonoBehaviour:
   m_ObjectHideFlags: 1

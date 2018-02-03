@@ -45,7 +45,7 @@ public class PlayerCreation : MonoBehaviour {
     public void CreateNewCharacter()
     {
         PlayerInfo.playerInfo.MyPlayerName = charName.text.ToString();
-        if(charName.text == "")
+        if(charName.text.ToString().Equals(""))
         {
             Debug.Log("Can not create a player without a name");
             return;
@@ -59,9 +59,14 @@ public class PlayerCreation : MonoBehaviour {
         {
             Debug.Log("Already at maximum characters");
             return;
-        }
-        AccountInfo.accountInfo.playerCharList.Add(charName.text);
-        AccountInfo.accountInfo.Save();
-        PlayerInfo.playerInfo.Save();
+        } else
+        {
+            AccountInfo.accountInfo.playerCharList.Add(charName.text);
+            AccountInfo.accountInfo.Save();
+            PlayerInfo.playerInfo.Save();
+            LevelManagerScript.levelManager.LoadLevel(PlayerInfo.playerInfo.MyCurrentZone);
+            LevelManagerScript.levelManager.UnloadLevel("StartScreen");
+            AccountInfo.accountInfo.InstantiatePlayer();
+        }        
     }
 }

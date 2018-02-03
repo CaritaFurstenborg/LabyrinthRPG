@@ -115,7 +115,8 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 3f32f08a64daf40b09ed864d96fe3840 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransform
 73843688b51256aed059f049c540bca8 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.PlayerCreation
+847d621fa1135eb8e403128cbe074f8b Assembly-CSharp.dll:.AccountInfo
+7e863db1fe9da7ea6c8d6393857ba850 Assembly-CSharp.dll:.PlayerCreation
 fab3f48bb6484a76cde2b81e3201be7e Assembly-CSharp.dll:Tiled2Unity.TileObject
 1ac45e65362b8990ca8bc05364d4581e Assembly-CSharp.dll:Tiled2Unity.ImportBehaviour
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DeathBehaviour
@@ -130,6 +131,8 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Obstacle
 c5b77decb97ffc0c36e810b155d27dde Assembly-CSharp.dll:Tiled2Unity.TiledMap
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.LayerSorter
+0bc67917c14129aea872c9bf64a9ac3b Assembly-CSharp.dll:.LoadLevelTrigger
+fde4c2981c62748d6d1369daa3d5aeee Assembly-CSharp.dll:.PlayerSelection
 1765dffa8e88aa698321ecf9f4dd8565 Assembly-CSharp.dll:.DestroyOverTime
 8e0ade46e107bb0d4961dee59d6bfd9a Assembly-CSharp.dll:.QuestManager
 e03324105188f486a6df2b1859f93ea1 Assembly-CSharp.dll:.CameraFollow
@@ -152,11 +155,14 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 3f32f08a64daf40b09ed864d96fe3840 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransform
 73843688b51256aed059f049c540bca8 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
+6dbcafbe70836a351c236bc73d5c6401 Assembly-CSharp.dll:.CharacterButtonScript
+39d157c40aafa19f8a3be42b64977d0b Assembly-CSharp.dll:.LevelManagerScript
 329bcbf88b3c0197d230f5b9ceb88333 Assembly-CSharp.dll:Tiled2Unity.PolygonObject
 329bcbf88b3c0197d230f5b9ceb88333 Assembly-CSharp.dll:Tiled2Unity.CircleObject
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
 5f2ad81aa8994e8fbe25d1e57afe6773 UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.PlaymodeTestsController
 64eb32cc721b1cc68a91ed57461e188c UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestResultSender
+b2b10d7dac79f8b0fc6add5cd4ae1392 Assembly-CSharp.dll:.StartStateSelector
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
@@ -167,8 +173,8 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 b6a4e0f46582e1b4ea27adb53405c4c7 Assembly-CSharp.dll:Tiled2Unity.SpriteDepthInMap
 60d09b421d38bf19c0accfd431ced070 Assembly-CSharp.dll:.UiManager
 d290070ecf091336e70150a7db25d112 Assembly-CSharp.dll:Tiled2Unity.ObjectLayer
-12b95c8f2b54918ab14825a44eeb4bd5 Assembly-CSharp.dll:.GameManager
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.PlayerInfo
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.GameManager
+716018559509330339c6d6f0c8551f3e Assembly-CSharp.dll:.PlayerInfo
 329bcbf88b3c0197d230f5b9ceb88333 Assembly-CSharp.dll:Tiled2Unity.TmxObject
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Bounds
 f209369978d14f4ca1fcf39082c440e0 Assembly-CSharp.dll:.QuestButton

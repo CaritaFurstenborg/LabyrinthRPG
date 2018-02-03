@@ -101,22 +101,13 @@ public class UiManager : MonoBehaviour {
         if(!mainMenu.activeSelf)        // if menu not active activate
         {
             mainMenu.SetActive(true);
-            Debug.Log("Menu active");
         }
         else
         {
             mainMenu.SetActive(false);      //else deactivate
-            Debug.Log("Menu Deactive");
         }
 
         Time.timeScale = Time.timeScale > 0 ? 0 : 1; // Pause functio
-    }
-
-    public void ExitCurrentGame()
-    {
-        PlayerInfo.playerInfo.Save();
-        SceneManager.UnloadSceneAsync("Level1");
-        SceneManager.LoadScene("StartScreen");
     }
 
 }

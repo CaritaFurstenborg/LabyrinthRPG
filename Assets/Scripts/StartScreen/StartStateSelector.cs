@@ -5,12 +5,6 @@ using System.IO;
 
 public class StartStateSelector : MonoBehaviour {
 
-    private PlayerCreation playerCreation;
-
-    private AccountInfo accountInfo;
-
-    private PlayerInfo playerInfo;
-
     [SerializeField]
     private GameObject charCreatePanel;
 
@@ -25,8 +19,6 @@ public class StartStateSelector : MonoBehaviour {
 
 
     void Awake () {
-        playerInfo = FindObjectOfType<PlayerInfo>();
-        accountInfo = FindObjectOfType<AccountInfo>();
 
         if (File.Exists(Application.persistentDataPath + "/PlayerAccount.sav"))
         {
@@ -36,8 +28,6 @@ public class StartStateSelector : MonoBehaviour {
         {
             ShowCreationPanel();
         }
-
-        playerCreation = FindObjectOfType<PlayerCreation>();
     }
 	
 	// Update is called once per frame

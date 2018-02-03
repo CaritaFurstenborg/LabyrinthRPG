@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraFollow : MonoBehaviour {
 
@@ -12,31 +13,39 @@ public class CameraFollow : MonoBehaviour {
     private BoxCollider2D boundBox;
 
     private float xMax, xMin, yMin, yMax;
+    
 
 	// Use this for initialization
 	void Start () {
-        if(cam == null)
+
+        if (cam == null)
         {
             cam = GetComponent<CameraFollow>();
-            //DontDestroyOnLoad(this);
         }
-        else
+
+        if(target == null)
         {
-            Destroy(gameObject);
+            target = GameObject.FindGameObjectWithTag("Player").transform;
         }
-
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-        boundBox = FindObjectOfType<Bounds>().GetComponent<BoxCollider2D>();
-
-        Vector3 minTile = boundBox.bounds.min;
-        Vector3 maxTile = boundBox.bounds.max;
-
-        SetLimits(minTile, maxTile);
+               
 	}
 	
 	private void LateUpdate()
     {
-        transform.position = new Vector3(Mathf.Clamp(target.position.x, xMin, xMax), Mathf.Clamp(target.position.y, yMin, yMax), -10);
+        if (FindObjectOfType<MainGameObjectsManager>().gameObject.activeSelf)
+        {
+            if (boundBox == null)
+            {
+                boundBox = FindObjectOfType<Bounds>().GetComponent<BoxCollider2D>();
+
+                Vector3 minTile = boundBox.bounds.min;
+                Vector3 maxTile = boundBox.bounds.max;
+
+                SetLimits(minTile, maxTile);
+            }
+
+            transform.position = new Vector3(Mathf.Clamp(target.position.x, xMin, xMax), Mathf.Clamp(target.position.y, yMin, yMax), -10);
+        }       
     }
 
     private void SetLimits(Vector3 minTile, Vector3 maxTile)

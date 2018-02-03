@@ -133,7 +133,11 @@ public abstract class Character : MonoBehaviour {
                 MyAnimator.SetFloat("MoveY", MyDirection.y);
                 MyAnimator.SetFloat("LastMoveX", MyDirection.x);
                 MyAnimator.SetFloat("LastMoveY", MyDirection.y);
-                MyAnimator.SetBool("isMoving", true);
+                if(MyAnimator.gameObject.tag == "Player")
+                {
+                    MyAnimator.SetBool("isMoving", true);
+                }
+                
             }
             else if (IsAttacking && IsMele)
             {
@@ -146,7 +150,10 @@ public abstract class Character : MonoBehaviour {
             else
             {
                 ActivateLayer("IdleLayer");
-                MyAnimator.SetBool("isMoving", false);
+                if (MyAnimator.gameObject.tag == "Player")
+                {
+                    MyAnimator.SetBool("isMoving", false);
+                }
             }
         }
         else
