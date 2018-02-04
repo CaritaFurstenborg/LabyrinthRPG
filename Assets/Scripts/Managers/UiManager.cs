@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -22,9 +23,7 @@ public class UiManager : MonoBehaviour {
     }       // Property for accessing UiManager instance
 
     [SerializeField]
-    private Button[] actionButtons;         //action buttons array
-
-    private KeyCode action1, action2, action3;      // action buttons for keybinds
+    private ActionButton[] actionButtons;         //action buttons array
 
     [SerializeField]
     private GameObject targetFrame;         // reference to the unit frame of target
@@ -37,41 +36,36 @@ public class UiManager : MonoBehaviour {
     [SerializeField]
     private GameObject mainMenu;           //Reference to main menu
 
+    [SerializeField]
+    private GameObject keybindMenu;         // ref to keybind menu
+
+    private GameObject[] keybindButtons;
+
+    void Awake()
+    {
+        keybindButtons = GameObject.FindGameObjectsWithTag("Keybind");
+    }
+
     // Use this for initialization
-    void Start () {
+    void Start () {       
+
         mainMenu.SetActive(false);
+        keybindMenu.SetActive(false);
         healthStat = targetFrame.GetComponentInChildren<Stats>();
 
-        //Keybinds
-        action1 = KeyCode.Alpha1;
-        action2 = KeyCode.Alpha2;
-        action3 = KeyCode.Alpha3;
-        
+        SetUseable(actionButtons[0], SpellBook.MyInstance.GetSpell("Attack"));
+        SetUseable(actionButtons[1], SpellBook.MyInstance.GetSpell("Flamethrust"));
+        SetUseable(actionButtons[2], SpellBook.MyInstance.GetSpell("Shoot"));
+
     }
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(action1))
-        {
-            ActionButtonOnClick(0);
-        }
-        if (Input.GetKeyDown(action2))
-        {
-            ActionButtonOnClick(1);
-        }
-        if (Input.GetKeyDown(action3))
-        {
-            ActionButtonOnClick(2);
-        }
+		
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ToggleMenu();
         }
-    }
-    //Method for invoking the on click on button press
-    private void ActionButtonOnClick(int btnIndex)
-    {
-        actionButtons[btnIndex].onClick.Invoke();
     }
 
     public void ShowTargetFrame(NPC target)
@@ -110,4 +104,39 @@ public class UiManager : MonoBehaviour {
         Time.timeScale = Time.timeScale > 0 ? 0 : 1; // Pause functio
     }
 
+    public void ShowKeybindMenu()
+    {
+        keybindMenu.SetActive(true);
+        if(mainMenu.activeSelf)
+        {
+            mainMenu.SetActive(false);
+        }
+    }
+
+    public void CloseKeybindMenu()
+    {
+        keybindMenu.SetActive(false);
+        if(!mainMenu.activeSelf)
+        {
+            mainMenu.SetActive(true);
+        }
+    }
+
+    public void UpdateKeyText(string key, KeyCode code)
+    {
+        Text tmp = Array.Find(keybindButtons, x => x.name == key).GetComponentInChildren<Text>();
+        tmp.text = code.ToString();
+    }
+
+    public void ClickActionButton(string buttonName)
+    {
+        Array.Find(actionButtons, x => x.gameObject.name == buttonName).MyButton.onClick.Invoke();
+    }
+
+    public void SetUseable(ActionButton btn, IUseable useable)
+    {
+        btn.MyButton.image.sprite = useable.MyIcon;
+        btn.MyButton.image.color = Color.white;
+        btn.MyUseable = useable;
+    }
 }

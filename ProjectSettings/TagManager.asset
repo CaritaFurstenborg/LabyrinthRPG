@@ -11,6 +11,7 @@ TagManager:
   - HitBox
   - Obstacle
   - Loot
+  - Keybind
   layers:
   - Default
   - TransparentFX

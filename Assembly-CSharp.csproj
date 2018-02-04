@@ -56,6 +56,8 @@
      <Compile Include="Assets\Scripts\Account\AccountData.cs" />
      <Compile Include="Assets\Scripts\Account\AccountInfo.cs" />
      <Compile Include="Assets\Scripts\Account\SaveLoadManager.cs" />
+     <Compile Include="Assets\Scripts\Buttons\ActionButton.cs" />
+     <Compile Include="Assets\Scripts\Buttons\IUseable.cs" />
      <Compile Include="Assets\Scripts\Camera Scripts\Bounds.cs" />
      <Compile Include="Assets\Scripts\Camera Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Character Scripts\AggroRange.cs" />
@@ -79,6 +81,7 @@
      <Compile Include="Assets\Scripts\LevelManagerScript.cs" />
      <Compile Include="Assets\Scripts\LoadLevelTrigger.cs" />
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\KeybindManager.cs" />
      <Compile Include="Assets\Scripts\Managers\MainGameObjectsManager.cs" />
      <Compile Include="Assets\Scripts\Managers\UiManager.cs" />
      <Compile Include="Assets\Scripts\MonsterSpawner.cs" />

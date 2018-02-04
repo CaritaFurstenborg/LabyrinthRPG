@@ -3,7 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Character {
-    
+
+    private static Player instance;
+
+    public static Player MyInstance
+    {
+        get
+        {
+            if(instance == null)
+            {
+                instance = FindObjectOfType<Player>();
+            }
+            return instance;
+        }
+    }
+
     private PlayerInfo playerI;
 
     private static bool playerExists;   //Check if player exists in area
@@ -28,7 +42,7 @@ public class Player : Character {
 
     [SerializeField]
     private Sprite[] weapon;
-    
+
 
     // Use this for initialization
     protected override void Start () {
@@ -80,22 +94,22 @@ public class Player : Character {
             resource.MyCurrentValue += 5;
         }                                   // TESTING & DEBUGGING
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeybindManager.MyInstance.Keybinds["UP"]))
         {
             exitIndex = 0;
             MyDirection += Vector2.up;
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeybindManager.MyInstance.Keybinds["LEFT"]))
         {
             exitIndex = 3;
             MyDirection += Vector2.left;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeybindManager.MyInstance.Keybinds["DOWN"]))
         {
             exitIndex = 2;
             MyDirection += Vector2.down;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeybindManager.MyInstance.Keybinds["RIGHT"]))
         {
             exitIndex = 1;
             MyDirection += Vector2.right;
@@ -104,20 +118,19 @@ public class Player : Character {
         {
             StopAttack();
         }
-        if (Input.GetKeyDown(KeyCode.Alpha5))
+        foreach(string action in KeybindManager.MyInstance.ActionBinds.Keys)
         {
-            Debug.Log(playerI.MyPlayerClass);
-            Debug.Log(playerI.MyPlayerLevel);
-            Debug.Log(playerI.MyStamina);
-            Debug.Log(playerI.MyStrength);
-            Debug.Log(playerI.MyIntelligence);
+            if(Input.GetKeyDown(KeybindManager.MyInstance.ActionBinds[action]))
+            {
+                UiManager.MyInstance.ClickActionButton(action);
+            }
         }
     }
 
-    private IEnumerator Attack(int spellIndex)
+    private IEnumerator Attack(string spellName)
     {
         Transform currentTarget = MyTarget;
-        Spell newSpell = spellBook.CastSpell(spellIndex);
+        Spell newSpell = spellBook.CastSpell(spellName);
 
         if(!newSpell.IsMele)
         {
@@ -150,13 +163,13 @@ public class Player : Character {
             StopAttack();
     }
 
-    public void CastSpell(int spellIndex)
+    public void CastSpell(string spellName)
     {
         BlockLOS();
 
         if (MyTarget != null && MyTarget.GetComponentInParent<Enemy>().IsAlive && !IsAttacking && !isMoving && InLineOfSight())
         {
-            attackRoutine = StartCoroutine(Attack(spellIndex));
+            attackRoutine = StartCoroutine(Attack(spellName));
         }        
     }
 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class Spell {
+public class Spell : IUseable {
 
     [SerializeField]
     private bool isMele;
@@ -15,8 +15,8 @@ public class Spell {
     [SerializeField]
     private int damage;
 
-    //[SerializeField]
-    //private Sprite icon;
+    [SerializeField]
+    private Sprite icon;
 
     //[SerializeField]
     //private float spellSpeed;
@@ -52,7 +52,7 @@ public class Spell {
         }
     }
 
-    /*public Sprite MyIcon
+    public Sprite MyIcon
     {
         get
         {
@@ -60,13 +60,13 @@ public class Spell {
         }
     }
 
-    public float MySpellSpeed
-    {
-        get
-        {
-            return spellSpeed;
-        }
-    }*/
+    //public float MySpellSpeed
+    //{
+    //    get
+    //    {
+    //        return spellSpeed;
+    //    }
+    //}
 
     public float MyCastTime
     {
@@ -114,5 +114,10 @@ public class Spell {
         {
             return isMele;
         }
+    }
+
+    public void Use()
+    {
+        Player.MyInstance.CastSpell(MyName);
     }
 }

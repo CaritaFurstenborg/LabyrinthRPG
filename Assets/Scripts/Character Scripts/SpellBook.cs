@@ -1,9 +1,25 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SpellBook : MonoBehaviour {
+
+    private static SpellBook instance;    
+
+    public static SpellBook MyInstance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<SpellBook>();
+            }
+
+            return instance;
+        }
+    }      
 
     [SerializeField]
     private Image castingBar;
@@ -34,25 +50,27 @@ public class SpellBook : MonoBehaviour {
 		
 	}
 
-    public Spell CastSpell(int index)
+    public Spell CastSpell(string name)
     {
+        Spell spell = Array.Find(spells, x => x.MyName == name);
+
         castingBar.fillAmount = 0f;
 
         castingBar.color = Color.green;
-        spellText.text = spells[index].MyName;        
+        spellText.text = spell.MyName;        
 
-        spellRout = StartCoroutine(Progress(index));
+        spellRout = StartCoroutine(Progress(spell));
 
         fadeRout = StartCoroutine(FadeBar());
 
-        return spells[index];
+        return spell;
     }
 
-    private IEnumerator Progress(int index)
+    private IEnumerator Progress(Spell spell)
     {
         float timeLeft = Time.deltaTime;
 
-        float rate = 1.0f / spells[index].MyCastTime;
+        float rate = 1.0f / spell.MyCastTime;
 
         float progress = 0.0f;
 
@@ -64,9 +82,9 @@ public class SpellBook : MonoBehaviour {
 
             timeLeft += Time.deltaTime;
 
-            castTimeText.text = (spells[index].MyCastTime - timeLeft).ToString("F1");
+            castTimeText.text = (spell.MyCastTime - timeLeft).ToString("F1");
 
-            if(spells[index].MyCastTime - timeLeft < 0)
+            if(spell.MyCastTime - timeLeft < 0)
             {
                 castTimeText.text = "0.0";
             }
@@ -106,6 +124,13 @@ public class SpellBook : MonoBehaviour {
             StopCoroutine(spellRout);
             spellRout = null;
         }
+    }
+
+    public Spell GetSpell(string spellName)      // get a spell for ui manager IUseable
+    {
+        Spell spell = Array.Find(spells, x => x.MyName == spellName);
+
+        return spell;
     }
 
     /*private IEnumerator Cooldown()
