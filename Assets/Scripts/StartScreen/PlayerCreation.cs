@@ -9,14 +9,13 @@ public class PlayerCreation : MonoBehaviour {
     
     [SerializeField]
     private InputField charName;        // Input for creating a new character
-    
 
     void Awake()
     {
     }
 	// Use this for initialization
 	void Start () {
-        
+        charName.characterLimit = 10;
 	}
 	
 	// Update is called once per frame
@@ -59,7 +58,13 @@ public class PlayerCreation : MonoBehaviour {
         {
             Debug.Log("Already at maximum characters");
             return;
-        } else
+        }
+        else if(PlayerInfo.playerInfo.MyPlayerName.Equals(""))      //should prevent entry without a character
+        {
+            Debug.Log("Must create a character to enter the game");
+            return;
+        }
+        else
         {
             AccountInfo.accountInfo.playerCharList.Add(charName.text);
             AccountInfo.accountInfo.Save();

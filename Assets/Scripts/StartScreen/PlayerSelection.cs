@@ -59,9 +59,16 @@ public class PlayerSelection : MonoBehaviour {
     }
 
     public void EnterGame()
-    {      
-        LevelManagerScript.levelManager.LoadLevel(PlayerInfo.playerInfo.MyCurrentZone);
-        LevelManagerScript.levelManager.UnloadLevel("StartScreen");        
-        AccountInfo.accountInfo.InstantiatePlayer();
+    {   
+        if(!PlayerInfo.playerInfo.MyPlayerName.Equals(""))
+        {
+            LevelManagerScript.levelManager.LoadLevel(PlayerInfo.playerInfo.MyCurrentZone);
+            LevelManagerScript.levelManager.UnloadLevel("StartScreen");
+            AccountInfo.accountInfo.InstantiatePlayer();
+        }   
+        else
+        {
+            Debug.Log("No Player selected");
+        }
     }
 }
