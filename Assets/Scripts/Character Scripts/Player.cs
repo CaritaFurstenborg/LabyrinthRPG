@@ -67,12 +67,12 @@ public class Player : Character {
     {
         MyDirection = Vector2.zero;
 
-        if (Input.GetKey(KeyCode.Alpha8)) // TESTING & DEBUGGING
+        if (Input.GetKey(KeyCode.Alpha7)) // TESTING & DEBUGGING
         {
             health.MyCurrentValue -= 1;
             resource.MyCurrentValue -= 1;
         }
-        if (Input.GetKey(KeyCode.Alpha7))
+        if (Input.GetKey(KeyCode.Alpha6))
         {
             health.MyCurrentValue += 5;
             resource.MyCurrentValue += 5;

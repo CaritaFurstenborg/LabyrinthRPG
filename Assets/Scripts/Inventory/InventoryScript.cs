@@ -34,21 +34,29 @@ public class InventoryScript : MonoBehaviour {
         get { return bags.Count < 5; }
     }
 
-    private void Awake()
+    private void Awake()        
     {
-        Bag bag = (Bag)Instantiate(items[0]);
+        Bag bag = (Bag)Instantiate(items[0]);       // Initialize the first bag on awake, player will always need a starter bag
         bag.Initialize(20);
         bag.Use();
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha9))
+        // DEBUGGING ONLY!!!!!!!!!!!!!!!!!!
+        if(Input.GetKeyDown(KeyCode.Alpha9))        
         {
             Bag bag = (Bag)Instantiate(items[0]);
             bag.Initialize(16);
             bag.Use();
         }
+        if(Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            Bag bag = (Bag)Instantiate(items[0]);
+            bag.Initialize(16);
+            AddItem(bag);
+        }
+        //DEBUGGING ONLY
     }
     
     public void AddBag(Bag bag)     // Adds a bag to an ampty slot
@@ -64,7 +72,18 @@ public class InventoryScript : MonoBehaviour {
         }
     }
 
-    public void OpenClose()
+    public void AddItem(Item item)
+    {
+        foreach(Bag bag in bags)
+        {
+            if(bag.MyBagScript.AddItem(item))
+            {
+                return;
+            }
+        }
+    }
+
+    public void OpenClose()         // Function for all equipped bags toggle
     {
         bool closedBag = bags.Find(x => !x.MyBagScript.IsOpen); 
         // if closed bag == true, open all closed bags

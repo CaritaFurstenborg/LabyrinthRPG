@@ -39,14 +39,14 @@ public class UiManager : MonoBehaviour {
     [SerializeField]
     private CanvasGroup keybindMenu;         // ref to keybind menu
 
-    private GameObject[] keybindButtons;
+    private GameObject[] keybindButtons;        //array to hold keybind buttons
 
     [SerializeField]
     private CanvasGroup spellBook;
 
     void Awake()
     {
-        keybindButtons = GameObject.FindGameObjectsWithTag("Keybind");
+        keybindButtons = GameObject.FindGameObjectsWithTag("Keybind");      // All keybind buttons needs this tag!!!!
     }
 
     // Use this for initialization
@@ -148,5 +148,13 @@ public class UiManager : MonoBehaviour {
     {
         cg.alpha = cg.alpha > 0 ? 0 : 1;
         cg.blocksRaycasts = cg.blocksRaycasts == true ? false : true;
+    }
+
+    public void UpdateStackSize(IClickable clickable)
+    {
+        if(clickable.MyCount == 0)
+        {
+            clickable.MyIcon.color = new Color(0, 0, 0, 0);
+        }
     }
 }

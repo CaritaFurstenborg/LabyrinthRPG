@@ -108,6 +108,7 @@
      <Compile Include="Assets\Scripts\StartScreen\StartStateSelector.cs" />
      <Compile Include="Assets\Scripts\Stats.cs" />
      <Compile Include="Assets\Scripts\UiRelated\HandScript.cs" />
+     <Compile Include="Assets\Scripts\UiRelated\IClickable.cs" />
      <Compile Include="Assets\Scripts\UiRelated\IMoveable.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\CircleObject.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\GameObjectExtensions.cs" />

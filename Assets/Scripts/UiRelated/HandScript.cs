@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Handles moving ui elements ie. moving spells or inventory items
 public class HandScript : MonoBehaviour {
 
     private static HandScript instance;    

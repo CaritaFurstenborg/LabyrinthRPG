@@ -9,7 +9,7 @@ public class SpellButton : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private string spellName;
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)      // for moving spell from spellbook
     {
         if(eventData.button == PointerEventData.InputButton.Left)
         {

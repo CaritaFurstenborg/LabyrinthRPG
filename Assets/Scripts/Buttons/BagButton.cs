@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 public class BagButton : MonoBehaviour, IPointerClickHandler {
 
-    private Bag bag;
+    private Bag bag;        // The bag to open or close
 
     [SerializeField]
-    private Sprite full, empty;
+    private Sprite full, empty;     // Icons for an equippes slot and empty slot
 
     public Bag MyBag
     {
@@ -31,23 +31,14 @@ public class BagButton : MonoBehaviour, IPointerClickHandler {
             }
             bag = value;
         }
-    }
+    }           //Sets the apropriate icon depending on the bags value
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)      // Click function for the bag button
     {
         if(bag != null)
         {
             bag.MyBagScript.OpenCloseBag();
         }
     }
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    
 }

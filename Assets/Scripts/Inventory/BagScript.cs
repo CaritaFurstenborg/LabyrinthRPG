@@ -7,9 +7,11 @@ public class BagScript : MonoBehaviour {
     [SerializeField]
     private GameObject slotPrefab;      //The slot prefab to be instantiated in the bag
 
-    private CanvasGroup canvasGroup;
+    private CanvasGroup canvasGroup;       // Using canvasgroup instead of gameobject so it's always active and reachable
 
-    public bool IsOpen
+    private List<InvSlotScript> slots = new List<InvSlotScript>();      //List of slots in bag for checking if slot is empty
+
+    public bool IsOpen                  // Check if the bag is open
     {
         get
         {
@@ -26,8 +28,24 @@ public class BagScript : MonoBehaviour {
     {
         for(int i = 0; i < slotCount; i++)
         {
-            Instantiate(slotPrefab, transform);
+            InvSlotScript slot = Instantiate(slotPrefab, transform).GetComponent<InvSlotScript>();
+            slots.Add(slot);
         }
+    }
+
+    public bool AddItem(Item item)
+    {
+        foreach(InvSlotScript slot in slots)
+        {
+            if(slot.IsEmpty)
+            {
+                slot.AddItem(item);
+
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public void OpenCloseBag()
