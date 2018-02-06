@@ -12,6 +12,7 @@ public class PlayerCreation : MonoBehaviour {
 
     void Awake()
     {
+        AccountInfo.accountInfo.MyPlayerScreenPrefab.SetActive(false);
     }
 	// Use this for initialization
 	void Start () {
@@ -71,7 +72,7 @@ public class PlayerCreation : MonoBehaviour {
             PlayerInfo.playerInfo.Save();
             LevelManagerScript.levelManager.LoadLevel(PlayerInfo.playerInfo.MyCurrentZone);
             LevelManagerScript.levelManager.UnloadLevel("StartScreen");
-            AccountInfo.accountInfo.InstantiatePlayer();
+            AccountInfo.accountInfo.MyPlayerScreenPrefab.SetActive(true);
         }        
     }
 }

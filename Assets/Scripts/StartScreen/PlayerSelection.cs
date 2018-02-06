@@ -28,7 +28,8 @@ public class PlayerSelection : MonoBehaviour {
     // Use this for initialization
     void Start () {
         SetSelectablePlayers();
-	}
+        AccountInfo.accountInfo.MyPlayerScreenPrefab.SetActive(false);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -64,7 +65,7 @@ public class PlayerSelection : MonoBehaviour {
         {
             LevelManagerScript.levelManager.LoadLevel(PlayerInfo.playerInfo.MyCurrentZone);
             LevelManagerScript.levelManager.UnloadLevel("StartScreen");
-            AccountInfo.accountInfo.InstantiatePlayer();
+            AccountInfo.accountInfo.MyPlayerScreenPrefab.SetActive(true);
         }   
         else
         {

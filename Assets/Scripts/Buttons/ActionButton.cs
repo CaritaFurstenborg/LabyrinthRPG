@@ -10,8 +10,24 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler {
     public IUseable MyUseable { get; set; }
 
     public Button MyButton { get; private set; }
-    
 
+    [SerializeField]
+    private Image icon;
+
+    public Image MyIcon
+    {
+        get
+        {
+            return icon;
+        }
+
+        set
+        {
+            icon = value;
+        }
+    }
+
+    
     // Use this for initialization
     void Start () {
         MyButton = GetComponent<Button>();
@@ -33,6 +49,25 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler {
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if(eventData.button == PointerEventData.InputButton.Left)
+        {
+            if(HandScript.MyInstance.MyMoveable != null && HandScript.MyInstance.MyMoveable is IUseable)
+            {
+                SetUseable(HandScript.MyInstance.MyMoveable as IUseable);
+            }
+        }
+    }
 
+    public void SetUseable(IUseable useable)
+    {
+        this.MyUseable = useable;
+
+        UpdateVisual();
+    }
+
+    public void UpdateVisual()
+    {
+        MyIcon.sprite = HandScript.MyInstance.Put().MyIcon;
+        MyIcon.color = Color.white;
     }
 }

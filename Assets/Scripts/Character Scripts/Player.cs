@@ -20,8 +20,6 @@ public class Player : Character {
 
     private PlayerInfo playerI;
 
-    private static bool playerExists;   //Check if player exists in area
-
     [SerializeField]
     private Stats resource;
     
@@ -31,8 +29,6 @@ public class Player : Character {
     [SerializeField]
     private Transform[] exitPoints; 
     private int exitIndex = 2;
-
-    private SpellBook spellBook;
     
     private float initialResource = 0;
     private float maxResource = 100;
@@ -56,18 +52,6 @@ public class Player : Character {
         {
             weaponType.sprite = weapon[0];
         }
-        // Check for transfering between zones so no duplicate players
-        //if (!playerExists)
-        //{
-        //    playerExists = true;
-        //    DontDestroyOnLoad(transform.gameObject);
-        //}
-        //else
-        //{
-        //    Destroy(gameObject);
-        //}
-
-        spellBook = GetComponent<SpellBook>();
 
         base.Start();
 	}
@@ -130,7 +114,7 @@ public class Player : Character {
     private IEnumerator Attack(string spellName)
     {
         Transform currentTarget = MyTarget;
-        Spell newSpell = spellBook.CastSpell(spellName);
+        Spell newSpell = SpellBook.MyInstance.CastSpell(spellName);
 
         if(!newSpell.IsMele)
         {
@@ -203,7 +187,7 @@ public class Player : Character {
 
     public void StopAttack()
     {
-        spellBook.StopCasting();
+        SpellBook.MyInstance.StopCasting();
 
         IsAttacking = false;
         MyAnimator.SetBool("isAttacking", IsAttacking);

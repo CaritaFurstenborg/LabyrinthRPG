@@ -12,8 +12,21 @@ public class AccountInfo : MonoBehaviour {
 
     public List<string> playerCharList;
 
-	// Use this for initialization
-	void Awake () {
+    public GameObject MyPlayerScreenPrefab
+    {
+        get
+        {
+            return playerScreenPrefab;
+        }
+
+        set
+        {
+            playerScreenPrefab = value;
+        }
+    }
+
+    // Use this for initialization
+    void Awake () {
 
         if (accountInfo == null)
         {
@@ -44,8 +57,8 @@ public class AccountInfo : MonoBehaviour {
         SaveLoadManager.SaveAccountInfo(this);
     }
 
-    public void InstantiatePlayer()
-    {
-        Instantiate(playerScreenPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-    }
+    //public void InstantiatePlayer()
+    //{
+    //    Instantiate(playerScreenPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+    //}
 }

@@ -34,12 +34,15 @@ public class UiManager : MonoBehaviour {
     private Image avatarImage;              // reference to the image of target unitframe
 
     [SerializeField]
-    private GameObject mainMenu;           //Reference to main menu
+    private CanvasGroup mainMenu;           //Reference to main menu
 
     [SerializeField]
-    private GameObject keybindMenu;         // ref to keybind menu
+    private CanvasGroup keybindMenu;         // ref to keybind menu
 
     private GameObject[] keybindButtons;
+
+    [SerializeField]
+    private CanvasGroup spellBook;
 
     void Awake()
     {
@@ -48,23 +51,25 @@ public class UiManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {       
-
-        mainMenu.SetActive(false);
-        keybindMenu.SetActive(false);
+        
         healthStat = targetFrame.GetComponentInChildren<Stats>();
-
-        SetUseable(actionButtons[0], SpellBook.MyInstance.GetSpell("Attack"));
-        SetUseable(actionButtons[1], SpellBook.MyInstance.GetSpell("Flamethrust"));
-        SetUseable(actionButtons[2], SpellBook.MyInstance.GetSpell("Shoot"));
 
     }
 	
 	// Update is called once per frame
 	void Update () {
 		
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))       // Esc toggles main menu
         {
-            ToggleMenu();
+            ToggleMenu(mainMenu);
+        }
+        if(Input.GetKeyDown(KeyCode.P))         // P toggles spellBook
+        {
+            ToggleMenu(spellBook);
+        }
+        if(Input.GetKeyDown(KeyCode.B))         // B toggles all equipped bags
+        {
+            InventoryScript.MyInstance.OpenClose();
         }
     }
 
@@ -90,35 +95,41 @@ public class UiManager : MonoBehaviour {
         healthStat.MyCurrentValue = health;
     }
 
-    public void ToggleMenu()
-    {
-        if(!mainMenu.activeSelf)        // if menu not active activate
-        {
-            mainMenu.SetActive(true);
-        }
-        else
-        {
-            mainMenu.SetActive(false);      //else deactivate
-        }
+    //public void ToggleMainMenu()
+    //{
+    //    if(!mainMenu.activeSelf)        // if menu not active activate
+    //    {
+    //        mainMenu.SetActive(true);
+    //    }
+    //    else
+    //    {
+    //        mainMenu.SetActive(false);      //else deactivate
+    //    }
 
-        Time.timeScale = Time.timeScale > 0 ? 0 : 1; // Pause functio
-    }
+    //    Time.timeScale = Time.timeScale > 0 ? 0 : 1; // Pause functio
+    //}
 
     public void ShowKeybindMenu()
     {
-        keybindMenu.SetActive(true);
-        if(mainMenu.activeSelf)
+        if (keybindMenu.alpha != 0)
         {
-            mainMenu.SetActive(false);
+            ToggleMenu(keybindMenu);
+        }
+        if (mainMenu.alpha == 1)
+        {
+            ToggleMenu(mainMenu);
         }
     }
 
     public void CloseKeybindMenu()
     {
-        keybindMenu.SetActive(false);
-        if(!mainMenu.activeSelf)
+        if(keybindMenu.alpha != 1)
         {
-            mainMenu.SetActive(true);
+            ToggleMenu(keybindMenu);
+        }
+        if (mainMenu.alpha == 0)
+        {
+            ToggleMenu(mainMenu);
         }
     }
 
@@ -133,10 +144,9 @@ public class UiManager : MonoBehaviour {
         Array.Find(actionButtons, x => x.gameObject.name == buttonName).MyButton.onClick.Invoke();
     }
 
-    public void SetUseable(ActionButton btn, IUseable useable)
+    public void ToggleMenu(CanvasGroup cg)
     {
-        btn.MyButton.image.sprite = useable.MyIcon;
-        btn.MyButton.image.color = Color.white;
-        btn.MyUseable = useable;
+        cg.alpha = cg.alpha > 0 ? 0 : 1;
+        cg.blocksRaycasts = cg.blocksRaycasts == true ? false : true;
     }
 }
