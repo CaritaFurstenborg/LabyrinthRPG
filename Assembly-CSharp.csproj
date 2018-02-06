@@ -84,6 +84,7 @@
      <Compile Include="Assets\Scripts\Inventory\InventoryScript.cs" />
      <Compile Include="Assets\Scripts\Inventory\InvSlotScript.cs" />
      <Compile Include="Assets\Scripts\Items\Bag.cs" />
+     <Compile Include="Assets\Scripts\Items\HealthPotion.cs" />
      <Compile Include="Assets\Scripts\Items\Item.cs" />
      <Compile Include="Assets\Scripts\LevelManagerScript.cs" />
      <Compile Include="Assets\Scripts\LoadLevelTrigger.cs" />

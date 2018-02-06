@@ -48,5 +48,5 @@ public abstract class Item : ScriptableObject {
         {
             MySlot.RemoveItem(this);
         }
-    }
+    }               // Remove self
 }

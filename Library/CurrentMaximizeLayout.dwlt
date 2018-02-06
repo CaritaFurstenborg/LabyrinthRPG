@@ -21,10 +21,10 @@ MonoBehaviour:
     y: 30
     width: 1345
     height: 1051
-  m_MinSize: {x: 713, y: 492}
+  m_MinSize: {x: 613, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 30
+  controlID: 1380
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -122,10 +122,10 @@ MonoBehaviour:
     y: 0
     width: 785
     height: 1051
-  m_MinSize: {x: 202, y: 342}
+  m_MinSize: {x: 102, y: 242}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 31
+  controlID: 1381
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,16 +144,16 @@ MonoBehaviour:
     y: 0
     width: 785
     height: 476
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 5}
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 8}
   m_Panes:
   - {fileID: 5}
   - {fileID: 6}
   - {fileID: 7}
   - {fileID: 8}
-  m_Selected: 0
-  m_LastSelected: 3
+  m_Selected: 3
+  m_LastSelected: 0
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -363,8 +363,8 @@ MonoBehaviour:
     y: 476
     width: 785
     height: 575
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 10}
@@ -423,7 +423,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 70
+  controlID: 1471
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -442,8 +442,8 @@ MonoBehaviour:
     y: 0
     width: 283
     height: 483
-  m_MinSize: {x: 204, y: 221}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -478,9 +478,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 182b0000
+    m_SelectedIDs: 0c2b0000
     m_LastClickedID: 0
-    m_ExpandedIDs: 9432ffffe8dcffff50e5ffffe2f6ffff0af7ffff98f7ffff9ef7ffffdaf7ffff96fbffff98fbffff00000000362e0000
+    m_ExpandedIDs: 0c31ffff2c5bffff325bffff6e5bffff0e8affffd0e7ffff84e8ffff86e8ffff8ce8ffffc8e8ffff76fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -567,19 +567,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scenes
+    - Assets/Art/UI
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Art/UI
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Carita\Documents\DevGameProjects\LabyrinthRPG
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 94}
-    m_SelectedIDs: 142c0000
-    m_LastClickedID: 11284
-    m_ExpandedIDs: 00000000042a0000e62a0000bc2b00006c2c000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 105}
+    m_SelectedIDs: 822d0000
+    m_LastClickedID: 11650
+    m_ExpandedIDs: 00000000f2290000d62a0000b02b0000602c000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -607,7 +607,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000042a0000e62a0000bc2b00006c2c0000
+    m_ExpandedIDs: 00000000f2290000d62a0000b02b0000602c000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -632,10 +632,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 182b0000
-    m_LastClickedInstanceID: 11032
-    m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: 9e260000ea2600006a2b000082b4000090260000766f0000fa67f2ff46280000f0560000e8270000da2800005a28000082310000642700000c27000074290000422700004428000066270000242700002627000000000000422a00003c2a0000
+    m_SelectedInstanceIDs: 0c2b0000
+    m_LastClickedInstanceID: 11020
+    m_HadKeyboardFocusLastEvent: 0
+    m_ExpandedInstanceIDs: 9e260000ea2600006a2b000082b4000090260000766f0000fa67f2ff46280000f0560000e8270000da2800005a28000082310000642700000c27000074290000422700004428000066270000242700002627000000000000422a00003c2a00002a2a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -680,8 +680,8 @@ MonoBehaviour:
     y: 0
     width: 277
     height: 1051
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
