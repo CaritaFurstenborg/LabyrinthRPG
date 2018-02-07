@@ -17,16 +17,16 @@ public class CharacterButtonScript : MonoBehaviour {
     {
         int[] loadedStats = SaveLoadManager.LoadPlayerStats(playerName);      // Set to desired player to load
 
-        PlayerInfo.playerInfo.MyPlayerLevel = loadedStats[0];
-        PlayerInfo.playerInfo.MyStamina = loadedStats[1];
-        PlayerInfo.playerInfo.MyStrength = loadedStats[2];
-        PlayerInfo.playerInfo.MyIntelligence = loadedStats[3];
+        PlayerInfo.MyInstance.MyPlayerLevel = loadedStats[0];
+        PlayerInfo.MyInstance.MyStamina = loadedStats[1];
+        PlayerInfo.MyInstance.MyStrength = loadedStats[2];
+        PlayerInfo.MyInstance.MyIntelligence = loadedStats[3];
 
         string[] loadedDefs = SaveLoadManager.LoadPlayerDefs(playerName);     // Set to desired player to load
 
-        PlayerInfo.playerInfo.MyPlayerName = loadedDefs[0];
-        PlayerInfo.playerInfo.MyPlayerClass = loadedDefs[1];
-        PlayerInfo.playerInfo.MyCurrentZone = loadedDefs[2];
+        PlayerInfo.MyInstance.MyPlayerName = loadedDefs[0];
+        PlayerInfo.MyInstance.MyPlayerClass = loadedDefs[1];
+        PlayerInfo.MyInstance.MyCurrentZone = loadedDefs[2];
 
         Debug.Log(playerName);
     }

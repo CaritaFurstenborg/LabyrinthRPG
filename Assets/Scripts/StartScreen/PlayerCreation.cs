@@ -12,7 +12,7 @@ public class PlayerCreation : MonoBehaviour {
 
     void Awake()
     {
-        AccountInfo.accountInfo.MyPlayerScreenPrefab.SetActive(false);
+        AccountInfo.accountInfo.MyPlayerScreen.SetActive(false);
     }
 	// Use this for initialization
 	void Start () {
@@ -26,25 +26,25 @@ public class PlayerCreation : MonoBehaviour {
 
     public void SelectMage()
     {
-        PlayerInfo.playerInfo.MyPlayerClass = "mage";
-        PlayerInfo.playerInfo.MyPlayerLevel = 1;
-        PlayerInfo.playerInfo.MyStamina = 15;
-        PlayerInfo.playerInfo.MyIntelligence = 14;
-        PlayerInfo.playerInfo.MyStrength = 9;
+        PlayerInfo.MyInstance.MyPlayerClass = "mage";
+        PlayerInfo.MyInstance.MyPlayerLevel = 1;
+        PlayerInfo.MyInstance.MyStamina = 15;
+        PlayerInfo.MyInstance.MyIntelligence = 14;
+        PlayerInfo.MyInstance.MyStrength = 9;
     }
 
     public void SelectWarrior()
     {
-        PlayerInfo.playerInfo.MyPlayerClass = "warrior";
-        PlayerInfo.playerInfo.MyPlayerLevel = 1;
-        PlayerInfo.playerInfo.MyStamina = 15;
-        PlayerInfo.playerInfo.MyIntelligence = 9;
-        PlayerInfo.playerInfo.MyStrength = 14;
+        PlayerInfo.MyInstance.MyPlayerClass = "warrior";
+        PlayerInfo.MyInstance.MyPlayerLevel = 1;
+        PlayerInfo.MyInstance.MyStamina = 15;
+        PlayerInfo.MyInstance.MyIntelligence = 9;
+        PlayerInfo.MyInstance.MyStrength = 14;
     }
 
     public void CreateNewCharacter()
     {
-        PlayerInfo.playerInfo.MyPlayerName = charName.text.ToString();
+        PlayerInfo.MyInstance.MyPlayerName = charName.text.ToString();
         if(charName.text.ToString().Equals(""))
         {
             Debug.Log("Can not create a player without a name");
@@ -60,7 +60,7 @@ public class PlayerCreation : MonoBehaviour {
             Debug.Log("Already at maximum characters");
             return;
         }
-        else if(PlayerInfo.playerInfo.MyPlayerName.Equals(""))      //should prevent entry without a character
+        else if(PlayerInfo.MyInstance.MyPlayerName.Equals(""))      //should prevent entry without a character
         {
             Debug.Log("Must create a character to enter the game");
             return;
@@ -69,10 +69,12 @@ public class PlayerCreation : MonoBehaviour {
         {
             AccountInfo.accountInfo.playerCharList.Add(charName.text);
             AccountInfo.accountInfo.Save();
-            PlayerInfo.playerInfo.Save();
-            LevelManagerScript.levelManager.LoadLevel(PlayerInfo.playerInfo.MyCurrentZone);
-            LevelManagerScript.levelManager.UnloadLevel("StartScreen");
-            AccountInfo.accountInfo.MyPlayerScreenPrefab.SetActive(true);
+            PlayerInfo.MyInstance.Save();
+            Player.MyInstance.SetClass();
+            AccountInfo.accountInfo.MyPlayerScreen.SetActive(true);
+            LevelManagerScript.levelManager.LoadLevel(PlayerInfo.MyInstance.MyCurrentZone);
+            //LevelManagerScript.levelManager.UnloadLevel("StartScreen");
+            
         }        
     }
 }

@@ -3,8 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour {
-    
-    public static PlayerInfo playerInfo;        //The one and only
+
+    private static PlayerInfo instance;      // Sets UiManager to singleton
+
+    public static PlayerInfo MyInstance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<PlayerInfo>();
+            }
+
+            return instance;
+        }
+        set
+        {
+            instance = value;
+        }
+    }
 
     // Player definitions
     [SerializeField]
@@ -27,6 +44,10 @@ public class PlayerInfo : MonoBehaviour {
 
     [SerializeField]
     private int strength;
+
+    private int exp;
+
+    // Properties
 
     public string MyPlayerName
     {
@@ -119,11 +140,24 @@ public class PlayerInfo : MonoBehaviour {
         }
     }
 
+    public int MyExp
+    {
+        get
+        {
+            return exp;
+        }
+
+        set
+        {
+            exp = value;
+        }
+    }
+
     void Awake()
     {
-        if (playerInfo == null)
+        if (instance == null)
         {
-            playerInfo = this;
+            instance = this;
         }
     }
 

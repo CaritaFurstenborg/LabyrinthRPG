@@ -8,20 +8,20 @@ public class AccountInfo : MonoBehaviour {
     public static AccountInfo accountInfo;
 
     [SerializeField]
-    private GameObject playerScreenPrefab;
+    private GameObject playerScreen;
 
     public List<string> playerCharList;
 
-    public GameObject MyPlayerScreenPrefab
+    public GameObject MyPlayerScreen
     {
         get
         {
-            return playerScreenPrefab;
+            return playerScreen;
         }
 
         set
         {
-            playerScreenPrefab = value;
+            playerScreen = value;
         }
     }
 
@@ -45,6 +45,9 @@ public class AccountInfo : MonoBehaviour {
                 }
             }
         }
+
+        playerScreen = FindObjectOfType<MainGameObjectsManager>().gameObject;
+        playerScreen.SetActive(false);
     }
 	
 	// Update is called once per frame

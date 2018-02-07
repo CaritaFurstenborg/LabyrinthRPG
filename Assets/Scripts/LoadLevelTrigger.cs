@@ -10,9 +10,6 @@ public class LoadLevelTrigger : MonoBehaviour {
 	[SerializeField]
     private string loadName;
 
-    [SerializeField]
-    private string unloadName;
-
     void Awake()
     {
         levelTrigger = this;
@@ -22,30 +19,20 @@ public class LoadLevelTrigger : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
+            if(SceneManager.GetActiveScene().name.Contains("Level"))
+            {
+                Player.MyInstance.MySpawnPoint = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
+            }
+                        
             if(loadName != "")
             {
+                if(loadName.Contains("Level"))
+                {
+                    Player.MyInstance.transform.position = Player.MyInstance.MySpawnPoint;
+                }
                 LevelManagerScript.levelManager.LoadLevel(loadName);
-                PlayerInfo.playerInfo.MyCurrentZone = loadName;
-            }
-            if(unloadName != "")
-            {
-                LevelManagerScript.levelManager.UnloadLevel(unloadName);
+                PlayerInfo.MyInstance.MyCurrentZone = loadName;
             }
         }
-    }
-
-    public void ExitToStartScreen()
-    {
-        GameObject playerScreen = FindObjectOfType<MainGameObjectsManager>().gameObject;
-        PlayerInfo.playerInfo.Save();
-
-        Time.timeScale = 1;
-
-        LevelManagerScript.levelManager.LoadLevel("StartScreen");
-        if(playerScreen != null)
-        {
-            MainGameObjectsManager.instance.DestroyMainGameObjects();
-        }        
-        LevelManagerScript.levelManager.UnloadLevel(PlayerInfo.playerInfo.MyCurrentZone);
     }
 }

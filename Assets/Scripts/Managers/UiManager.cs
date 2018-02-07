@@ -157,4 +157,19 @@ public class UiManager : MonoBehaviour {
             clickable.MyIcon.color = new Color(0, 0, 0, 0);
         }
     }
+
+    public void ExitToStartScreen()
+    {
+        GameObject playerScreen = FindObjectOfType<MainGameObjectsManager>().gameObject;
+        PlayerInfo.MyInstance.Save();
+
+        Time.timeScale = 1;
+        ToggleMenu(mainMenu);
+
+        LevelManagerScript.levelManager.LoadLevel("StartScreen");
+        if (playerScreen != null)
+        {
+            playerScreen.SetActive(false);
+        }
+    }
 }

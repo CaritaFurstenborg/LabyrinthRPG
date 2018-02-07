@@ -5612,7 +5612,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadName: 
-  unloadName: 
 --- !u!114 &114367203973388742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7486,7 +7485,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114363894613888434}
+      - m_Target: {fileID: 114926104814592762}
         m_MethodName: ExitToStartScreen
         m_Mode: 1
         m_Arguments:
@@ -14259,7 +14258,7 @@ RectTransform:
   m_GameObject: {fileID: 1935811089092970}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.99999994}
   m_Children:
   - {fileID: 224507120877375596}
   - {fileID: 224703213629513194}
@@ -14271,7 +14270,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 333.1, y: -271.99997}
+  m_AnchoredPosition: {x: 362.3, y: -272}
   m_SizeDelta: {x: 293.2, y: 55.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224950885082695544

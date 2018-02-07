@@ -18,7 +18,18 @@ public class Player : Character {
         }
     }
 
-    private PlayerInfo playerI;
+    public Vector3 MySpawnPoint
+    {
+        get
+        {
+            return spawnPoint;
+        }
+
+        set
+        {
+            spawnPoint = value;
+        }
+    }
 
     [SerializeField]
     private Stats resource;
@@ -39,19 +50,11 @@ public class Player : Character {
     [SerializeField]
     private Sprite[] weapon;
 
+    private Vector3 spawnPoint;
+
 
     // Use this for initialization
     protected override void Start () {
-        playerI = FindObjectOfType<PlayerInfo>();
-
-        if(playerI.MyPlayerClass == "mage")
-        {
-            weaponType.sprite = weapon[3];
-        } 
-        else
-        {
-            weaponType.sprite = weapon[0];
-        }
 
         base.Start();
 	}
@@ -195,6 +198,18 @@ public class Player : Character {
         if (attackRoutine != null)
         {
             StopCoroutine(attackRoutine);
+        }
+    }
+
+    public void SetClass()
+    {
+        if (PlayerInfo.MyInstance.MyPlayerClass == "mage")
+        {
+            weaponType.sprite = weapon[3];
+        }
+        else
+        {
+            weaponType.sprite = weapon[0];
         }
     }
 }

@@ -28,18 +28,18 @@ public class PlayerSelection : MonoBehaviour {
     // Use this for initialization
     void Start () {
         SetSelectablePlayers();
-        AccountInfo.accountInfo.MyPlayerScreenPrefab.SetActive(false);
+        //AccountInfo.accountInfo.MyPlayerScreen.SetActive(false);
     }
 	
 	// Update is called once per frame
 	void Update () {
-		if(PlayerInfo.playerInfo.MyPlayerName != null)
+		if(PlayerInfo.MyInstance.MyPlayerName != null)
         {
-            selectionName.text = PlayerInfo.playerInfo.MyPlayerName;
-            selectionClass.text = PlayerInfo.playerInfo.MyPlayerClass;
-            if(PlayerInfo.playerInfo.MyPlayerLevel > 0)
+            selectionName.text = PlayerInfo.MyInstance.MyPlayerName;
+            selectionClass.text = PlayerInfo.MyInstance.MyPlayerClass;
+            if(PlayerInfo.MyInstance.MyPlayerLevel > 0)
             {
-                selectionLevel.text = "Level: " + PlayerInfo.playerInfo.MyPlayerLevel.ToString();
+                selectionLevel.text = "Level: " + PlayerInfo.MyInstance.MyPlayerLevel.ToString();
             }            
         }
 	}
@@ -61,11 +61,16 @@ public class PlayerSelection : MonoBehaviour {
 
     public void EnterGame()
     {   
-        if(!PlayerInfo.playerInfo.MyPlayerName.Equals(""))
+        if(!PlayerInfo.MyInstance.MyPlayerName.Equals(""))
         {
-            LevelManagerScript.levelManager.LoadLevel(PlayerInfo.playerInfo.MyCurrentZone);
-            LevelManagerScript.levelManager.UnloadLevel("StartScreen");
-            AccountInfo.accountInfo.MyPlayerScreenPrefab.SetActive(true);
+            Debug.Log(AccountInfo.accountInfo.MyPlayerScreen);
+            if (AccountInfo.accountInfo.MyPlayerScreen != null)
+            {
+                AccountInfo.accountInfo.MyPlayerScreen.SetActive(true);
+                LevelManagerScript.levelManager.LoadLevel(PlayerInfo.MyInstance.MyCurrentZone);
+                Player.MyInstance.SetClass();
+            }      
+
         }   
         else
         {

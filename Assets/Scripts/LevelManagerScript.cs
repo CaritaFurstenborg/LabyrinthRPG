@@ -8,8 +8,8 @@ public class LevelManagerScript : MonoBehaviour {
 
     public static LevelManagerScript levelManager;
 
-    [SerializeField]
-    private Slider loadingBar;
+    //[SerializeField]
+    //private Slider loadingBar;
 
     //bool sceneLoaded = false;
     
@@ -30,42 +30,39 @@ public class LevelManagerScript : MonoBehaviour {
 
     public void LoadLevel(string sceneName)
     {
-        if(!SceneManager.GetSceneByName(sceneName).isLoaded)
-        {
-            StartCoroutine(Load(sceneName));
-        }
+        SceneManager.LoadScene(sceneName);
     }
 
-    public void UnloadLevel(string sceneName)
-    {
-        if (SceneManager.GetSceneByName(sceneName).isLoaded)
-        {
-            StartCoroutine(Unload(sceneName));
-        }
-    }
+    //public void UnloadLevel(string sceneName)
+    //{
+    //    if (SceneManager.GetSceneByName(sceneName).isLoaded)
+    //    {
+    //        StartCoroutine(Unload(sceneName));
+    //    }
+    //}
 
-    IEnumerator Unload(string scene)        //Coroutine on pakollinen koska jostakin syystä Unloadia ei voi ajaa ilman sitä
-    {
-        yield return new WaitForSeconds(.50f);
-        AsyncOperation async2 = SceneManager.UnloadSceneAsync(scene);
+    //IEnumerator Unload(string scene)        //Coroutine on pakollinen koska jostakin syystä Unloadia ei voi ajaa ilman sitä
+    //{
+    //    yield return new WaitForSeconds(.50f);
+    //    AsyncOperation async2 = SceneManager.UnloadSceneAsync(scene);
 
-        while(!async2.isDone)
-        {
-            yield return null;            
-        }
-    }
+    //    while(!async2.isDone)
+    //    {
+    //        yield return null;            
+    //    }
+    //}
 
-    IEnumerator Load(string sceneName)
-    {
-        AsyncOperation async = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+    //IEnumerator Load(string sceneName)
+    //{
+    //    AsyncOperation async = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
 
-        while (!async.isDone)
-        {
-            float progress = Mathf.Clamp01(async.progress / 0.9f);
-            loadingBar.value = progress;
-            yield return null;            
-            async.allowSceneActivation = true;
-        }
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
-    }
+    //    while (!async.isDone)
+    //    {
+    //        float progress = Mathf.Clamp01(async.progress / 0.9f);
+    //        loadingBar.value = progress;
+    //        yield return null;            
+    //        async.allowSceneActivation = true;
+    //    }
+    //    SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+    //}
 }
