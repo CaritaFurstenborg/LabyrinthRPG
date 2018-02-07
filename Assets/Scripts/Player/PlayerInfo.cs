@@ -35,6 +35,8 @@ public class PlayerInfo : MonoBehaviour {
     [SerializeField]
     private int playerLevel;
 
+    private int exp;
+
     //player stats
     [SerializeField]
     private int stamina;
@@ -45,7 +47,13 @@ public class PlayerInfo : MonoBehaviour {
     [SerializeField]
     private int strength;
 
-    private int exp;
+    // Player Position
+    [SerializeField]
+    private float x;
+    [SerializeField]
+    private float y;
+    [SerializeField]
+    private float z;
 
     // Properties
 
@@ -153,6 +161,45 @@ public class PlayerInfo : MonoBehaviour {
         }
     }
 
+    public float MyX
+    {
+        get
+        {
+            return x;
+        }
+
+        set
+        {
+            x = value;
+        }
+    }
+
+    public float MyY
+    {
+        get
+        {
+            return y;
+        }
+
+        set
+        {
+            y = value;
+        }
+    }
+
+    public float MyZ
+    {
+        get
+        {
+            return z;
+        }
+
+        set
+        {
+            z = value;
+        }
+    }
+
     void Awake()
     {
         if (instance == null)
@@ -171,11 +218,16 @@ public class PlayerInfo : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-	}
+              
+    }
 
     public void Save()
     {
         SaveLoadManager.SavePlayer(this);
+    }
+
+    public void ClearPlayer()
+    {
+
     }
 }

@@ -37,7 +37,7 @@ public static class SaveLoadManager {
         else
         {
             Debug.LogError("File does not exist.");
-            return new int[4];
+            return new int[5];
         }
     }
 
@@ -58,6 +58,26 @@ public static class SaveLoadManager {
         {
             Debug.LogError("File does not exist.");
             return new string[3];
+        }
+    }
+
+    public static float[] LoadPlayerPos(string playerName)
+    {
+        if (File.Exists(Application.persistentDataPath + "/" + playerName + ".sav"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+
+            FileStream stream = new FileStream(Application.persistentDataPath + "/" + playerName + ".sav", FileMode.Open);
+
+            PlayerData data = bf.Deserialize(stream) as PlayerData;     // as instead of typecast
+
+            stream.Close();
+            return data.positions;
+        }
+        else
+        {
+            Debug.LogError("File does not exist.");
+            return new float[3];
         }
     }
 

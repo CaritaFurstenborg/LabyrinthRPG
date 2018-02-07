@@ -21,12 +21,19 @@ public class CharacterButtonScript : MonoBehaviour {
         PlayerInfo.MyInstance.MyStamina = loadedStats[1];
         PlayerInfo.MyInstance.MyStrength = loadedStats[2];
         PlayerInfo.MyInstance.MyIntelligence = loadedStats[3];
+        PlayerInfo.MyInstance.MyExp = loadedStats[4];
 
         string[] loadedDefs = SaveLoadManager.LoadPlayerDefs(playerName);     // Set to desired player to load
 
         PlayerInfo.MyInstance.MyPlayerName = loadedDefs[0];
         PlayerInfo.MyInstance.MyPlayerClass = loadedDefs[1];
         PlayerInfo.MyInstance.MyCurrentZone = loadedDefs[2];
+
+        float[] loadedPos = SaveLoadManager.LoadPlayerPos(playerName);
+
+        PlayerInfo.MyInstance.MyX = loadedPos[0];
+        PlayerInfo.MyInstance.MyY = loadedPos[1];
+        PlayerInfo.MyInstance.MyZ = loadedPos[2];
 
         Debug.Log(playerName);
     }

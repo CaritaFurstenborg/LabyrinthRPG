@@ -161,6 +161,9 @@ public class UiManager : MonoBehaviour {
     public void ExitToStartScreen()
     {
         GameObject playerScreen = FindObjectOfType<MainGameObjectsManager>().gameObject;
+        PlayerInfo.MyInstance.MyX = Player.MyInstance.transform.position.x;
+        PlayerInfo.MyInstance.MyY = Player.MyInstance.transform.position.y;
+        PlayerInfo.MyInstance.MyZ = Player.MyInstance.transform.position.z;
         PlayerInfo.MyInstance.Save();
 
         Time.timeScale = 1;

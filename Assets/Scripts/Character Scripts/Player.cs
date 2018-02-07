@@ -56,6 +56,8 @@ public class Player : Character {
     // Use this for initialization
     protected override void Start () {
 
+        transform.position = new Vector3(PlayerInfo.MyInstance.MyX, PlayerInfo.MyInstance.MyY, PlayerInfo.MyInstance.MyZ);
+
         base.Start();
 	}
 	

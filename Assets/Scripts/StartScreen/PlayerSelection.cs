@@ -68,6 +68,7 @@ public class PlayerSelection : MonoBehaviour {
             {
                 AccountInfo.accountInfo.MyPlayerScreen.SetActive(true);
                 LevelManagerScript.levelManager.LoadLevel(PlayerInfo.MyInstance.MyCurrentZone);
+                Player.MyInstance.transform.position = new Vector3(PlayerInfo.MyInstance.MyX, PlayerInfo.MyInstance.MyY, PlayerInfo.MyInstance.MyZ);
                 Player.MyInstance.SetClass();
             }      
 

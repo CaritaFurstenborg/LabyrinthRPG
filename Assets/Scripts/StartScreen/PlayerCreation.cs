@@ -69,9 +69,11 @@ public class PlayerCreation : MonoBehaviour {
         {
             AccountInfo.accountInfo.playerCharList.Add(charName.text);
             AccountInfo.accountInfo.Save();
+            Player.MyInstance.transform.position = new Vector3(0, 0, 0);
             PlayerInfo.MyInstance.Save();
-            Player.MyInstance.SetClass();
             AccountInfo.accountInfo.MyPlayerScreen.SetActive(true);
+
+            Player.MyInstance.SetClass();
             LevelManagerScript.levelManager.LoadLevel(PlayerInfo.MyInstance.MyCurrentZone);
             //LevelManagerScript.levelManager.UnloadLevel("StartScreen");
             
