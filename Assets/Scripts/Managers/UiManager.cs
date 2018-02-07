@@ -111,7 +111,7 @@ public class UiManager : MonoBehaviour {
 
     public void ShowKeybindMenu()
     {
-        if (keybindMenu.alpha != 0)
+        if (keybindMenu.alpha == 0)
         {
             ToggleMenu(keybindMenu);
         }
@@ -123,7 +123,7 @@ public class UiManager : MonoBehaviour {
 
     public void CloseKeybindMenu()
     {
-        if(keybindMenu.alpha != 1)
+        if(keybindMenu.alpha == 1)
         {
             ToggleMenu(keybindMenu);
         }
