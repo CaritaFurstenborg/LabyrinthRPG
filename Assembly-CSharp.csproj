@@ -89,6 +89,7 @@
      <Compile Include="Assets\Scripts\Items\Item.cs" />
      <Compile Include="Assets\Scripts\LevelManagerScript.cs" />
      <Compile Include="Assets\Scripts\LoadLevelTrigger.cs" />
+     <Compile Include="Assets\Scripts\LootScript.cs" />
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
      <Compile Include="Assets\Scripts\Managers\KeybindManager.cs" />
      <Compile Include="Assets\Scripts\Managers\MainGameObjectsManager.cs" />

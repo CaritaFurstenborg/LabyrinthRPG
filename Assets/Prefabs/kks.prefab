@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 50682377002190910}
   - component: {fileID: 61084831128590516}
   - component: {fileID: 114781061296457040}
+  - component: {fileID: 114928020171316542}
   m_Layer: 9
   m_Name: kks
   m_TagString: Enemy
@@ -395,6 +396,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1885e7055ba94ab478cb840fcaf932f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114928020171316542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1149067658303044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0adc7a731f6996e4f899532e2da32421, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootTable:
+  - name: Bag
+    item: {fileID: 11400000, guid: a9bc4673dd99b144c8a48f7cea9be530, type: 2}
+    dropRarity: 25
+  - name: HealthPotion
+    item: {fileID: 11400000, guid: 691244b418b3152438ef07ec0f5cdc00, type: 2}
+    dropRarity: 80
+  dropChanse: 80
 --- !u!212 &212321075757360614
 SpriteRenderer:
   m_ObjectHideFlags: 1

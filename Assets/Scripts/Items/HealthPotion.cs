@@ -4,13 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[CreateAssetMenu(fileName = "HealthPotion", menuName = "Items/HealthPotion", order = 2)]
 public class HealthPotion : Item, IUseable {
-
-    private Image icon;
 
     public void Use()
     {
-        throw new NotImplementedException();
+        // Use functionalty here
     }
 
     // Use this for initialization

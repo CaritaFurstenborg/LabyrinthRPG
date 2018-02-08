@@ -31,6 +31,8 @@ public class Enemy : NPC {
     private MonsterSpawner monsterSpawner;          // Respawning monster
 
     private bool goExists;                          // Check if the game object exists for despawn
+
+    private bool notLooted;
     
     protected void Awake()
     {
@@ -45,6 +47,9 @@ public class Enemy : NPC {
         ChangeState(new IdleState());               // On start sets to  idle
 
         goExists = true;                            // As long as the gameobject exists
+
+        notLooted = true;                           // monster has not been looted
+
     }
 
     protected override void Update()
@@ -60,6 +65,13 @@ public class Enemy : NPC {
         }
         else
         {
+            if(notLooted)
+            {
+                LootScript ls = GetComponentInParent<LootScript>();
+                ls.CalculateLoot();
+                notLooted = false;
+            }            
+
             if(goExists)
             {
                 StartCoroutine("DespawnCorpse");

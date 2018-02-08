@@ -29,12 +29,26 @@ public class InventoryScript : MonoBehaviour {
     //DEGUGGING ONLY
     [SerializeField]
     private Item[] items;
+
     //DEBUGGING ONLY               
 
     public bool CanAddBag           // Chaeck if there are empty bagslots
     {
         get { return bags.Count < 5; }
     }
+
+    public Item[] Items
+    {
+        get
+        {
+            return items;
+        }
+
+        set
+        {
+            items = value;
+        }
+    }           // DEBUGGING ONLY
 
     private void Awake()        
     {
