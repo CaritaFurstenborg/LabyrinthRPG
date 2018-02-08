@@ -69,7 +69,10 @@ public class PlayerCreation : MonoBehaviour {
         {
             AccountInfo.accountInfo.playerCharList.Add(charName.text);
             AccountInfo.accountInfo.Save();
-            Player.MyInstance.transform.position = new Vector3(0, 0, 0);
+            if(Player.MyInstance != null)
+            {
+                Player.MyInstance.transform.position = new Vector3(0, 0, 0);
+            }            
             PlayerInfo.MyInstance.Save();
             AccountInfo.accountInfo.MyPlayerScreen.SetActive(true);
 

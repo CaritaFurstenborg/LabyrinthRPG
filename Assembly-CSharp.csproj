@@ -55,10 +55,8 @@
      <Compile Include="Assets\Behaviours\SpellBehaviour.cs" />
      <Compile Include="Assets\Scripts\Account\AccountData.cs" />
      <Compile Include="Assets\Scripts\Account\AccountInfo.cs" />
-     <Compile Include="Assets\Scripts\Account\SaveLoadManager.cs" />
      <Compile Include="Assets\Scripts\Buttons\ActionButton.cs" />
      <Compile Include="Assets\Scripts\Buttons\BagButton.cs" />
-     <Compile Include="Assets\Scripts\Buttons\IUseable.cs" />
      <Compile Include="Assets\Scripts\Buttons\SpellButton.cs" />
      <Compile Include="Assets\Scripts\Camera Scripts\Bounds.cs" />
      <Compile Include="Assets\Scripts\Camera Scripts\CameraFollow.cs" />
@@ -80,6 +78,9 @@
      <Compile Include="Assets\Scripts\EnemyStates\IdleState.cs" />
      <Compile Include="Assets\Scripts\EnemyStates\IState.cs" />
      <Compile Include="Assets\Scripts\FloatingNumbers.cs" />
+     <Compile Include="Assets\Scripts\Interfaces\IClickable.cs" />
+     <Compile Include="Assets\Scripts\Interfaces\IMoveable.cs" />
+     <Compile Include="Assets\Scripts\Interfaces\IUseable.cs" />
      <Compile Include="Assets\Scripts\Inventory\BagScript.cs" />
      <Compile Include="Assets\Scripts\Inventory\InventoryScript.cs" />
      <Compile Include="Assets\Scripts\Inventory\InvSlotScript.cs" />
@@ -91,6 +92,7 @@
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
      <Compile Include="Assets\Scripts\Managers\KeybindManager.cs" />
      <Compile Include="Assets\Scripts\Managers\MainGameObjectsManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\SaveLoadManager.cs" />
      <Compile Include="Assets\Scripts\Managers\UiManager.cs" />
      <Compile Include="Assets\Scripts\MonsterSpawner.cs" />
      <Compile Include="Assets\Scripts\Obstacle.cs" />
@@ -109,8 +111,6 @@
      <Compile Include="Assets\Scripts\StartScreen\StartStateSelector.cs" />
      <Compile Include="Assets\Scripts\Stats.cs" />
      <Compile Include="Assets\Scripts\UiRelated\HandScript.cs" />
-     <Compile Include="Assets\Scripts\UiRelated\IClickable.cs" />
-     <Compile Include="Assets\Scripts\UiRelated\IMoveable.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\CircleObject.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\GameObjectExtensions.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\GPUInstancing.cs" />

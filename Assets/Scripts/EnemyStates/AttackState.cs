@@ -8,7 +8,7 @@ public class AttackState : IState
 
     private Enemy parent;
 
-    private float attackCooldown = 3;
+    private float attackCooldown = 0.5f;
 
     private float extraRange = 0.1f;
 
@@ -53,7 +53,7 @@ public class AttackState : IState
         parent.MyAnimator.SetTrigger("attack");
         parent.IsMele = true;
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(attackCooldown);
 
         parent.IsAttacking = false;
     }

@@ -4,21 +4,39 @@ using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour {
 
-    public GameObject monster;
-    public int spawnTimer;
-    public bool exists;
-    
-    
+    [SerializeField]
+    private GameObject monsterPrefab;
+    [SerializeField]
+    private int spawnTimer;
 
-	// Use this for initialization
-	void Start () {
-        Instantiate(monster, transform.position, transform.rotation);
-        exists = true;
+    [SerializeField]
+    private bool exists;
+
+    public bool MyExists
+    {
+        get
+        {
+            return exists;
+        }
+
+        set
+        {
+            exists = value;
+        }
+    }
+
+
+
+    // Use this for initialization
+    void Start () {
+        GameObject monster = Instantiate(monsterPrefab, transform);
+        monster.transform.parent = this.transform;
+        MyExists = true;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if(!exists)
+        if(!MyExists)
         {
             StartCoroutine(WaitSpawn());              
         }
@@ -28,10 +46,11 @@ public class MonsterSpawner : MonoBehaviour {
     {
         yield return new WaitForSeconds(spawnTimer);
 
-        while(!exists)
+        while(!MyExists)
         {
-            Instantiate(monster, transform.position, transform.rotation);
-            exists = true;
+            GameObject monster = Instantiate(monsterPrefab, transform);
+            monster.transform.parent = this.transform;
+            MyExists = true;
         }        
     }
 }
