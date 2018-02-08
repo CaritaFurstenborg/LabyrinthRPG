@@ -4,21 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[CreateAssetMenu(fileName = "HealthPotion", menuName = "Items/HealthPotion", order = 2)]
+[CreateAssetMenu(fileName = "HealthPotion", menuName = "Items/HealthPotion", order = 1)]
 public class HealthPotion : Item, IUseable {
+
+    [SerializeField]
+    private int heal;
 
     public void Use()
     {
-        // Use functionalty here
+        if(Player.MyInstance.MyHealth.MyCurrentValue < Player.MyInstance.MyHealth.MyMaxValue)
+        {
+            Remove();
+
+            Player.MyInstance.MyHealth.MyCurrentValue += heal;
+        }        
     }
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    
 }

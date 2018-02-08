@@ -11,8 +11,11 @@ public class GameManager : MonoBehaviour {
 
     private QuestObject talkTarget; // for questGiver
 
+    private MacDoubleClickScript macClick;
+
 	// Use this for initialization
 	void Start () {
+        macClick = GetComponentInParent<MacDoubleClickScript>();
         player = FindObjectOfType<Player>();
 	}
 	
@@ -60,7 +63,7 @@ public class GameManager : MonoBehaviour {
                 }
             }
         }
-        else if (Input.GetMouseButtonDown(1))
+        else if (Input.GetMouseButtonDown(1) || macClick.DoubleClick)
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, 512);
 

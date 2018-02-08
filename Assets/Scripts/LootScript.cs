@@ -41,10 +41,27 @@ public class LootScript : MonoBehaviour {
 
             for(int j = 0; j < lootTable.Count; j++)
             {
+                Item drop;
                 if(randomValue <= lootTable[j].dropRarity)
                 {
-                    Item drop = Instantiate(lootTable[j].item);
-                    InventoryScript.MyInstance.AddItem(drop);
+                    string dropName = lootTable[j].name;
+                    if(dropName.Equals("Bag 4 slot"))
+                    {
+                        Bag bag4s = (Bag)Instantiate(lootTable[j].item);
+                        bag4s.Initialize(4);
+                        InventoryScript.MyInstance.AddItem(bag4s);
+                    }
+                    else if(dropName.Equals("Bag 8 slot"))
+                    {
+                        Bag bag4s = (Bag)Instantiate(lootTable[j].item);
+                        bag4s.Initialize(8);
+                        InventoryScript.MyInstance.AddItem(bag4s);
+                    }
+                    else
+                    {
+                        drop = Instantiate(lootTable[j].item);
+                        InventoryScript.MyInstance.AddItem(drop);
+                    }
                     return;
                 }
                 randomValue -= lootTable[j].dropRarity;

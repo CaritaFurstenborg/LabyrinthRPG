@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class InvSlotScript : MonoBehaviour, IPointerClickHandler, IClickable {
 
+    private MacDoubleClickScript macScript;
+
     private Stack<Item> items = new Stack<Item>();
 
     [SerializeField]
@@ -53,6 +55,11 @@ public class InvSlotScript : MonoBehaviour, IPointerClickHandler, IClickable {
         }
     }
 
+    void Start()
+    {
+        macScript = FindObjectOfType<MacDoubleClickScript>();
+    }
+
     public bool AddItem(Item item)
     {
         items.Push(item);
@@ -74,7 +81,7 @@ public class InvSlotScript : MonoBehaviour, IPointerClickHandler, IClickable {
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(eventData.button == PointerEventData.InputButton.Right)
+        if(eventData.button == PointerEventData.InputButton.Right || eventData.button == PointerEventData.InputButton.Left && macScript.DoubleClick)
         {
             UseItem();
         }

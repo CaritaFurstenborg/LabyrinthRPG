@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: b1fae90ac594024498e0c17f8f4d94e2, type: 3}
   stackSize: 5
+  heal: 10

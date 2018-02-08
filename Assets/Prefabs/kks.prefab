@@ -139,7 +139,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1149067658303044}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.338, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4029877288325524}
@@ -408,9 +408,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lootTable:
-  - name: Bag
-    item: {fileID: 11400000, guid: a9bc4673dd99b144c8a48f7cea9be530, type: 2}
+  - name: Bag 4 slot
+    item: {fileID: 11400000, guid: 9e52febc0db1d28439ec9c219da47eea, type: 2}
     dropRarity: 25
+  - name: Bag 8 slot
+    item: {fileID: 11400000, guid: b63bf368491b4594f969c21f62c39e0d, type: 2}
+    dropRarity: 10
   - name: HealthPotion
     item: {fileID: 11400000, guid: 691244b418b3152438ef07ec0f5cdc00, type: 2}
     dropRarity: 80

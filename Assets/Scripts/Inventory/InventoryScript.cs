@@ -21,8 +21,6 @@ public class InventoryScript : MonoBehaviour {
 
     private List<Bag> bags = new List<Bag>();       //All my bags on bag bar, max 5 bags
 
-    private bool hasBag;
-
     [SerializeField]
     private BagButton[] bagButtons;                 // Clickable bagbuttons
 
@@ -52,13 +50,18 @@ public class InventoryScript : MonoBehaviour {
 
     private void Awake()        
     {
-        if(!hasBag)
+        
+    }
+
+    private void Start()
+    {
+        if (bagButtons[0].MyBag == null)
         {
             Bag bag = (Bag)Instantiate(items[0]);       // Initialize the first bag on awake, player will always need a starter bag
             bag.Initialize(20);
             bag.Use();
-            hasBag = true;
-        }        
+            OpenClose();
+        }
     }
 
     private void Update()
