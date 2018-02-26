@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Base class for any items in game, scriptable object so there is no need for a gameobject to sit on
-public abstract class Item : ScriptableObject {
+public abstract class Item : ScriptableObject, IMoveable {
 
     [SerializeField]
     private Sprite icon;                //the image of the item

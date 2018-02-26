@@ -1,0 +1,20 @@
+[
+    {
+        "id": 0,
+        "title": "Small bag",
+        "type": "Bag",
+        "slotCount": 8
+    },
+    {
+        "id": 1,
+        "title": "Medium bag",
+        "type": "Bag",
+        "slotCount": 12
+    },
+    {
+        "id": 2,
+        "title": "Large bag",
+        "type": "Bag",
+        "slotCount": 16
+    }
+]

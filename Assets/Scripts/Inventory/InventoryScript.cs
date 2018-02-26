@@ -19,6 +19,8 @@ public class InventoryScript : MonoBehaviour {
         }
     }
 
+    private InvSlotScript fromSlot;
+
     private List<Bag> bags = new List<Bag>();       //All my bags on bag bar, max 5 bags
 
     [SerializeField]
@@ -47,6 +49,24 @@ public class InventoryScript : MonoBehaviour {
             items = value;
         }
     }           // DEBUGGING ONLY
+
+    public InvSlotScript FromSlot
+    {
+        get
+        {
+            return fromSlot;
+        }
+
+        set
+        {
+            fromSlot = value;
+
+            if(value != null)
+            {
+                fromSlot.MyIcon.color = Color.grey;
+            }
+        }
+    }
 
     private void Awake()        
     {
@@ -79,6 +99,11 @@ public class InventoryScript : MonoBehaviour {
             bag.Initialize(16);
             AddItem(bag);
         }
+        if(Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            HealthPotion hp = (HealthPotion)Instantiate(items[1]);
+            AddItem(hp);
+        }
         //DEBUGGING ONLY
     }
     
@@ -97,13 +122,40 @@ public class InventoryScript : MonoBehaviour {
 
     public void AddItem(Item item)
     {
-        foreach(Bag bag in bags)
+        if(item.MyStackSize > 0)
         {
-            if(bag.MyBagScript.AddItem(item))
+            if(PlaceInStack(item))
             {
                 return;
             }
         }
+        PlaceInEmpty(item);
+    }
+
+    private void PlaceInEmpty(Item item)
+    {
+        foreach(Bag b in bags)
+        {
+            if(b.MyBagScript.AddItem(item))
+            {
+                return;
+            }
+        }
+    }
+
+    private bool PlaceInStack(Item item)
+    {
+        foreach(Bag b in bags)
+        {
+            foreach (InvSlotScript slots in b.MyBagScript.MySlots)
+            {
+                if(slots.StackItem(item))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public void OpenClose()         // Function for all equipped bags toggle
